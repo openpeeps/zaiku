@@ -1,10 +1,7 @@
 <p align="center">
-  <img src="https://github.com/openpeeps/PKG/blob/main/.github/logo.png" width="90px"><br>
-  OpenPeeps repository template for developing libraries,<br>projects and other cool things. 👑 Written in Nim language
-</p>
-
-<p align="center">
-  <code>nimble install {PKG}</code>
+  <img src="https://github.com/openpeeps/zaiku/blob/main/.github/zaiku.svg" width="260px"><br>
+  A fresh CSS Framework and UI component library<br>
+  Super lightweight &bullet; Server Side Rendering &bullet; Made w/ vanilla CSS and JavaScript 
 </p>
 
 <p align="center">
