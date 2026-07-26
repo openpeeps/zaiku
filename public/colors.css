@@ -562,6 +562,7 @@
 .text-yellowgreen { color: yellowgreen; }
 .bg-yellowgreen { background-color: yellowgreen; }
 .border-yellowgreen { border-color: yellowgreen; }.gradient-aliceblue { --gradient-color-end: color-mix(in srgb, aliceblue 80%, transparent); }
+
 .gradient-aliceblue { --gradient-color-end: color-mix(in srgb, aliceblue 80%, transparent); }
 .gradient-antiquewhite { --gradient-color-end: color-mix(in srgb, antiquewhite 80%, transparent); }
 .gradient-aqua { --gradient-color-end: color-mix(in srgb, aqua 80%, transparent); }
@@ -703,3 +704,4 @@
 .gradient-whitesmoke { --gradient-color-end: color-mix(in srgb, whitesmoke 80%, transparent); }
 .gradient-yellow { --gradient-color-end: color-mix(in srgb, yellow 80%, transparent); }
 .gradient-yellowgreen { --gradient-color-end: color-mix(in srgb, yellowgreen 80%, transparent); }
+

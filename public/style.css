@@ -522,6 +522,51 @@ body {
   --status-pulse-max: 26px;
   --status-pulse-duration: 1.2s;
 
+  /* Theme colors */
+  --color-gold: #faca0d;
+  --color-teal: #14b8a6;
+  --color-lavender: #e6e6fa;
+  --color-lavenderblush: #fff0f5;
+  --color-coral: #ff7f50;
+  --color-plum: #dda0dd;
+  --color-tomato: #ff6347;
+  --color-skyblue: #87ceeb;
+  --color-salmon: #fa8072;
+  --color-seagreen: #2e8b57;
+  --color-steelblue: #4682b4;
+  --color-yellow: #ffff00;
+  --color-orange: #ffa500;
+  --color-pink: #ffc0cb;
+  --color-hotpink: #ff69b4;
+  --color-purple: #800080;
+  --color-indigo: #4b0082;
+  --color-brown: #a52a2a;
+  --color-cyan: #00ffff;
+  --color-lime: #00ff00;
+  --color-magenta: #ff00ff;
+  --color-silver: #c0c0c0;
+  --color-black: #000000;
+  --color-white: #ffffff;
+
+  /* Design tokens */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.15);
+  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.2);
+
+  --radius-sm: 0.35rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.6rem;
+  --radius-xl: 0.75rem;
+  --radius-pill: 9999px;
+
+  --focus-ring-width: 2px;
+  --focus-ring-color: var(--color-primary-200);
+
+  --transition-fast: 0.15s;
+  --transition-normal: 0.3s;
+  --transition-slow: 0.4s;
+
   --spacing: calc(0.25rem * var(--scale));
   --gutter-y: 1.5rem;
   --gutter-x: 1.5rem;
@@ -535,25 +580,25 @@ body {
   align-items: center;
   justify-content: center;
   line-height: 17px;
-  gap: 0.5rem;
-  padding: 0.4rem 0.75rem;
-  font-size: .92rem;
+  gap: var(--btn-gap, 0.5rem);
+  padding: var(--btn-padding, 0.4rem 0.75rem);
+  font-size: var(--btn-font-size, .92rem);
   font-weight: 600;
   text-align: center;
   text-decoration: none;
   border: 1px solid transparent;
-  border-radius: 0.6rem;
+  border-radius: var(--btn-radius, var(--radius-lg));
   cursor: pointer;
   user-select: none;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-  transition: background-color 0.15s ease,
-              border-color 0.15s ease,
-              color 0.15s ease,
-              box-shadow 0.15s ease;
+  box-shadow: var(--btn-shadow, var(--shadow-sm));
+  transition: background-color var(--transition-fast) ease,
+              border-color var(--transition-fast) ease,
+              color var(--transition-fast) ease,
+              box-shadow var(--transition-fast) ease;
 }
 
 .btn:active {
-  scale: 0.98;
+  scale: var(--btn-active-scale, 0.98);
   box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
 }
 
@@ -819,19 +864,19 @@ body {
 
 
 .shadow-1 {
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  box-shadow: var(--shadow-sm);
 }
 
 .shadow-2 {
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-md);
 }
 
 .shadow-3 {
-  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--shadow-lg);
 }
 
 .shadow-4 {
-  box-shadow: 0 20px 25px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--shadow-xl);
 }
 
 .w-full {
@@ -879,7 +924,7 @@ body {
     justify-content: center;
     gap: calc(var(--spacing) * 1);
     overflow: hidden;
-    border-radius: 24px;
+    border-radius: var(--badge-radius, 24px);
     border-style: solid;
     border-width: 1px;
     padding-inline: calc(var(--spacing) * 2);
@@ -887,8 +932,8 @@ body {
     white-space: nowrap;
     font-size: 0.79rem;
     font-weight: 500;
-    transition: color 0.15s ease, background-color 0.15s ease,
-                border-color 0.15s ease, box-shadow 0.15s ease;
+    transition: color var(--transition-fast) ease, background-color var(--transition-fast) ease,
+                border-color var(--transition-fast) ease, box-shadow var(--transition-fast) ease;
   }
 
   .badge-bar {
@@ -1055,9 +1100,9 @@ body {
   .card {
     display: flex;
     flex-direction: column;
-    background-color: #fff;
+    background-color: var(--card-bg, #fff);
     border: 1px solid var(--color-gray-200);
-    border-radius: 0.5rem;
+    border-radius: var(--card-radius, var(--radius-md));
     overflow: hidden;
     /* box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05); */
     /* transition: box-shadow 0.15s ease, transform 0.15s ease; */
@@ -1095,7 +1140,7 @@ body {
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    transition: transform 0.4s ease;
+    transition: transform var(--transition-slow) ease;
   }
 
   .card:hover .card-img-bg.hover-zoom {
@@ -1316,15 +1361,15 @@ body {
   /* Form controls - input, select, textarea */
   .input {
     width: 100%;
-    padding: 0.4rem 0.75rem;
-    font-size: .92rem;
+    padding: var(--input-padding, 0.4rem 0.75rem);
+    font-size: var(--input-font-size, .92rem);
     line-height: 1.5;
     color: var(--color-gray-900);
     background-color: #fff;
     border: 1px solid var(--color-gray-300);
-    border-radius: 0.6rem;
-    transition: border-color 0.15s ease, box-shadow 0.15s ease;
-    box-shadow: 0 2px 3px var(--color-gray-100);
+    border-radius: var(--input-radius, var(--radius-lg));
+    transition: border-color var(--transition-fast) ease, box-shadow var(--transition-fast) ease;
+    box-shadow: var(--input-shadow, 0 2px 3px var(--color-gray-100));
   }
 
   .input:focus {
@@ -1485,11 +1530,11 @@ body {
     padding: calc(var(--spacing) * 1.2) calc(var(--spacing) * 3);
     background-color: #fff;
     border: 1px solid var(--color-gray-300);
-    border-radius: 0.5rem;
+    border-radius: var(--input-tags-radius, var(--radius-md));
     width: 100%;
     cursor: text;
     box-shadow: 0 2px 3px var(--color-gray-100);
-    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    transition: border-color var(--transition-fast) ease, box-shadow var(--transition-fast) ease;
   }
 
   .input-tags:focus-within {
@@ -1710,7 +1755,7 @@ body {
     align-items: flex-start;
     gap: 0.5rem;
     padding: 0.75rem 1rem;
-    border-radius: 0.6rem;
+    border-radius: var(--alert-radius, var(--radius-lg));
     border: 1px solid;
     font-size: .92rem;
     line-height: 1.5;

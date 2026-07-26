@@ -105,3 +105,14 @@ p {
 .text-right {
   text-align: right;
 }
+
+.text-link {
+  text-decoration: none;
+  border-bottom: 0;
+  box-shadow: inset 0 -2px 0 0 var(--link-underline-color, currentColor);
+  transition: box-shadow 0.15s ease;
+}
+
+.text-link:hover {
+  box-shadow: inset 0 -5px 0 0 var(--link-underline-color-hover, var(--link-underline-color, currentColor));
+}

@@ -80,8 +80,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
   var emailInput = document.getElementById('emailRecipients')
   if (emailInput) {
-    emailInput.zaiku.tagInstance.addTag('charlie@example.com')
-    emailInput.zaiku.tagInstance.addTag('diana@example.com')
+    emailInput.zaiku.tagInstance.addTag('alice@example.com')
+    emailInput.zaiku.tagInstance.addTag('bob@example.com')
   }
 })
     @end

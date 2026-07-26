@@ -11,6 +11,15 @@ div.col-12 > div.p-2
 
     p.lead: "This is a lead paragraph. It stands out from regular paragraphs."
     p: "This is a regular paragraph. It provides standard text content for the page."
+    p.mt-3: "Text links:"
+    p
+      a.text-link href="#": "Default link (inherits color)"
+      span.mx-2: "·"
+      a.text-link style="--link-underline-color: var(--color-teal)" href="#": "Teal underline"
+      span.mx-2: "·"
+      a.text-link style="--link-underline-color: var(--color-gold)" href="#": "Gold underline"
+      span.mx-2: "·"
+      a.text-link.text-link-lavender href="#": "Lavender underline"
 
   div.mb-5
     h2.h1: "Buttons"
@@ -162,6 +171,9 @@ div.col-12 > div.p-2
           div.card-body.p-3
             h5.h3.card-title: "The Great Gatsby"
             p.mb-2: "Fitzgerald's Jazz Age masterpiece captures the glittering illusions of the American Dream."
+            div.d-flex.gap-2.justify-between
+              button.btn.btn-secondary: "Cancel"
+              button.btn.btn-primary: "I agree"
 
         div.col-3 > div.card.rounded-4
           div.card-img-top.gradient-overlay.bg-teal.position-relative
@@ -169,6 +181,9 @@ div.col-12 > div.p-2
           div.card-body.p-3
             h5.h3.card-title: "Moby-Dick"
             p.mb-2: "Melville's great white whale swims through the depths of obsession, fate, and the unknown."
+            div.d-flex.gap-2.justify-between
+              a.text-link.align-self-center href="#": "Nevermind."
+              button.btn.btn-primary: "I agree"
 
         div.col-3 > div.card.rounded-4.h-100
           div.card-img-top.gradient-overlay.bg-teal.flex-col.justify-end.h-100
@@ -180,9 +195,9 @@ div.col-12 > div.p-2
                 p.mb-2: "Once upon a midnight dreary, while I pondered, weak and weary, over many a quaint and curious volume of forgotten lore..."
         
         div.col-3 > div.card.rounded-4.h-100
-          div.card-img-top.gradient-overlay.bg-teal.flex-col.justify-end.h-100
-            style="background-size: cover;  background-repeat: no-repeat; background-position:center center; background-image:url(https://images.unsplash.com/photo-1778470075441-8b2c7ce123b7?q=80&w=762&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)"
+          div.card-img-top.gradient-overlay.gradient-top.bg-teal.flex-col.justify-end.h-100
             div.card-body.p-3.text-white.position-relative.z-index-1.flex-col.justify-between.flex-1
+              span.position-absolute.spinner.top-0.bottom-0.left-0.right-0.mx-auto.my-auto
               div.align-self-start: "This is amazing"
               div
                 h5.h3.card-title: "The Iliad"
