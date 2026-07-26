@@ -1,0 +1,564 @@
+
+.text-aliceblue { color: aliceblue; }
+.bg-aliceblue { background-color: aliceblue; }
+.border-aliceblue { border-color: aliceblue; }
+
+.text-antiquewhite { color: antiquewhite; }
+.bg-antiquewhite { background-color: antiquewhite; }
+.border-antiquewhite { border-color: antiquewhite; }
+
+.text-aqua { color: aqua; }
+.bg-aqua { background-color: aqua; }
+.border-aqua { border-color: aqua; }
+
+.text-aquamarine { color: aquamarine; }
+.bg-aquamarine { background-color: aquamarine; }
+.border-aquamarine { border-color: aquamarine; }
+
+.text-azure { color: azure; }
+.bg-azure { background-color: azure; }
+.border-azure { border-color: azure; }
+
+.text-beige { color: beige; }
+.bg-beige { background-color: beige; }
+.border-beige { border-color: beige; }
+
+.text-bisque { color: bisque; }
+.bg-bisque { background-color: bisque; }
+.border-bisque { border-color: bisque; }
+
+.text-black { color: black; }
+.bg-black { background-color: black; }
+.border-black { border-color: black; }
+
+.text-blanchedalmond { color: blanchedalmond; }
+.bg-blanchedalmond { background-color: blanchedalmond; }
+.border-blanchedalmond { border-color: blanchedalmond; }
+
+.text-blue { color: blue; }
+.bg-blue { background-color: blue; }
+.border-blue { border-color: blue; }
+
+.text-blueviolet { color: blueviolet; }
+.bg-blueviolet { background-color: blueviolet; }
+.border-blueviolet { border-color: blueviolet; }
+
+.text-brown { color: brown; }
+.bg-brown { background-color: brown; }
+.border-brown { border-color: brown; }
+
+.text-burlywood { color: burlywood; }
+.bg-burlywood { background-color: burlywood; }
+.border-burlywood { border-color: burlywood; }
+
+.text-cadetblue { color: cadetblue; }
+.bg-cadetblue { background-color: cadetblue; }
+.border-cadetblue { border-color: cadetblue; }
+
+.text-chartreuse { color: chartreuse; }
+.bg-chartreuse { background-color: chartreuse; }
+.border-chartreuse { border-color: chartreuse; }
+
+.text-chocolate { color: chocolate; }
+.bg-chocolate { background-color: chocolate; }
+.border-chocolate { border-color: chocolate; }
+
+.text-coral { color: coral; }
+.bg-coral { background-color: coral; }
+.border-coral { border-color: coral; }
+
+.text-cornflowerblue { color: cornflowerblue; }
+.bg-cornflowerblue { background-color: cornflowerblue; }
+.border-cornflowerblue { border-color: cornflowerblue; }
+
+.text-cornsilk { color: cornsilk; }
+.bg-cornsilk { background-color: cornsilk; }
+.border-cornsilk { border-color: cornsilk; }
+
+.text-crimson { color: crimson; }
+.bg-crimson { background-color: crimson; }
+.border-crimson { border-color: crimson; }
+
+.text-cyan { color: cyan; }
+.bg-cyan { background-color: cyan; }
+.border-cyan { border-color: cyan; }
+
+.text-darkblue { color: darkblue; }
+.bg-darkblue { background-color: darkblue; }
+.border-darkblue { border-color: darkblue; }
+
+.text-darkcyan { color: darkcyan; }
+.bg-darkcyan { background-color: darkcyan; }
+.border-darkcyan { border-color: darkcyan; }
+
+.text-darkgoldenrod { color: darkgoldenrod; }
+.bg-darkgoldenrod { background-color: darkgoldenrod; }
+.border-darkgoldenrod { border-color: darkgoldenrod; }
+
+.text-darkgray { color: darkgray; }
+.bg-darkgray { background-color: darkgray; }
+.border-darkgray { border-color: darkgray; }
+
+.text-darkgreen { color: darkgreen; }
+.bg-darkgreen { background-color: darkgreen; }
+.border-darkgreen { border-color: darkgreen; }
+
+.text-darkkhaki { color: darkkhaki; }
+.bg-darkkhaki { background-color: darkkhaki; }
+.border-darkkhaki { border-color: darkkhaki; }
+
+.text-darkmagenta { color: darkmagenta; }
+.bg-darkmagenta { background-color: darkmagenta; }
+.border-darkmagenta { border-color: darkmagenta; }
+
+.text-darkolivegreen { color: darkolivegreen; }
+.bg-darkolivegreen { background-color: darkolivegreen; }
+.border-darkolivegreen { border-color: darkolivegreen; }
+
+.text-darkorange { color: darkorange; }
+.bg-darkorange { background-color: darkorange; }
+.border-darkorange { border-color: darkorange; }
+
+.text-darkorchid { color: darkorchid; }
+.bg-darkorchid { background-color: darkorchid; }
+.border-darkorchid { border-color: darkorchid; }
+
+.text-darkred { color: darkred; }
+.bg-darkred { background-color: darkred; }
+.border-darkred { border-color: darkred; }
+
+.text-darksalmon { color: darksalmon; }
+.bg-darksalmon { background-color: darksalmon; }
+.border-darksalmon { border-color: darksalmon; }
+
+.text-darkseagreen { color: darkseagreen; }
+.bg-darkseagreen { background-color: darkseagreen; }
+.border-darkseagreen { border-color: darkseagreen; }
+
+.text-darkslateblue { color: darkslateblue; }
+.bg-darkslateblue { background-color: darkslateblue; }
+.border-darkslateblue { border-color: darkslateblue; }
+
+.text-darkslategray { color: darkslategray; }
+.bg-darkslategray { background-color: darkslategray; }
+.border-darkslategray { border-color: darkslategray; }
+
+.text-darkturquoise { color: darkturquoise; }
+.bg-darkturquoise { background-color: darkturquoise; }
+.border-darkturquoise { border-color: darkturquoise; }
+
+.text-darkviolet { color: darkviolet; }
+.bg-darkviolet { background-color: darkviolet; }
+.border-darkviolet { border-color: darkviolet; }
+
+.text-deeppink { color: deeppink; }
+.bg-deeppink { background-color: deeppink; }
+.border-deeppink { border-color: deeppink; }
+
+.text-deepskyblue { color: deepskyblue; }
+.bg-deepskyblue { background-color: deepskyblue; }
+.border-deepskyblue { border-color: deepskyblue; }
+
+.text-dimgray { color: dimgray; }
+.bg-dimgray { background-color: dimgray; }
+.border-dimgray { border-color: dimgray; }
+
+.text-dodgerblue { color: dodgerblue; }
+.bg-dodgerblue { background-color: dodgerblue; }
+.border-dodgerblue { border-color: dodgerblue; }
+
+.text-firebrick { color: firebrick; }
+.bg-firebrick { background-color: firebrick; }
+.border-firebrick { border-color: firebrick; }
+
+.text-floralwhite { color: floralwhite; }
+.bg-floralwhite { background-color: floralwhite; }
+.border-floralwhite { border-color: floralwhite; }
+
+.text-forestgreen { color: forestgreen; }
+.bg-forestgreen { background-color: forestgreen; }
+.border-forestgreen { border-color: forestgreen; }
+
+.text-fuchsia { color: fuchsia; }
+.bg-fuchsia { background-color: fuchsia; }
+.border-fuchsia { border-color: fuchsia; }
+
+.text-gainsboro { color: gainsboro; }
+.bg-gainsboro { background-color: gainsboro; }
+.border-gainsboro { border-color: gainsboro; }
+
+.text-ghostwhite { color: ghostwhite; }
+.bg-ghostwhite { background-color: ghostwhite; }
+.border-ghostwhite { border-color: ghostwhite; }
+
+.text-gold { color: gold; }
+.bg-gold { background-color: gold; }
+.border-gold { border-color: gold; }
+
+.text-goldenrod { color: goldenrod; }
+.bg-goldenrod { background-color: goldenrod; }
+.border-goldenrod { border-color: goldenrod; }
+
+.text-gray { color: gray; }
+.bg-gray { background-color: gray; }
+.border-gray { border-color: gray; }
+
+.text-green { color: green; }
+.bg-green { background-color: green; }
+.border-green { border-color: green; }
+
+.text-greenyellow { color: greenyellow; }
+.bg-greenyellow { background-color: greenyellow; }
+.border-greenyellow { border-color: greenyellow; }
+
+.text-honeydew { color: honeydew; }
+.bg-honeydew { background-color: honeydew; }
+.border-honeydew { border-color: honeydew; }
+
+.text-hotpink { color: hotpink; }
+.bg-hotpink { background-color: hotpink; }
+.border-hotpink { border-color: hotpink; }
+
+.text-indianred { color: indianred; }
+.bg-indianred { background-color: indianred; }
+.border-indianred { border-color: indianred; }
+
+.text-indigo { color: indigo; }
+.bg-indigo { background-color: indigo; }
+.border-indigo { border-color: indigo; }
+
+.text-ivory { color: ivory; }
+.bg-ivory { background-color: ivory; }
+.border-ivory { border-color: ivory; }
+
+.text-khaki { color: khaki; }
+.bg-khaki { background-color: khaki; }
+.border-khaki { border-color: khaki; }
+
+.text-lavender { color: lavender; }
+.bg-lavender { background-color: lavender; }
+.border-lavender { border-color: lavender; }
+
+.text-lavenderblush { color: lavenderblush; }
+.bg-lavenderblush { background-color: lavenderblush; }
+.border-lavenderblush { border-color: lavenderblush; }
+
+.text-lawngreen { color: lawngreen; }
+.bg-lawngreen { background-color: lawngreen; }
+.border-lawngreen { border-color: lawngreen; }
+
+.text-lemonchiffon { color: lemonchiffon; }
+.bg-lemonchiffon { background-color: lemonchiffon; }
+.border-lemonchiffon { border-color: lemonchiffon; }
+
+.text-lightblue { color: lightblue; }
+.bg-lightblue { background-color: lightblue; }
+.border-lightblue { border-color: lightblue; }
+
+.text-lightcoral { color: lightcoral; }
+.bg-lightcoral { background-color: lightcoral; }
+.border-lightcoral { border-color: lightcoral; }
+
+.text-lightcyan { color: lightcyan; }
+.bg-lightcyan { background-color: lightcyan; }
+.border-lightcyan { border-color: lightcyan; }
+
+.text-lightgoldenrodyellow { color: lightgoldenrodyellow; }
+.bg-lightgoldenrodyellow { background-color: lightgoldenrodyellow; }
+.border-lightgoldenrodyellow { border-color: lightgoldenrodyellow; }
+
+.text-lightgray { color: lightgray; }
+.bg-lightgray { background-color: lightgray; }
+.border-lightgray { border-color: lightgray; }
+
+.text-lightgreen { color: lightgreen; }
+.bg-lightgreen { background-color: lightgreen; }
+.border-lightgreen { border-color: lightgreen; }
+
+.text-lightpink { color: lightpink; }
+.bg-lightpink { background-color: lightpink; }
+.border-lightpink { border-color: lightpink; }
+
+.text-lightsalmon { color: lightsalmon; }
+.bg-lightsalmon { background-color: lightsalmon; }
+.border-lightsalmon { border-color: lightsalmon; }
+
+.text-lightseagreen { color: lightseagreen; }
+.bg-lightseagreen { background-color: lightseagreen; }
+.border-lightseagreen { border-color: lightseagreen; }
+
+.text-lightskyblue { color: lightskyblue; }
+.bg-lightskyblue { background-color: lightskyblue; }
+.border-lightskyblue { border-color: lightskyblue; }
+
+.text-lightslategray { color: lightslategray; }
+.bg-lightslategray { background-color: lightslategray; }
+.border-lightslategray { border-color: lightslategray; }
+
+.text-lightsteelblue { color: lightsteelblue; }
+.bg-lightsteelblue { background-color: lightsteelblue; }
+.border-lightsteelblue { border-color: lightsteelblue; }
+
+.text-lightyellow { color: lightyellow; }
+.bg-lightyellow { background-color: lightyellow; }
+.border-lightyellow { border-color: lightyellow; }
+
+.text-lime { color: lime; }
+.bg-lime { background-color: lime; }
+.border-lime { border-color: lime; }
+
+.text-limegreen { color: limegreen; }
+.bg-limegreen { background-color: limegreen; }
+.border-limegreen { border-color: limegreen; }
+
+.text-linen { color: linen; }
+.bg-linen { background-color: linen; }
+.border-linen { border-color: linen; }
+
+.text-magenta { color: magenta; }
+.bg-magenta { background-color: magenta; }
+.border-magenta { border-color: magenta; }
+
+.text-maroon { color: maroon; }
+.bg-maroon { background-color: maroon; }
+.border-maroon { border-color: maroon; }
+
+.text-mediumaquamarine { color: mediumaquamarine; }
+.bg-mediumaquamarine { background-color: mediumaquamarine; }
+.border-mediumaquamarine { border-color: mediumaquamarine; }
+
+.text-mediumblue { color: mediumblue; }
+.bg-mediumblue { background-color: mediumblue; }
+.border-mediumblue { border-color: mediumblue; }
+
+.text-mediumorchid { color: mediumorchid; }
+.bg-mediumorchid { background-color: mediumorchid; }
+.border-mediumorchid { border-color: mediumorchid; }
+
+.text-mediumpurple { color: mediumpurple; }
+.bg-mediumpurple { background-color: mediumpurple; }
+.border-mediumpurple { border-color: mediumpurple; }
+
+.text-mediumseagreen { color: mediumseagreen; }
+.bg-mediumseagreen { background-color: mediumseagreen; }
+.border-mediumseagreen { border-color: mediumseagreen; }
+
+.text-mediumslateblue { color: mediumslateblue; }
+.bg-mediumslateblue { background-color: mediumslateblue; }
+.border-mediumslateblue { border-color: mediumslateblue; }
+
+.text-mediumspringgreen { color: mediumspringgreen; }
+.bg-mediumspringgreen { background-color: mediumspringgreen; }
+.border-mediumspringgreen { border-color: mediumspringgreen; }
+
+.text-mediumturquoise { color: mediumturquoise; }
+.bg-mediumturquoise { background-color: mediumturquoise; }
+.border-mediumturquoise { border-color: mediumturquoise; }
+
+.text-mediumvioletred { color: mediumvioletred; }
+.bg-mediumvioletred { background-color: mediumvioletred; }
+.border-mediumvioletred { border-color: mediumvioletred; }
+
+.text-midnightblue { color: midnightblue; }
+.bg-midnightblue { background-color: midnightblue; }
+.border-midnightblue { border-color: midnightblue; }
+
+.text-mintcream { color: mintcream; }
+.bg-mintcream { background-color: mintcream; }
+.border-mintcream { border-color: mintcream; }
+
+.text-mistyrose { color: mistyrose; }
+.bg-mistyrose { background-color: mistyrose; }
+.border-mistyrose { border-color: mistyrose; }
+
+.text-moccasin { color: moccasin; }
+.bg-moccasin { background-color: moccasin; }
+.border-moccasin { border-color: moccasin; }
+
+.text-navajowhite { color: navajowhite; }
+.bg-navajowhite { background-color: navajowhite; }
+.border-navajowhite { border-color: navajowhite; }
+
+.text-navy { color: navy; }
+.bg-navy { background-color: navy; }
+.border-navy { border-color: navy; }
+
+.text-oldlace { color: oldlace; }
+.bg-oldlace { background-color: oldlace; }
+.border-oldlace { border-color: oldlace; }
+
+.text-olive { color: olive; }
+.bg-olive { background-color: olive; }
+.border-olive { border-color: olive; }
+
+.text-olivedrab { color: olivedrab; }
+.bg-olivedrab { background-color: olivedrab; }
+.border-olivedrab { border-color: olivedrab; }
+
+.text-orange { color: orange; }
+.bg-orange { background-color: orange; }
+.border-orange { border-color: orange; }
+
+.text-orangered { color: orangered; }
+.bg-orangered { background-color: orangered; }
+.border-orangered { border-color: orangered; }
+
+.text-orchid { color: orchid; }
+.bg-orchid { background-color: orchid; }
+.border-orchid { border-color: orchid; }
+
+.text-palegoldenrod { color: palegoldenrod; }
+.bg-palegoldenrod { background-color: palegoldenrod; }
+.border-palegoldenrod { border-color: palegoldenrod; }
+
+.text-palegreen { color: palegreen; }
+.bg-palegreen { background-color: palegreen; }
+.border-palegreen { border-color: palegreen; }
+
+.text-paleturquoise { color: paleturquoise; }
+.bg-paleturquoise { background-color: paleturquoise; }
+.border-paleturquoise { border-color: paleturquoise; }
+
+.text-palevioletred { color: palevioletred; }
+.bg-palevioletred { background-color: palevioletred; }
+.border-palevioletred { border-color: palevioletred; }
+
+.text-papayawhip { color: papayawhip; }
+.bg-papayawhip { background-color: papayawhip; }
+.border-papayawhip { border-color: papayawhip; }
+
+.text-peachpuff { color: peachpuff; }
+.bg-peachpuff { background-color: peachpuff; }
+.border-peachpuff { border-color: peachpuff; }
+
+.text-peru { color: peru; }
+.bg-peru { background-color: peru; }
+.border-peru { border-color: peru; }
+
+.text-pink { color: pink; }
+.bg-pink { background-color: pink; }
+.border-pink { border-color: pink; }
+
+.text-plum { color: plum; }
+.bg-plum { background-color: plum; }
+.border-plum { border-color: plum; }
+
+.text-powderblue { color: powderblue; }
+.bg-powderblue { background-color: powderblue; }
+.border-powderblue { border-color: powderblue; }
+
+.text-purple { color: purple; }
+.bg-purple { background-color: purple; }
+.border-purple { border-color: purple; }
+
+.text-rebeccapurple { color: rebeccapurple; }
+.bg-rebeccapurple { background-color: rebeccapurple; }
+.border-rebeccapurple { border-color: rebeccapurple; }
+
+.text-red { color: red; }
+.bg-red { background-color: red; }
+.border-red { border-color: red; }
+
+.text-rosybrown { color: rosybrown; }
+.bg-rosybrown { background-color: rosybrown; }
+.border-rosybrown { border-color: rosybrown; }
+
+.text-royalblue { color: royalblue; }
+.bg-royalblue { background-color: royalblue; }
+.border-royalblue { border-color: royalblue; }
+
+.text-saddlebrown { color: saddlebrown; }
+.bg-saddlebrown { background-color: saddlebrown; }
+.border-saddlebrown { border-color: saddlebrown; }
+
+.text-salmon { color: salmon; }
+.bg-salmon { background-color: salmon; }
+.border-salmon { border-color: salmon; }
+
+.text-sandybrown { color: sandybrown; }
+.bg-sandybrown { background-color: sandybrown; }
+.border-sandybrown { border-color: sandybrown; }
+
+.text-seagreen { color: seagreen; }
+.bg-seagreen { background-color: seagreen; }
+.border-seagreen { border-color: seagreen; }
+
+.text-seashell { color: seashell; }
+.bg-seashell { background-color: seashell; }
+.border-seashell { border-color: seashell; }
+
+.text-sienna { color: sienna; }
+.bg-sienna { background-color: sienna; }
+.border-sienna { border-color: sienna; }
+
+.text-silver { color: silver; }
+.bg-silver { background-color: silver; }
+.border-silver { border-color: silver; }
+
+.text-skyblue { color: skyblue; }
+.bg-skyblue { background-color: skyblue; }
+.border-skyblue { border-color: skyblue; }
+
+.text-slateblue { color: slateblue; }
+.bg-slateblue { background-color: slateblue; }
+.border-slateblue { border-color: slateblue; }
+
+.text-slategray { color: slategray; }
+.bg-slategray { background-color: slategray; }
+.border-slategray { border-color: slategray; }
+
+.text-snow { color: snow; }
+.bg-snow { background-color: snow; }
+.border-snow { border-color: snow; }
+
+.text-springgreen { color: springgreen; }
+.bg-springgreen { background-color: springgreen; }
+.border-springgreen { border-color: springgreen; }
+
+.text-steelblue { color: steelblue; }
+.bg-steelblue { background-color: steelblue; }
+.border-steelblue { border-color: steelblue; }
+
+.text-tan { color: tan; }
+.bg-tan { background-color: tan; }
+.border-tan { border-color: tan; }
+
+.text-teal { color: teal; }
+.bg-teal { background-color: teal; }
+.border-teal { border-color: teal; }
+
+.text-thistle { color: thistle; }
+.bg-thistle { background-color: thistle; }
+.border-thistle { border-color: thistle; }
+
+.text-tomato { color: tomato; }
+.bg-tomato { background-color: tomato; }
+.border-tomato { border-color: tomato; }
+
+.text-turquoise { color: turquoise; }
+.bg-turquoise { background-color: turquoise; }
+.border-turquoise { border-color: turquoise; }
+
+.text-violet { color: violet; }
+.bg-violet { background-color: violet; }
+.border-violet { border-color: violet; }
+
+.text-wheat { color: wheat; }
+.bg-wheat { background-color: wheat; }
+.border-wheat { border-color: wheat; }
+
+.text-white { color: white; }
+.bg-white { background-color: white; }
+.border-white { border-color: white; }
+
+.text-whitesmoke { color: whitesmoke; }
+.bg-whitesmoke { background-color: whitesmoke; }
+.border-whitesmoke { border-color: whitesmoke; }
+
+.text-yellow { color: yellow; }
+.bg-yellow { background-color: yellow; }
+.border-yellow { border-color: yellow; }
+
+.text-yellowgreen { color: yellowgreen; }
+.bg-yellowgreen { background-color: yellowgreen; }
+.border-yellowgreen { border-color: yellowgreen; }

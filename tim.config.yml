@@ -1,0 +1,20 @@
+type: project
+description: "A new awesome package for Tim Engine"
+version: "0.1.0"
+license: "MIT"
+
+compilation:
+  source: "./src/templates"
+  output: "./build"
+  release: false
+
+server:
+  port: 8000
+  threads: 1
+  routes:
+    "/": "index"
+
+browser_sync:
+  port: 3500
+  delay: 200
+  

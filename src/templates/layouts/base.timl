@@ -1,0 +1,30 @@
+html class="scale-1"
+  head
+    meta charset="utf-8"
+    title: "Zaiku「細工」CSS Framework"
+    meta name="viewport" content="width=device-width, initial-scale=1"
+    link rel="stylesheet" href="style.css"
+    link rel="stylesheet" href="typography.css"
+    link rel="stylesheet" href="colors.css"
+    script src="zaiku.js"
+  body
+    div.vh-50.bg-black.d-flex > div.container.align-self-center.text-white.text-center
+      h1.display-1: "Zaiku"
+      h2.h1: "細工"
+    div.container > div.row > div.col-10.mx-auto
+      @view
+    @javascript
+function connectLiveReload() {
+  const ws = new WebSocket("ws://" + location.hostname + ":3500");
+  ws.addEventListener('message', (e) => {
+    if(e.data == '1') location.reload()
+  });
+  ws.addEventListener('close', () => {
+    setTimeout(() => {
+      console.log('Live-reload WebSocket closed. Reconnecting...')
+      connectLiveReload()
+    }, 300)
+  })
+}
+connectLiveReload()
+    @end
