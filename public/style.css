@@ -710,8 +710,7 @@ body {
   display: inline-flex;
   vertical-align: middle;
   gap: 0;
-  border-radius: 0.6rem; /* matches .btn default */
-  overflow: hidden;      /* clip child corners */
+  border-radius: var(--radius-lg);
 }
 
 /* reset individual button rounding so group corners show correctly */
@@ -742,8 +741,7 @@ body {
   display: inline-flex;
   flex-direction: column;
   gap: 0;
-  border-radius: 0.6rem;
-  overflow: hidden;
+  border-radius: var(--radius-lg);
 }
 
 .btn-group-vertical .btn,
@@ -767,11 +765,6 @@ body {
 .btn-group.vertical .btn:last-child {
   border-bottom-left-radius: inherit;
   border-bottom-right-radius: inherit;
-}
-
-/* focus style for accessibility */
-.btn-group:focus-within {
-  box-shadow: 0 0 0 3px color-mix(in oklab, var(--color-primary-200) 20%, transparent);
 }
 
 /* optional full-width helper */
@@ -1424,8 +1417,8 @@ body {
 
   .field-label {
     font-size: 0.975rem;
-    font-weight: 500;
-    color: var(--color-gray-700);
+    font-weight: 600;
+    color: var(--color-gray-900);
   }
 
   .field-help {
@@ -1823,6 +1816,325 @@ body {
   .toast {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   }
+
+  /* Progress bar */
+  .progress {
+    width: 100%;
+    height: 0.7rem;
+    background-color: var(--color-gray-200);
+    border-radius: var(--radius-pill);
+    overflow: hidden;
+    position: relative;
+  }
+
+  .progress-bar {
+    height: 100%;
+    background-color: var(--color-gray-800);
+    border-radius: var(--radius-pill);
+    transition: width var(--transition-normal) ease;
+  }
+
+  .progress-sm {
+    height: 0.25rem;
+  }
+
+  .progress-lg {
+    height: 1rem;
+  }
+
+  .progress-striped .progress-bar {
+    background-image: linear-gradient(
+      45deg,
+      rgba(255, 255, 255, 0.15) 25%,
+      transparent 25%,
+      transparent 50%,
+      rgba(255, 255, 255, 0.15) 50%,
+      rgba(255, 255, 255, 0.15) 75%,
+      transparent 75%,
+      transparent
+    );
+    background-size: 1rem 1rem;
+  }
+
+  .progress-animated .progress-bar {
+    animation: progress-stripes 1s linear infinite;
+  }
+
+  .progress-loading .progress-bar {
+    width: 30%;
+    position: relative;
+    animation: progress-loading 1.5s ease-in-out infinite;
+  }
+
+  @keyframes progress-loading {
+    0%   { left: -30%; }
+    100% { left: 100%; }
+  }
+
+  @keyframes progress-stripes {
+    0% { background-position: 1rem 0; }
+    100% { background-position: 0 0; }
+  }
+
+  .progress-label {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #fff;
+    mix-blend-mode: difference;
+    pointer-events: none;
+  }
+
+  .progress-mini {
+    display: inline-flex;
+    align-self: center;
+    width: 3rem;
+    height: 4px;
+    background-color: var(--color-gray-300);
+    border-radius: var(--radius-pill);
+    overflow: hidden;
+    vertical-align: middle;
+  }
+
+  .progress-mini .progress-bar {
+    width: 30%;
+    height: 100%;
+    background-color: currentColor;
+    border-radius: inherit;
+    position: relative;
+    animation: progress-mini 1.2s ease-in-out infinite;
+  }
+
+  @keyframes progress-mini {
+    0%   { left: -30%; }
+    100% { left: 100%; }
+  }
+}
+
+/* Tab panels */
+.tab-panel {
+  display: none;
+}
+.tab-panel-active {
+  display: block;
+}
+
+/* Tab list (nav wrapper) */
+.tab-list {
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+}
+
+/* Tab buttons within tab-list override btn defaults */
+.tab-list .tab {
+  border-radius: 0;
+  margin: 0;
+  position: relative;
+  box-shadow: none;
+  background-color: var(--color-gray-50);
+  border-color: var(--color-gray-300);
+  color: var(--color-gray-600);
+}
+
+.tab-list .tab:hover {
+  background-color: var(--color-gray-100);
+}
+
+.tab-list .tab + .tab {
+  margin-left: -1px;
+}
+
+.tab-list .tab:first-child {
+  border-top-left-radius: var(--radius-lg);
+}
+
+.tab-list .tab:last-child {
+  border-top-right-radius: var(--radius-lg);
+}
+
+.tab-list .tab-active {
+  background-color: #fff;
+  border-bottom-color: transparent;
+  color: var(--color-gray-900);
+  z-index: 2;
+}
+
+.tab-list .tab-active:hover {
+  background-color: #fff;
+}
+
+/* Icon sizing inside tab buttons */
+.tab svg {
+  width: 1em;
+  height: 1em;
+  flex-shrink: 0;
+}
+
+/* Content panel container */
+.tab-content {
+  border: 1px solid var(--color-gray-300);
+  margin-top: -1px;
+  border-radius: 0 var(--radius-lg) var(--radius-lg) var(--radius-lg);
+  padding: 1rem;
+  background-color: #fff;
+}
+
+/* ── Container-level orientation ── */
+
+/* .tabs-vertical on the .tab-area container */
+.tabs-vertical {
+  display: flex;
+}
+
+.tabs-vertical .tab-list {
+  flex-direction: column;
+  margin-bottom: 0;
+  margin-right: -1px;
+}
+
+.tabs-vertical .tab-list .tab + .tab {
+  margin-left: 0;
+  margin-top: -1px;
+}
+
+.tabs-vertical .tab-list .tab:first-child {
+  border-top-left-radius: var(--radius-lg);
+  border-top-right-radius: 0;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.tabs-vertical .tab-list .tab:last-child {
+  border-bottom-left-radius: var(--radius-lg);
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.tabs-vertical .tab-list .tab-active {
+  border-right-color: transparent;
+  border-bottom-color: var(--color-gray-300);
+}
+
+.tabs-vertical .tab-content {
+  margin-top: 0;
+  margin-left: -1px;
+  border-top: 1px solid var(--color-gray-300);
+  border-left: none;
+  border-radius: 0 var(--radius-lg) var(--radius-lg) 0;
+  flex: 1;
+}
+
+/* Vertical tabs with tab list on the right side */
+.tabs-vertical-right {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.tabs-vertical-right .tab-list {
+  flex-direction: column;
+  margin-bottom: 0;
+  margin-left: -1px;
+}
+
+.tabs-vertical-right .tab-list .tab + .tab {
+  margin-left: 0;
+  margin-top: -1px;
+}
+
+.tabs-vertical-right .tab-list .tab:first-child {
+  border-top-right-radius: var(--radius-lg);
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.tabs-vertical-right .tab-list .tab:last-child {
+  border-bottom-right-radius: var(--radius-lg);
+  border-bottom-left-radius: 0;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.tabs-vertical-right .tab-list .tab-active {
+  border-left-color: transparent;
+  border-right-color: var(--color-gray-300);
+  border-bottom-color: var(--color-gray-300);
+}
+
+.tabs-vertical-right .tab-content {
+  margin-top: 0;
+  margin-right: -1px;
+  margin-left: 0;
+  border-top: 1px solid var(--color-gray-300);
+  border-right: none;
+  border-left: 1px solid var(--color-gray-300);
+  border-radius: var(--radius-lg) 0 0 var(--radius-lg);
+  flex: 1;
+}
+
+/* Legacy nav-level vertical class (kept for backwards compat) */
+.tab-list-vertical {
+  flex-direction: column;
+  margin-bottom: 0;
+  margin-right: -1px;
+}
+
+.tab-list-vertical .tab + .tab {
+  margin-left: 0;
+  margin-top: -1px;
+}
+
+.tab-list-vertical .tab:first-child {
+  border-top-left-radius: var(--radius-lg);
+  border-top-right-radius: var(--radius-lg);
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.tab-list-vertical .tab:last-child {
+  border-bottom-left-radius: var(--radius-lg);
+  border-bottom-right-radius: var(--radius-lg);
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.tab-list-vertical .tab-active {
+  border-right-color: transparent;
+  border-bottom-color: var(--color-gray-300);
+}
+
+.tab-list-vertical + .tab-content {
+  margin-top: 0;
+  margin-left: -1px;
+  border-top: 1px solid var(--color-gray-300);
+  border-left: none;
+  border-radius: 0 var(--radius-lg) var(--radius-lg) var(--radius-lg);
+  flex: 1;
+}
+
+/* Disabled tab */
+.tab.disabled,
+.tab[disabled],
+.tab[aria-disabled="true"] {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+  background-color: var(--color-gray-100) !important;
+  color: var(--color-gray-400) !important;
+  border-color: var(--color-gray-200) !important;
+}
+
+/* Compact tab list (for card headers, etc.) */
+.tab-list-sm .tab {
+  padding: 0.3rem 0.6rem;
+  font-size: 0.85rem;
 }
 
 /* Position utilities */

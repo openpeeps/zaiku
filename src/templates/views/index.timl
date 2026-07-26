@@ -182,7 +182,7 @@ div.col-12 > div.p-2
             h5.h3.card-title: "Moby-Dick"
             p.mb-2: "Melville's great white whale swims through the depths of obsession, fate, and the unknown."
             div.d-flex.gap-2.justify-between
-              a.text-link.align-self-center href="#": "Nevermind."
+              a.text-link.align-self-center: "Nevermind."
               button.btn.btn-primary: "I agree"
 
         div.col-3 > div.card.rounded-4.h-100
@@ -407,9 +407,11 @@ div.col-12 > div.p-2
             div.field
               label.field-label for="validate-email": "Email"
               input#validate-email.input type="email" name="email" placeholder="you@example.com" autocomplete="off" required
-            div.field
-              label.field-label for="validate-username": "Username"
-              input#validate-username.input type="text" name="username" placeholder="Choose a username" autocomplete="off" required
+            div.field.mt-3
+              div.d-flex.gap-2.justify-between
+                label.field-label for="validate-password": "Password"
+                a href="#": "Forgot your password?"
+              input#validate-password.input type="text" name="password" placeholder="Your password" autocomplete="off" required
             div.mt-3
               button.btn.btn-primary type="submit": "Submit"
 
@@ -662,3 +664,220 @@ div.col-12 > div.p-2
                 path d="m9 9 6 6"
             div.alert-content: "Connection lost. Retrying..."
             button.alert-dismiss type="button" aria-label="Close": "×"
+
+  div.mb-5
+    h2.h1: "Clipboard"
+    p.lead.mb-3: "Copy content to the clipboard with data-zaiku-clipboard and a data-copy-btn button."
+
+    div.card.p-5.my-3
+      h5.h3.mb-3: "Input + button"
+      div data-zaiku-clipboard=""
+        div.input-group
+          input.input type="text" value="https://example.com/share/abc123" readonly=""
+          button.btn.btn-secondary data-copy-btn="" data-clipboard-target="input": "Copy"
+
+    div.card.p-5.my-3
+      h5.h3.mb-3: "Code block with inline text"
+      div data-zaiku-clipboard="" data-clipboard-text="npm install zaiku"
+        pre.bg-gray-100.p-3.rounded-4: code: "npm install zaiku"
+        button.btn.btn-secondary.mt-2 data-copy-btn="": "Copy"
+
+  div.mb-5.d-none
+    h2.h1: "Progress bars"
+    p.lead.mb-3: "Show progress with .progress and .progress-bar. Use data-zaiku-progress for JS control."
+
+    div.card.p-5.my-3
+      h5.h3.mb-3: "Basic"
+      div.progress data-zaiku-progress=""
+        div.progress-bar style="width: 45%"
+
+      h5.h3.mt-4.mb-3: "Sizes"
+      div.progress.progress-sm.mb-2 data-zaiku-progress=""
+        div.progress-bar style="width: 70%"
+      div.progress.mb-2 data-zaiku-progress=""
+        div.progress-bar style="width: 50%"
+      div.progress.progress-lg data-zaiku-progress=""
+        div.progress-bar style="width: 30%"
+
+      h5.h3.mt-4.mb-3: "Striped & animated"
+      div.progress.progress-striped.mb-2 data-zaiku-progress=""
+        div.progress-bar style="width: 60%"
+      div.progress.progress-striped.progress-animated data-zaiku-progress=""
+        div.progress-bar style="width: 80%"
+
+      h5.h3.mt-4.mb-3: "With label"
+      div.progress data-zaiku-progress=""
+        div.progress-bar style="width: 62%"
+        span.progress-label: "62%"
+
+      h5.h3.mt-4.mb-3: "Loading bar (indeterminate snake)"
+      p.mb-2: "Add .progress-loading for a looping snake animation. The label updates independently via JS."
+
+      div.progress.progress-loading.mb-2 data-zaiku-progress=""
+        div.progress-bar
+        span.progress-label: "Loading..."
+
+      div.progress.progress-loading.mb-3 id="loadingCounter" data-zaiku-progress=""
+        div.progress-bar
+        span.progress-label: "0%"
+      div.flex.g-2.mb-3
+        button.btn.btn-sm.btn-secondary onclick="document.getElementById('loadingCounter').zaiku.progressInstance.loading()": "Toggle Loading"
+        button.btn.btn-sm.btn-secondary onclick="document.getElementById('loadingCounter').zaiku.progressInstance.increment(5)": "+5%"
+        button.btn.btn-sm.btn-secondary onclick="document.getElementById('loadingCounter').zaiku.progressInstance.reset()": "Reset"
+
+      h5.h3.mt-4.mb-3: "Mini progress bar"
+      p.mb-2: "Use .progress-mini inline with text. It inherits the text color via currentColor, so it adapts to any parent."
+      div.card.p-4.bg-gray-50.rounded-4.mb-3
+        div.flex.g-3.items-center
+          span.progress-mini: span.progress-bar
+          span.text-sm: "Loading..."
+
+      div.flex.g-3.flex-wrap
+        button.btn.btn-primary
+          span.progress-mini: span.progress-bar
+          " Loading"
+        button.btn.btn-secondary
+          span.progress-mini style="color: var(--color-gray-600)": span.progress-bar
+          " Syncing"
+        span.badge.badge-primary
+          span.progress-mini: span.progress-bar
+          " Uploading"
+
+      h5.h3.mt-4.mb-3: "JS control"
+      div.progress.mb-3 id="demoProgress" data-zaiku-progress=""
+        div.progress-bar
+        span.progress-label: "0%"
+      div.flex.g-2
+      div.btn-group
+        button.btn.btn-sm.btn-secondary onclick="document.getElementById('demoProgress').zaiku.progressInstance.increment(10)": "+10%"
+        button.btn.btn-sm.btn-secondary onclick="document.getElementById('demoProgress').zaiku.progressInstance.reset()": "Reset"
+        button.btn.btn-sm.btn-secondary onclick="document.getElementById('demoProgress').zaiku.progressInstance.finish()": "Finish"
+        button.btn.btn-sm.btn-secondary onclick="document.getElementById('demoProgress').zaiku.progressInstance.start(100)": "Auto"
+        button.btn.btn-sm.btn-secondary onclick="document.getElementById('demoProgress').zaiku.progressInstance.stop()": "Stop"
+        button.btn.btn-sm.btn-info onclick="document.getElementById('demoProgress').zaiku.progressInstance.loading()": "Toggle Loading"
+
+  div.mb-5
+    h2.h1: "Tabs"
+    p.lead.mb-3: "Switch between content panels with .tab-area. Use .tab-list and .tab-content for the visual tab system."
+
+    div.card.overflow-hidden.my-3
+      div.tab-area
+        nav.tab-list.tab-list-sm role="tablist"
+          button.btn.btn-secondary.tab.tab-active role="tab" aria-selected="true"
+            svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"
+              circle cx="12" cy="12" r="3"
+            " Preview"
+          button.btn.btn-secondary.tab role="tab" aria-selected="false"
+            svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              polyline points="16 18 22 12 16 6"
+              polyline points="8 6 2 12 8 18"
+            " Code"
+        div.tab-content.border-top-0
+          div.tab-panel.tab-panel-active role="tabpanel"
+            div.rounded-4.bg-gray-100.p-4.text-center
+              span.text-gray-500: "Rendered preview content"
+          div.tab-panel role="tabpanel"
+            pre.bg-gray-900.text-gray-100.p-4.rounded-4 style="font-size:.85rem": "&lt;h1&gt;Hello World&lt;/h1&gt;\n&lt;p&gt;This is the code view.&lt;/p&gt;"
+
+    div.card.p-5.my-3
+      h5.h3.mb-3: "Account / Password switching"
+      div.tab-area data-tab-hash=""
+        nav.tab-list role="tablist" 
+          button.btn.btn-secondary.tab.tab-active role="tab" aria-selected="true"
+            svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"
+              circle cx="12" cy="7" r="4"
+            " Account"
+          button.btn.btn-secondary.tab role="tab" aria-selected="false"
+            svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              rect x="3" y="11" width="18" height="11" rx="2" ry="2"
+              path d="M7 11V7a5 5 0 0 1 10 0v4"
+            " Password"
+        div.tab-content
+          div.tab-panel.tab-panel-active role="tabpanel" id="account"
+            div.flex.flex-column.g-3
+              div: strong: "Account Settings"
+              div.input-group
+                span.input-group-text: "Email"
+                input.input type="email" value="user@example.com" readonly=""
+              div.input-group
+                span.input-group-text: "Name"
+                input.input type="text" value="John Doe" readonly=""
+              button.btn.btn-primary: "Save Changes"
+          div.tab-panel role="tabpanel" id="password"
+            div.flex.flex-column.g-3
+              div: strong: "Change Password"
+              div.input-group
+                span.input-group-text: "Current"
+                input.input type="password" value="••••••••" readonly=""
+              div.input-group
+                span.input-group-text: "New"
+                input.input type="password" value="" placeholder="Enter new password"
+              div.input-group
+                span.input-group-text: "Confirm"
+                input.input type="password" value="" placeholder="Confirm new password"
+              button.btn.btn-primary: "Update Password"
+
+    div.card.p-5.my-3
+      h5.h3.mb-3: "Vertical tabs"
+      div.row
+        // tabs vertical with the tab list on the left side (default)
+        div.col-6
+          div.tabs-vertical.tab-area.g-0
+            nav.tab-list role="tablist"
+              button.btn.btn-secondary.tab.tab-active role="tab" aria-selected="true"
+                svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"
+                  circle cx="12" cy="7" r="4"
+                " Profile"
+              button.btn.btn-secondary.tab role="tab" aria-selected="false"
+                svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  circle cx="12" cy="12" r="3"
+                  path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"
+                " Settings"
+              button.btn.btn-secondary.tab role="tab" aria-selected="false"
+                svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"
+                  path d="M13.73 21a2 2 0 0 1-3.46 0"
+                " Notifications"
+            div.tab-content
+              div.tab-panel.tab-panel-active role="tabpanel": "Profile settings content — change your avatar, bio, and contact details."
+              div.tab-panel role="tabpanel": "System preferences — theme, language, and notification preferences."
+              div.tab-panel role="tabpanel": "Notification settings — configure email and push notifications."
+
+        // tabs vertical with the tab list on the right side
+        div.col-6
+          div.tabs-vertical-right.tab-area.g-0
+            nav.tab-list role="tablist"
+              button.btn.btn-secondary.tab.tab-active role="tab" aria-selected="true"
+                svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"
+                  circle cx="12" cy="7" r="4"
+                " Profile"
+              button.btn.btn-secondary.tab role="tab" aria-selected="false"
+                svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  circle cx="12" cy="12" r="3"
+                  path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"
+                " Settings"
+              button.btn.btn-secondary.tab role="tab" aria-selected="false"
+                svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"
+                  path d="M13.73 21a2 2 0 0 1-3.46 0"
+                " Notifications"
+            div.tab-content
+              div.tab-panel.tab-panel-active role="tabpanel": "Profile settings content — change your avatar, bio, and contact details."
+              div.tab-panel role="tabpanel": "System preferences — theme, language, and notification preferences."
+              div.tab-panel role="tabpanel": "Notification settings — configure email and push notifications."
+
+    div.card.p-5.my-3
+      h5.h3.mb-3: "Disabled tab"
+      div.tab-area
+        nav.tab-list role="tablist"
+          button.btn.btn-secondary.tab.tab-active role="tab" aria-selected="true": "Enabled"
+          button.btn.btn-secondary.tab.disabled role="tab" aria-selected="false" aria-disabled="true": "Disabled"
+          button.btn.btn-secondary.tab role="tab" aria-selected="false": "Enabled too"
+        div.tab-content
+          div.tab-panel.tab-panel-active role="tabpanel": "The middle tab is disabled — clicking it does nothing."
+          div.tab-panel role="tabpanel": "You should not see this."
+          div.tab-panel role="tabpanel": "This is the third panel."

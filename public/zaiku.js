@@ -14,6 +14,17 @@ Zaiku.defaults = {
     validateUrl: null,
     debounceMs: 300,
     requiredMessage: 'This field is required'
+  },
+  clipboard: {
+    successText: 'Copied!',
+    successDuration: 2000
+  },
+  tabs: {
+    tabSelector: '[data-tab-target], .tab',
+    panelSelector: '[data-tab-panel], .tab-panel',
+    activeTabClass: 'tab-active',
+    activePanelClass: 'tab-panel-active',
+    onSwitch: null
   }
 }
 
@@ -50,6 +61,18 @@ Zaiku.init = function (options) {
 
   document.querySelectorAll('form[data-zaiku-validation]').forEach(function (form) {
     new Zaiku.FormValidation(form, opts)
+  })
+
+  document.querySelectorAll('[data-zaiku-clipboard]').forEach(function (el) {
+    new Zaiku.Clipboard(el, opts)
+  })
+
+  document.querySelectorAll('[data-zaiku-progress]').forEach(function (el) {
+    new Zaiku.Progress(el, opts)
+  })
+
+  document.querySelectorAll('.tab-area').forEach(function (el) {
+    new Zaiku.Tabs(el, opts)
   })
 }
 
@@ -474,3 +497,280 @@ class ZaikuFormValidation {
 }
 
 Zaiku.FormValidation = ZaikuFormValidation
+
+class ZaikuClipboard {
+  constructor(container, opts) {
+    if (typeof container === 'string') container = document.querySelector(container)
+    if (!container) return
+    if (container.zaiku && container.zaiku.clipInstance) return container.zaiku.clipInstance
+
+    this.container = container
+    this.btn = container.querySelector('[data-copy-btn]')
+    if (!this.btn) return
+
+    var cfg = (opts && opts.clipboard) || opts || {}
+    this.successText = resolveAttr(container, 'data-copy-success-text', cfg.successText)
+    this.successDuration = resolveAttr(container, 'data-copy-success-duration', cfg.successDuration)
+
+    container.zaiku = container.zaiku || {}
+    container.zaiku.clipInstance = this
+    this.init()
+  }
+
+  init() {
+    this.btn.addEventListener('click', this.copy.bind(this))
+  }
+
+  copy() {
+    var text = this.container.getAttribute('data-clipboard-text')
+    if (text === null || text === '') {
+      var targetSelector = this.btn.getAttribute('data-clipboard-target')
+      if (targetSelector) {
+        var source = this.container.querySelector(targetSelector)
+        if (source) {
+          text = source.value || source.textContent || ''
+        }
+      }
+    }
+    if (!text) {
+      console.warn('Zaiku.Clipboard: no source found. Set data-clipboard-text or data-clipboard-target.')
+      return
+    }
+
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(text).then(this.showSuccess.bind(this)).catch(this.execCopy.bind(this, text))
+    } else {
+      this.execCopy(text)
+    }
+  }
+
+  execCopy(text) {
+    var ta = document.createElement('textarea')
+    ta.value = text
+    ta.style.position = 'fixed'
+    ta.style.opacity = '0'
+    document.body.appendChild(ta)
+    ta.select()
+    try { document.execCommand('copy') } catch (e) {}
+    document.body.removeChild(ta)
+    this.showSuccess()
+  }
+
+  showSuccess() {
+    var origText = this.btn.textContent
+    var origClass = this.btn.className
+    this.btn.textContent = this.successText
+    this.btn.classList.add('btn-success')
+    setTimeout(function () {
+      this.btn.textContent = origText
+      this.btn.className = origClass
+    }.bind(this), this.successDuration)
+  }
+}
+
+Zaiku.Clipboard = ZaikuClipboard
+
+class ZaikuProgress {
+  constructor(container, opts) {
+    if (typeof container === 'string') container = document.querySelector(container)
+    if (!container) return
+    if (container.zaiku && container.zaiku.progressInstance) return container.zaiku.progressInstance
+
+    this.container = container
+    this.bar = container.querySelector('.progress-bar')
+    this.label = container.querySelector('.progress-label')
+    if (!this.bar) return
+
+    this._value = 0
+    this._interval = null
+
+    var initial = this.bar.style.width
+    if (initial) {
+      this._value = parseInt(initial, 10) || 0
+    }
+
+    container.zaiku = container.zaiku || {}
+    container.zaiku.progressInstance = this
+  }
+
+  setValue(pct) {
+    this._value = Math.max(0, Math.min(100, pct))
+    if (this.bar) {
+      this.bar.style.width = this._value + '%'
+    }
+    if (this.label) {
+      this.label.textContent = this._value + '%'
+    }
+    return this
+  }
+
+  getValue() {
+    return this._value
+  }
+
+  increment(amount) {
+    return this.setValue(this._value + (amount || 1))
+  }
+
+  start(intervalMs) {
+    this.stop()
+    this._interval = setInterval(function () {
+      this.increment(1)
+      if (this._value >= 100) this.stop()
+    }.bind(this), intervalMs || 50)
+    return this
+  }
+
+  stop() {
+    if (this._interval) {
+      clearInterval(this._interval)
+      this._interval = null
+    }
+    return this
+  }
+
+  reset() {
+    this.stop()
+    return this.setValue(0)
+  }
+
+  finish() {
+    this.stop()
+    return this.setValue(100)
+  }
+
+  loading(activate) {
+    if (activate === undefined) {
+      this.container.classList.toggle('progress-loading')
+    } else if (activate) {
+      this.container.classList.add('progress-loading')
+    } else {
+      this.container.classList.remove('progress-loading')
+    }
+    return this
+  }
+
+  isLoading() {
+    return this.container.classList.contains('progress-loading')
+  }
+}
+
+Zaiku.Progress = ZaikuProgress
+
+class ZaikuTabs {
+  constructor(container, opts) {
+    if (typeof container === 'string') container = document.querySelector(container)
+    if (!container) return
+    if (container.zaiku && container.zaiku.tabsInstance) return container.zaiku.tabsInstance
+
+    this.container = container
+    var cfg = (opts && opts.tabs) || opts || {}
+    this.tabSelector = resolveAttr(container, 'data-tab-selector', cfg.tabSelector)
+    this.panelSelector = resolveAttr(container, 'data-panel-selector', cfg.panelSelector)
+    this.activeTabClass = resolveAttr(container, 'data-active-tab-class', cfg.activeTabClass)
+    this.activePanelClass = resolveAttr(container, 'data-active-panel-class', cfg.activePanelClass)
+    this.onSwitch = cfg.onSwitch
+    this.hashEnabled = resolveAttr(container, 'data-tab-hash', cfg.tabHash)
+
+    this._triggers = []
+    this._panels = []
+    this._activeIndex = -1
+
+    if (!this.findTabs()) return
+
+    container.zaiku = container.zaiku || {}
+    container.zaiku.tabsInstance = this
+    this.init()
+  }
+
+  findTabs() {
+    this._triggers = Array.prototype.slice.call(this.container.querySelectorAll(this.tabSelector))
+    var panels = this.container.querySelectorAll(this.panelSelector)
+    this._panels = Array.prototype.slice.call(panels)
+
+    if (this._triggers.length === 0) return false
+
+    this._triggers.forEach(function (trigger, i) {
+      var target = trigger.getAttribute('data-tab-target')
+      if (target) {
+        var panel = this.container.querySelector(target)
+        if (panel && this._panels.indexOf(panel) === -1) {
+          this._panels.push(panel)
+        }
+      }
+    }, this)
+
+    return this._triggers.length > 0
+  }
+
+  findTabByHash() {
+    var hash = location.hash.slice(1)
+    if (!hash) return -1
+    for (var i = 0; i < this._panels.length; i++) {
+      if (this._panels[i] && this._panels[i].id === hash) return i
+    }
+    return -1
+  }
+
+  init() {
+    var initial = -1
+    this._triggers.forEach(function (t, i) {
+      if (t.classList.contains(this.activeTabClass)) {
+        initial = i
+      }
+    }, this)
+    if (initial === -1) initial = 0
+
+    if (this.hashEnabled) {
+      var hashTab = this.findTabByHash()
+      if (hashTab !== -1) initial = hashTab
+      window.addEventListener('hashchange', function () {
+        var idx = this.findTabByHash()
+        if (idx !== -1) this.activate(idx)
+      }.bind(this))
+    }
+
+    this.container.addEventListener('click', function (e) {
+      var trigger = e.target.closest(this.tabSelector)
+      if (!trigger) return
+      if (trigger.disabled || trigger.getAttribute('aria-disabled') === 'true') return
+      var idx = this._triggers.indexOf(trigger)
+      if (idx !== -1) this.activate(idx)
+    }.bind(this))
+
+    this.activate(initial)
+  }
+
+  activate(index) {
+    if (index === this._activeIndex) return
+    if (index < 0 || index >= this._triggers.length) return
+
+    var oldIndex = this._activeIndex
+    var oldTrigger = oldIndex >= 0 ? this._triggers[oldIndex] : null
+
+    this._triggers.forEach(function (t) {
+      t.classList.remove(this.activeTabClass)
+      t.setAttribute('aria-selected', 'false')
+    }, this)
+    this._panels.forEach(function (p) { p.classList.remove(this.activePanelClass) }, this)
+
+    this._triggers[index].classList.add(this.activeTabClass)
+    this._triggers[index].setAttribute('aria-selected', 'true')
+    if (this._panels[index]) this._panels[index].classList.add(this.activePanelClass)
+
+    this._activeIndex = index
+
+    if (this.hashEnabled) {
+      var panel = this._panels[index]
+      if (panel && panel.id) {
+        history.replaceState(null, '', '#' + panel.id)
+      }
+    }
+
+    if (this.onSwitch) {
+      this.onSwitch(index, oldIndex, this._triggers[index], oldTrigger)
+    }
+  }
+}
+
+Zaiku.Tabs = ZaikuTabs
