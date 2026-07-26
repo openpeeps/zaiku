@@ -45,6 +45,36 @@ div.col-12 > div.p-2
               circle cx="12" cy="12" r="1"
               circle cx="19" cy="12" r="1"
               circle cx="5" cy="12" r="1"
+
+  div.mb-5
+    h2.h1: "Preloaders"
+    p.lead.mb-3: "Spinners indicate loading states. Use the .spinner class as a standalone element, or pair it with buttons and badges."
+    div.card.p-5.my-3
+      h5.h3.mb-3: "Standalone"
+      div.flex.w-full.flex-wrap.mx-auto.g-3.items-center
+        span.spinner
+        span.spinner.spinner-sm
+        span.spinner.spinner-lg
+        span.spinner style="color: var(--color-danger-500)"
+        span.spinner style="color: var(--color-success-500)"
+
+    div.card.p-5.my-3
+      h5.h3.mb-3: "In buttons"
+      div.flex.w-full.flex-wrap.mx-auto.g-3.items-center
+        button.btn.btn-primary
+          span.spinner.spinner-sm
+          span: "Saving"
+        button.btn.btn-secondary
+          "Loading"
+          span.spinner.spinner-sm
+        button.btn.btn-danger.btn-loading
+          "Deleting"
+        button.btn.btn-primary.btn-sm.disabled
+          span.spinner.spinner-sm
+          span: "Sending"
+        button.btn.btn-primary.btn-lg disabled
+          span.spinner.spinner-sm
+          span: "Processing"
         
   div.mb-5
     h2.h1: "Badges"
@@ -149,12 +179,67 @@ div.col-12 > div.p-2
                 h5.h3.card-title: "The Raven"
                 p.mb-2: "Once upon a midnight dreary, while I pondered, weak and weary, over many a quaint and curious volume of forgotten lore..."
         
-        div.col-3 > div.card.rounded-4
-          div.card-img-top.gradient-overlay.bg-teal.position-relative
-            h5.h5.text-white.position-absolute style="z-index: 2; bottom: 0.75rem; left: 0.75rem; right: 0.75rem": "The Odyssey"
-          div.card-body.p-3
-            h5.h3.card-title: "The Iliad"
-            p.mb-2: "Homer's epic of wrath and glory, where gods and mortals clash beneath the walls of Troy."
+        div.col-3 > div.card.rounded-4.h-100
+          div.card-img-top.gradient-overlay.bg-teal.flex-col.justify-end.h-100
+            style="background-size: cover;  background-repeat: no-repeat; background-position:center center; background-image:url(https://images.unsplash.com/photo-1778470075441-8b2c7ce123b7?q=80&w=762&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)"
+            div.card-body.p-3.text-white.position-relative.z-index-1.flex-col.justify-between.flex-1
+              div.align-self-start: "This is amazing"
+              div
+                h5.h3.card-title: "The Iliad"
+                p.mb-2: "Homer's epic of wrath and glory, where gods and mortals clash beneath the walls of Troy."
+
+    div.mt-4
+      h5.h3.mb-3: "Hover effects"
+      p.lead.mb-3: "Add \`.hover-zoom\` or \`.hover-rotate\` to \`.card-img-top\` for image effects on card hover. Combine with \`.ease-linear\` or \`.ease-bounce\` for different feels."
+      div.row style="height:240px;"
+        div.col-3 > div.card.rounded-4.h-100
+          div.card-img-top.gradient-overlay.gradient-top.bg-teal.flex-col.justify-end.h-100
+            div.card-img-bg.hover-zoom
+              style="background-image:url(https://images.unsplash.com/photo-1778470075441-8b2c7ce123b7?q=80&w=762&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)"
+            div.card-body.p-3.text-white.position-relative.z-index-1.flex-col.justify-between.flex-1
+              div.flex-row.w-full.justify-between
+                span: "Zoom"
+                span: "Gradient Top"
+              div
+                h5.h3.card-title: ".hover-zoom"
+                p.mb-2: "Scales up 1.12x. .gradient-top fades toward the top."
+
+        div.col-3 > div.card.rounded-4.h-100
+          div.card-img-top.gradient-overlay.gradient-teal.bg-teal.flex-col.justify-end.h-100
+            div.card-img-bg.hover-rotate
+              style="background-image:url(https://images.unsplash.com/photo-1778470075441-8b2c7ce123b7?q=80&w=762&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)"
+            div.card-body.p-3.text-white.position-relative.z-index-1.flex-col.justify-between.flex-1
+              div.flex-row.w-full.justify-between
+                span: "Rotate"
+                span: "Teal Gradient"
+              div
+                h5.h3.card-title: ".hover-rotate"
+                p.mb-2: "Rotates 2.5°. .gradient-teal gives a teal-tinted overlay."
+
+        div.col-3 > div.card.rounded-4.h-100
+          div.card-img-top.gradient-overlay.bg-teal.flex-col.justify-end.h-100
+            div.card-img-bg.hover-zoom.hover-rotate.ease-bounce
+              style="background-image:url(https://images.unsplash.com/photo-1778470075441-8b2c7ce123b7?q=80&w=762&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)"
+            div.card-body.p-3.text-white.position-relative.z-index-1.flex-col.justify-between.flex-1
+              div.flex-row.w-full.justify-between
+                span: "Zoom + Rotate"
+                span: "Bounce"
+              div
+                h5.h3.card-title: "Zoom + Rotate + Bounce"
+                p.mb-2: "Combined with .ease-bounce for a springy feel."
+
+        div.col-3 > div.card.rounded-4.h-100
+          div.card-img-top.gradient-overlay.bg-teal.flex-col.justify-end.h-100
+            div.card-img-bg.hover-zoom.ease-linear
+              style="background-image:url(https://images.unsplash.com/photo-1778470075441-8b2c7ce123b7?q=80&w=762&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)"
+            div.card-body.p-3.text-white.position-relative.z-index-1.flex-col.justify-between.flex-1
+              div.flex-row.w-full.justify-between
+                span: "Zoom"
+                span: "Linear"
+              div
+                h5.h3.card-title: "Zoom + Linear"
+                p.mb-2: ".hover-zoom.ease-linear for constant speed zoom."
+
   div.mb-4
     h2.h1: "Item"
     p.lead: "Items are simple components that can be used to display content in a list format. They can include text, images, and other elements."
@@ -298,6 +383,39 @@ div.col-12 > div.p-2
               button.btn.btn-secondary type="button" aria-label="Search": "→"
 
   div.mb-4
+    h2.h1: "Server-Side Validation"
+    p.lead.mb-3: "Add \`data-zaiku-validation\` to a form to enable live SSR validation. Each input is validated against the server on keystroke, and messages attach below the input with status-colored backgrounds."
+    div.row.g-3
+      div.col-6
+        div.card.p-5
+          form data-zaiku-validation="true" novalidate
+            div.field
+              label.field-label for="validate-email": "Email"
+              input#validate-email.input type="email" name="email" placeholder="you@example.com" autocomplete="off" required
+            div.field
+              label.field-label for="validate-username": "Username"
+              input#validate-username.input type="text" name="username" placeholder="Choose a username" autocomplete="off" required
+            div.mt-3
+              button.btn.btn-primary type="submit": "Submit"
+
+      div.col-6
+        div.card.p-5
+          h5.h3.mb-3: "Static examples"
+          p.mb-3: "The \`.field-msg\` component works standalone — no JS required."
+          div.field
+            label.field-label: "Email (with error)"
+            input.input aria-invalid="true" type="text" value="bad"
+            div.field-msg.field-msg-danger.is-visible: "Please enter a valid email"
+          div.field.mt-3
+            label.field-label: "Username (with warning)"
+            input.input aria-invalid="true" type="text" value="a"
+            div.field-msg.field-msg-warning.is-visible: "Must be at least 3 characters"
+          div.field.mt-3
+            label.field-label: "Default (danger)"
+            input.input aria-invalid="true" type="text" value="bad"
+            div.field-msg.field-msg-danger.is-visible: "This field is required."
+
+  div.mb-4
     h2.h1: "Switches"
     div.row.g-3 > div.col-12
       div.card.p-5.my-3.text-center
@@ -416,9 +534,7 @@ div.col-12 > div.p-2
         div.card.p-5
           div.field
             label.field-label: "Email recipients"
-            div.input-tags
-              span.badge.badge-primary: "alice@example.com"
-              span.badge.badge-primary: "bob@example.com"
+            div.input-tags#emailRecipients
               input.input-tags-field type="text" placeholder="Add email..."
 
       div.col-6

@@ -8,11 +8,83 @@ html class="scale-1"
     link rel="stylesheet" href="colors.css"
     script src="zaiku.js"
   body
-    div.vh-50.bg-black.d-flex > div.container.align-self-center.text-white.text-center
-      h1.display-1: "Zaiku"
-      h2.h1: "細工"
+    div.vh-50.bg-black.d-flex
+      div.container.align-self-center.text-white.text-center
+        h1.display-1: "Zaiku"
+        h2.h1: "細工"
     div.container > div.row > div.col-10.mx-auto
       @view
+
+    @javascript
+document.addEventListener('DOMContentLoaded', function () {
+  Zaiku.init({
+    tagInput: {
+      badgeClass: 'badge-primary',
+      spaceSeparator: false,
+      allowTagEdit: true,
+      validate: function (text, cb) {
+        setTimeout(function () {
+          if (text.length < 2) {
+            cb(false, 'Must be at least 2 characters')
+          } else if (text.length > 20) {
+            cb(false, 'Must be at most 20 characters')
+          } else {
+            cb(true)
+          }
+        }, 400)
+      },
+      onInsert: function (text, el) {
+        console.log('added:', text)
+        return true
+      },
+      onDelete: function (text, el) {
+        console.log('removed:', text)
+        return true
+      },
+      onUpdate: function (oldText, newText, el) {
+        console.log('updated:', oldText, '→', newText)
+        return true
+      }
+    },
+    formValidation: {
+      debounceMs: 400,
+      onValidate: function (name, value, cb) {
+        setTimeout(function () {
+          if (name === 'email') {
+            if (value.length < 1) {
+              cb(false, 'Email is required', 'danger')
+            } else if (value.length < 5) {
+              cb(false, 'Email is too short', 'danger')
+            } else if (value.indexOf('@') === -1) {
+              cb(false, 'Must contain @ symbol', 'warning')
+            } else {
+              cb(true)
+            }
+          } else if (name === 'username') {
+            if (value.length < 1) {
+              cb(false, 'Username is required', 'danger')
+            } else if (value.length < 3) {
+              cb(false, 'Must be at least 3 characters', 'danger')
+            } else if (value.length > 20) {
+              cb(false, 'Must be at most 20 characters', 'warning')
+            } else {
+              cb(true)
+            }
+          } else {
+            cb(true)
+          }
+        }, 400)
+      }
+    }
+  })
+
+  var emailInput = document.getElementById('emailRecipients')
+  if (emailInput) {
+    emailInput.zaiku.tagInstance.addTag('charlie@example.com')
+    emailInput.zaiku.tagInstance.addTag('diana@example.com')
+  }
+})
+    @end
     @javascript
 function connectLiveReload() {
   const ws = new WebSocket("ws://" + location.hostname + ":3500");
