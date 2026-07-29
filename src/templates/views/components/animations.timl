@@ -1,0 +1,154 @@
+h2.h1: "Animations"
+p.lead.mb-3: "Utility animations and decorative effects using CSS keyframes."
+
+h5.h3.mb-3: "Rotating text badge"
+p.mb-3: "A decorative badge with text that orbits around a center icon. The SVG textPath adapts to different text lengths. Size and color inherit from the parent font-size and color."
+div.card.p-5.my-3
+  div.row
+    div.col-3.flex-col.align-items-center.g-3
+      div.rotating-badge.text-primary
+        svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"
+          defs
+            path#rotating-badge-arc1 d="M 100 180 A 80 80 0 1 1 100 20 A 80 80 0 1 1 100 180" fill="none"
+          text fill="currentColor" font-size="14" font-weight="700" letter-spacing="3"
+            textPath href="#rotating-badge-arc1" startOffset="50%" text-anchor="middle": "✦ PREMIUM ✦"
+        div.rotating-badge-icon
+          svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+      span.text-sm.text-gray: "Default (5em)"
+
+    div.col-3.flex-col.align-items-center.g-3
+      div.rotating-badge.text-success style="font-size: 3rem;"
+        svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"
+          defs
+            path#rotating-badge-arc2 d="M 100 180 A 80 80 0 1 1 100 20 A 80 80 0 1 1 100 180" fill="none"
+          text fill="currentColor" font-size="14" font-weight="700" letter-spacing="3"
+            textPath href="#rotating-badge-arc2" startOffset="50%" text-anchor="middle": "✦ PRO ✦"
+        div.rotating-badge-icon
+          svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"
+      span.text-sm.text-gray: "Large (3rem)"
+
+    div.col-3.flex-col.align-items-center.g-3
+      div.rotating-badge.text-danger style="font-size: 2rem;"
+        svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"
+          defs
+            path#rotating-badge-arc3 d="M 100 180 A 80 80 0 1 1 100 20 A 80 80 0 1 1 100 180" fill="none"
+          text fill="currentColor" font-size="14" font-weight="700" letter-spacing="3"
+            textPath href="#rotating-badge-arc3" startOffset="50%" text-anchor="middle": "✦ NEW RELEASE ✦ NEW RELEASE ✦ NEW RELEASE"
+        div > span.display-1.fw-normal: "✦"
+      span.text-sm.text-gray: "Medium (2rem)"
+
+    div.col-3.flex-col.align-items-center.g-3
+      div.rotating-badge.text-lavender style="font-size: 1.5rem;"
+        svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"
+          defs
+            path#rotating-badge-justify d="M 100 180 A 80 80 0 1 1 100 20 A 80 80 0 1 1 100 180" fill="none"
+          text fill="currentColor" font-size="13" font-weight="700" letter-spacing="2" textLength="502" lengthAdjust="spacingAndGlyphs"
+            textPath href="#rotating-badge-justify" startOffset="0": "SALE"
+        div.rotating-badge-icon
+          svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"
+            line x1="7" y1="7" x2="7.01" y2="7"
+      span.text-sm.text-gray: "Justified (1.5rem)"
+
+  div.row.mt-4
+    div.col-3.flex-col.align-items-center.g-3
+      div.rotating-badge.text-primary style="font-size: 2.5rem;"
+        svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"
+          defs
+            path#rotating-badge-j1 d="M 100 180 A 80 80 0 1 1 100 20 A 80 80 0 1 1 100 180" fill="none"
+          text fill="currentColor" font-size="14" font-weight="700" letter-spacing="3" textLength="502" lengthAdjust="spacingAndGlyphs"
+            textPath href="#rotating-badge-j1" startOffset="0": "✦ PREMIUM ✦"
+        div.rotating-badge-icon
+          svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+      span.text-sm.text-gray: "Justified — stretches to fill the circle"
+
+    div.col-3.flex-col.align-items-center.g-3
+      div.rotating-badge.text-success style="font-size: 2.5rem;"
+        svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"
+          defs
+            path#rotating-badge-j2 d="M 100 180 A 80 80 0 1 1 100 20 A 80 80 0 1 1 100 180" fill="none"
+          text fill="currentColor" font-size="14" font-weight="700" letter-spacing="3" textLength="502" lengthAdjust="spacingAndGlyphs"
+            textPath href="#rotating-badge-j2" startOffset="0": "✦ PRO ✦"
+        div.rotating-badge-icon
+          svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"
+      span.text-sm.text-gray: "Justified"
+
+    div.col-3.flex-col.align-items-center.g-3
+      div.rotating-badge.text-danger style="font-size: 2.5rem;"
+        svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"
+          defs
+            path#rotating-badge-j3 d="M 100 180 A 80 80 0 1 1 100 20 A 80 80 0 1 1 100 180" fill="none"
+          text fill="currentColor" font-size="14" font-weight="700" letter-spacing="3" textLength="502" lengthAdjust="spacingAndGlyphs"
+            textPath href="#rotating-badge-j3" startOffset="0": "✦ NEW ✦"
+        div.rotating-badge-icon
+          svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            circle cx="12" cy="12" r="10"
+            line x1="12" y1="8" x2="12" y2="12"
+            line x1="12" y1="16" x2="12.01" y2="16"
+      span.text-sm.text-gray: "Justified"
+
+    div.col-3.flex-col.align-items-center.g-3
+      div.rotating-badge.text-lavender style="font-size: 2.5rem;"
+        svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"
+          defs
+            path#rotating-badge-j4 d="M 100 180 A 80 80 0 1 1 100 20 A 80 80 0 1 1 100 180" fill="none"
+          text fill="currentColor" font-size="14" font-weight="700" letter-spacing="3" textLength="502" lengthAdjust="spacingAndGlyphs"
+            textPath href="#rotating-badge-j4" startOffset="0": "✦ SALE ✦"
+        div.rotating-badge-icon
+          svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"
+            line x1="7" y1="7" x2="7.01" y2="7"
+      span.text-sm.text-gray: "Justified"
+
+h5.h3.mb-3: "Pulse dot"
+p.mb-3: "A pulsing dot indicator. Use .pulse-dot with any text color utility for different looks."
+div.card.p-5.my-3
+div.card.p-5.my-3
+  div.d-flex.gap-3.align-items-center.flex-wrap
+    div.d-flex.gap-2.align-items-center
+      span.pulse-dot
+      span.text-sm: "Default"
+    div.d-flex.gap-2.align-items-center
+      span.pulse-dot.text-success
+      span.text-sm: "Success"
+    div.d-flex.gap-2.align-items-center
+      span.pulse-dot.text-danger
+      span.text-sm: "Danger"
+    div.d-flex.gap-2.align-items-center
+      span.pulse-dot.text-lavender
+      span.text-sm: "Lavender"
+    div.d-flex.gap-2.align-items-center
+      span.pulse-dot.text-gold style="width: 1em; height: 1em;"
+      span.text-sm: "Large"
+    div.d-flex.gap-2.align-items-center
+      span.pulse-dot.text-gray-500 style="width: 0.3em; height: 0.3em;"
+      span.text-sm: "Small"
+
+h5.h3.mb-3: "Ping-pong rotation"
+p.mb-3: "Add .ping-pong to oscillate rotation back and forth. Great for arrows, chevrons, or icons that need attention."
+div.card.p-5.my-3
+  div.d-flex.gap-4.align-items-center.flex-wrap
+    div.d-flex.flex-column.align-items-center.g-2
+      svg.ping-pong xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+        polyline points="9 18 15 12 9 6"
+      span.text-sm.text-gray: "Chevron"
+    div.d-flex.flex-column.align-items-center.g-2
+      svg.ping-pong.text-danger xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+        polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"
+      span.text-sm.text-gray: "Star"
+    div.d-flex.flex-column.align-items-center.g-2
+      div.ping-pong
+        div.rotating-badge.text-primary style="font-size: 2rem;"
+          svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200"
+            defs
+              path#rotating-badge-arc5 d="M 100 180 A 80 80 0 1 1 100 20 A 80 80 0 1 1 100 180" fill="none"
+            text fill="currentColor" font-size="14" font-weight="700" letter-spacing="3"
+              textPath href="#rotating-badge-arc5" startOffset="50%" text-anchor="middle": "✦ BOUNCE ✦"
+          div.rotating-badge-icon
+            svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"
+      span.text-sm.text-gray: "Wobble badge"

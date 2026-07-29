@@ -1,0 +1,82 @@
+
+div.mt-5
+  h5.h2.mb-3: "Elastic Cards"
+  p.mb-3: "Add \`data-zaiku-card-elastic\` to a \`.card-elastic\` container. Hovered card expands while its immediate neighbors shrink. Snappy by default, add \`data-effect="bounce"\` for GSAP spring."
+  div.row style="height: 220px;" > div.col-12
+    div.card-elastic.my-3.h-100 data-zaiku-card-elastic style="gap:0.75rem"
+      div.card.rounded-4.p-4.bg-azure
+        h5.h3: "Card A"
+        p.text-sm.text-gray-600: "Neque porro quisquam est qui dolorem ipsum quia"
+      div.card.rounded-4.p-4.bg-honeydew
+        h5.h3: "Card B"
+        p.text-sm.text-gray-600: "Neque porro quisquam est qui dolorem ipsum quia"
+      div.card.rounded-4.p-4.bg-mistyrose
+        h5.h3: "Card C"
+        p.text-sm.text-gray-600: "Neque porro quisquam est qui dolorem ipsum quia"
+      div.card.rounded-4.p-4.bg-lavender
+        h5.h3: "Card D"
+        p.text-sm.text-gray-600: "Neque porro quisquam est qui dolorem ipsum quia"
+
+  div.row.my-4 style="height: 220px;" > div.col-12
+    div.card-elastic.my-3.h-100 data-zaiku-card-elastic data-effect="bounce" style="gap:0.75rem"
+      div.card.rounded-4.p-4.bg-lightcyan
+        h5.h3: "Bounce A"
+        p.text-sm.text-gray-600: "GSAP back.out(1.7) ease"
+      div.card.rounded-4.p-4.bg-lemonchiffon
+        h5.h3: "Bounce B"
+        p.text-sm.text-gray-600: "GSAP back.out(1.7) ease"
+      div.card.rounded-4.p-4.bg-lavenderblush
+        h5.h3: "Bounce C"
+        p.text-sm.text-gray-600: "GSAP back.out(1.7) ease"
+      div.card.rounded-4.p-4.bg-lightgoldenrodyellow
+        h5.h3: "Bounce D"
+        p.text-sm.text-gray-600: "GSAP back.out(1.7) ease"
+
+  div.row.mb-5 style="height: 220px;" > div.col-12
+    div.card-elastic.my-3.h-100 id="js-elastic-demo" style="gap:0.75rem"
+      div.card.rounded-4.p-4
+        h5.h3: "JS A"
+        p.text-sm.text-gray-600: "Initialized via new Zaiku.ElasticCards()"
+      div.card.rounded-4.p-4
+        h5.h3: "JS B"
+        p.text-sm.text-gray-600: "onExpand changes bg, onShrink reverts"
+      div.card.rounded-4.p-4
+        h5.h3: "JS C"
+        p.text-sm.text-gray-600: "onExpand changes bg, onShrink reverts"
+      div.card.rounded-4.p-4
+        h5.h3: "JS D"
+        p.text-sm.text-gray-600: "Initialized via new Zaiku.ElasticCards()"
+
+  @javascript
+Zaiku.ready(function() {
+  var palettes = [
+    ['bg-azure', 'bg-lightcyan'],
+    ['bg-honeydew', 'bg-lemonchiffon'],
+    ['bg-mistyrose', 'bg-lavenderblush'],
+    ['bg-lavender', 'bg-lightgoldenrodyellow']
+  ]
+  new Zaiku.ElasticCards(document.getElementById('js-elastic-demo'), {
+    expandRatio: 2,
+    collapseRatio: 0.5,
+    onExpand: function(el, idx) {
+      el.classList.remove(palettes[idx][0])
+      el.classList.add(palettes[idx][1])
+    },
+    onShrink: function(el, idx) {
+      el.classList.remove(palettes[idx][1])
+      el.classList.add(palettes[idx][0])
+    },
+    onEnter: function(inst) {
+      console.log('elastic:enter')
+    },
+    onLeave: function(inst) {
+      console.log('elastic:leave')
+      for (var i = 0; i < inst._cards.length; i++) {
+        inst._cards[i].className = inst._cards[i].className.replace(/bg-\S+/g, palettes[i][0])
+      }
+    }
+  })
+})
+  @end
+
+script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/gsap.min.js"

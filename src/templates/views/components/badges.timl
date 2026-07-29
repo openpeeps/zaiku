@@ -1,0 +1,89 @@
+div.p-4
+  div.mb-5
+    h2.h1: "Badges"
+    p.lead.mb-3: "Use the .badge class with color modifiers for labels."
+    div.card.p-5.my-3
+      div.flex.w-full.flex-wrap.mx-auto.g-2
+        span.badge.badge-primary: "Badge"
+        span.badge.badge-secondary: "Secondary"
+        span.badge.badge-danger: "Bad bad not good"
+        span.badge.badge-outline.border-2: "Info"
+        a.badge.badge-primary href="#": "Clickable badge"
+        span.badge.badge-status.badge-status-animate: "Online"
+        span.badge.badge-outline.badge-bar.border-2
+          span.badge.border-0.bg-lavender: "Important notice:"
+          span: "This badge has a lot of text and will wrap onto multiple lines."
+
+  div.mb-5
+    h2.h1: "Breadcrumbs"
+    p.lead.mb-3: "Indicate the current page's location within a navigation hierarchy."
+    div.card.p-5.my-3
+      nav aria-label="breadcrumb"
+        ol.breadcrumb
+          li.breadcrumb-item: a href="#": "Home"
+          li.breadcrumb-item: a href="#": "Library"
+          li.breadcrumb-item.active aria-current="page": "Data"
+
+  div.mb-5
+    h2.h1: "Keyboard"
+    p.lead.mb-3: "Use .kbd for keyboard shortcuts."
+    div.row
+      div.col-6 > div.card.p-5
+        div.inline-flex.g-3.mx-auto
+          kbd.kbd: "⌘"
+          kbd.kbd: "⇧"
+          kbd.kbd: "⌥"
+
+      div.col-6 > div.card.p-5
+        div.inline-flex.g-3.mx-auto
+          kbd.kbd: "Ctrl"
+          span: "+"
+          kbd.kbd: "C"
+
+  div.mb-5
+    h2.h1: "Counter badges"
+    p.lead.mb-3: "Use .badge-counter for notification counts inside buttons, icons, or inline text."
+    div.card.p-5.my-3
+      h5.h3.mb-3: "In buttons"
+      div.d-flex.gap-3.flex-wrap
+        button.btn.btn-primary
+          "Messages"
+          span.badge.badge-counter.badge-danger: "3"
+        button.btn.btn-secondary
+          "Notifications"
+          span.badge.badge-counter.badge-danger: "12"
+        button.btn.btn-outline
+          "Updates"
+          span.badge.badge-counter.badge-primary: "5"
+        button.btn.btn-primary.btn-sm
+          "Inbox"
+          span.badge.badge-counter.badge-danger: "99+"
+    div.card.p-5.my-3
+      h5.h3.mb-3: "Positioned on icons"
+      p.mb-3: "Wrap an icon in a relative container and use .badge-position-top-right to float the counter."
+      div.d-flex.gap-4.flex-wrap
+        div style="position:relative"
+          svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"
+            path d="M13.73 21a2 2 0 0 1-3.46 0"
+          span.badge.badge-counter.badge-danger.badge-position-top-right: "3"
+        div style="position:relative"
+          svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+            polyline points="22,6 12,13 2,6"
+          span.badge.badge-counter.badge-danger.badge-position-top-right: "7"
+    div.card.p-5.my-3
+      h5.h3.mb-3: "Dot indicator"
+      p.mb-3: "Use .badge-dot for a minimal presence indicatorm no number, just a colored dot."
+      div.d-flex.gap-3.flex-wrap.align-items-center
+        button.btn.btn-primary
+          "Live"
+          span.badge.badge-dot.badge-danger
+        button.btn.btn-secondary
+          "Status"
+          span.badge.badge-dot.badge-success
+        div style="position:relative"
+          svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"
+            circle cx="12" cy="7" r="4"
+          span.badge.badge-dot.badge-danger.badge-position-top-right

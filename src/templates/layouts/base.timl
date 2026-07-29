@@ -3,17 +3,52 @@ html class="scale-1"
     meta charset="utf-8"
     title: "Zaiku「細工」CSS Framework"
     meta name="viewport" content="width=device-width, initial-scale=1"
-    link rel="stylesheet" href="style.css"
-    link rel="stylesheet" href="typography.css"
-    link rel="stylesheet" href="colors.css"
-    script src="zaiku.js"
+    link rel="stylesheet" href="/style.css"
+    link rel="stylesheet" href="/typography.css"
+    link rel="stylesheet" href="/colors.css"
+    script src="/zaiku.js"
   body
-    div.vh-50.bg-black.d-flex
-      div.container.align-self-center.text-white.text-center
-        h1.display-1: "Zaiku"
-        h2.h1: "細工"
-    div.container > div.row > div.col-10.mx-auto
-      @view
+    div.d-flex.min-vh-100
+      aside.sidebar style="background-color:var(--color-gray-50)"
+        a.sidebar-logo href="/": "Zaiku"
+        span.sidebar-subtitle: "細工 CSS Framework"
+        nav.sidebar-nav
+          div.mt-3
+            h6.h6: "Basics"
+            a href="/": "Home"
+            a href="/components/alerts": "Alerts"
+            a href="/components/animations": "Animations"
+            a href="/components/badges": "Badges"
+            a href="/components/buttons": "Buttons"
+            a href="/components/cards": "Cards"
+            a href="/components/clipboard": "Clipboard"
+            a href="/components/empty": "Empty State"
+            a href="/components/forms": "Forms"
+            a href="/components/images": "Images"
+            a href="/components/items": "Items"
+            a href="/components/popovers": "Popovers"
+            a href="/components/progress": "Progress"
+            a href="/components/tags": "Tags"
+            a href="/components/typography": "Typography"
+          div.mt-3
+            h6.h6: "Components"
+            a href="/components/accordion": "Accordion"
+            a href="/components/chatbox": "Chatbox"
+            a href="/components/hover-sliders": "Hover Sliders"
+            a href="/components/sliders": "Sliders"
+            a href="/components/tabs": "Tabs"
+
+      main.main-content
+        div.container.p-4 > div.row
+          div.col-10
+            @view
+          div.col-2
+        footer.container.py-5 > div.row > div.col-12
+          hr
+          div.row
+            div.col-4
+              p > strong: "Zaiku 細工 &mdash; Made by Humans from OpenPeeps"
+              p: "Released under the LGPLv3, docs CC BY 3.0."
 
     @javascript
 document.addEventListener('DOMContentLoaded', function () {
@@ -75,7 +110,34 @@ document.addEventListener('DOMContentLoaded', function () {
           }
         }, 400)
       }
-    }
+    },
+    accordion: {
+      media: true,
+      onOpen: function (item) {
+        var label = item.querySelector('.accordion-header span')
+        console.log('accordion:open —', label ? label.textContent.trim() : 'unknown')
+      },
+      onClose: function (item) {
+        var label = item.querySelector('.accordion-header span')
+        console.log('accordion:close —', label ? label.textContent.trim() : 'unknown')
+      }
+    },
+    dropdown: {
+      onOpen: function(instance) {
+        console.log('dropdown:open')
+      },
+      onClose: function(instance) {
+        console.log('dropdown:close')
+      },
+      onSelect: function(item, instance) {
+        console.log('dropdown:select —', item.textContent.trim())
+      }
+    },
+    hoverSlider: {
+      onSlide: function(to, toEl, from, fromEl, inst) {
+        console.log('slider:slide', from, '→', to)
+      }
+    },
   })
 
   var emailInput = document.getElementById('emailRecipients')

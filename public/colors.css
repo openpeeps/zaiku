@@ -561,7 +561,7 @@
 
 .text-yellowgreen { color: yellowgreen; }
 .bg-yellowgreen { background-color: yellowgreen; }
-.border-yellowgreen { border-color: yellowgreen; }.gradient-aliceblue { --gradient-color-end: color-mix(in srgb, aliceblue 80%, transparent); }
+.border-yellowgreen { border-color: yellowgreen; }
 
 .gradient-aliceblue { --gradient-color-end: color-mix(in srgb, aliceblue 80%, transparent); }
 .gradient-antiquewhite { --gradient-color-end: color-mix(in srgb, antiquewhite 80%, transparent); }

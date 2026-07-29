@@ -1,0 +1,70 @@
+div.p-4
+  div.mb-4
+    h2.h1: "Alerts & Toasts"
+    p.lead.mb-3: "Alerts provide contextual feedback messages."
+    div.row.g-3
+      div.col-6
+        div.alert.alert-info
+          span.alert-icon
+            svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              circle cx="12" cy="12" r="10"
+              path d="M12 16v-4"
+              path d="M12 8h.01"
+          div.alert-content
+            strong: "Info: "
+            "This is an informational alert."
+          button.alert-dismiss type="button" aria-label="Close": "\u00D7"
+      div.col-6
+        div.alert.alert-success
+          span.alert-icon
+            svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              circle cx="12" cy="12" r="10"
+              path d="m9 12 2 2 4-4"
+          div.alert-content
+            strong: "Success! "
+            "Your changes have been saved."
+          button.alert-dismiss type="button" aria-label="Close": "\u00D7"
+      div.col-6
+        div.alert.alert-warning
+          span.alert-icon
+            svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"
+              path d="M12 9v4"
+              path d="M12 17h.01"
+          div.alert-content
+            strong: "Warning: "
+            "Your session is about to expire."
+          button.alert-dismiss type="button" aria-label="Close": "\u00D7"
+      div.col-6
+        div.alert.alert-danger
+          span.alert-icon
+            svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              circle cx="12" cy="12" r="10"
+              path d="m15 9-6 6"
+              path d="m9 9 6 6"
+          div.alert-content
+            strong: "Error! "
+            "Something went wrong. Please try again."
+          button.alert-dismiss type="button" aria-label="Close": "\u00D7"
+
+    div.card.p-5.my-3
+      h5.h3.mb-3: "Toast example"
+      div.row.g-3
+        div.col-6
+          div.toast.alert.alert-info
+            span.alert-icon
+              svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                circle cx="12" cy="12" r="10"
+                path d="M12 16v-4"
+                path d="M12 8h.01"
+            div.alert-content: "New message received"
+            button.alert-dismiss type="button" aria-label="Close": "\u00D7"
+        div.col-6
+          div.toast.alert.alert-danger
+            span.alert-icon
+              svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                circle cx="12" cy="12" r="10"
+                path d="m15 9-6 6"
+                path d="m9 9 6 6"
+            div.alert-content: "Connection lost. Retrying..."
+            button.alert-dismiss type="button" aria-label="Close": "\u00D7"

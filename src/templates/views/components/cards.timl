@@ -1,0 +1,213 @@
+h2.h1: "Cards"
+p.mb-3: "Flexible content containers with various options."
+div.card.p-5.my-3
+  div.row
+    div.col-4 > div.card.p-4.rounded-4
+      div.card-body
+        h5.h3.card-title: "Card title"
+        p.mb-2: "After a long day of work, I like to relax with a good book and a cup of tea. It helps me unwind and escape into different worlds."
+
+    div.col-4 > div.card.p-4.rounded-4
+      div.card-body
+        h5.h3.card-title: "Card title"
+        p.mb-2: "After a long day of work, I like to relax with a good book and a cup of tea. It helps me unwind and escape into different worlds."
+
+    div.col-4 > div.card.p-4.rounded-4
+      div.card-body
+        h5.h3.card-title: "Card title"
+        p.mb-2: "After a long day of work, I like to relax with a good book and a cup of tea. It helps me unwind and escape into different worlds."
+
+    div.col-3 > div.card.p-4.rounded-4
+      div.card-body
+        h5.h3.card-title: "Card title"
+        p.mb-2: "After a long day of work, I like to relax with a good book and a cup of tea. It helps me unwind and escape into different worlds."
+
+    div.col-6 > div.card.p-4.rounded-4.bg-lavender.border-0.h-full
+      div.card-body.content-center.text-center
+        h5.h1.card-title: "Card title"
+        p.mb-2: "After a long day of work, I like to relax with a good book and a cup of tea. It helps me unwind and escape into different worlds."
+
+    div.col-3 > div.card.p-4.rounded-4
+      div.card-body
+        h5.h3.card-title: "Card title"
+        p.mb-2: "After a long day of work, I like to relax with a good book and a cup of tea. It helps me unwind and escape into different worlds."
+
+div.mt-4
+  h5.h2.mb-3: "Card with Image"
+  div.row
+    div.col-3 > div.card.rounded-4
+      div.card-img-top.bg-lavender.flex.align-items-center.justify-center.text-center style="height:150px; background-size:cover; background-position:center; background-image:url(https://images.unsplash.com/photo-1778470075441-8b2c7ce123b7?q=80&w=762&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)"
+      div.card-body.p-3
+        h5.h3.card-title: "The Great Gatsby"
+        p.mb-2: "Fitzgerald's Jazz Age masterpiece captures the glittering illusions of the American Dream."
+        div.d-flex.gap-2.justify-between
+          button.btn.btn-secondary: "Cancel"
+          button.btn.btn-primary: "I agree"
+
+    div.col-3 > div.card.rounded-4
+      div.card-img-top.gradient-overlay.bg-teal.position-relative style="height:150px; background-size:cover; background-position:center; background-image:url(https://images.unsplash.com/photo-1778470075441-8b2c7ce123b7?q=80&w=762&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)"
+      div.card-body.p-3
+        h5.h3.card-title: "Moby-Dick"
+        p.mb-2: "Melville's great white whale swims through the depths of obsession..."
+        div.d-flex.gap-2.justify-between
+          a.text-link.align-self-center: "Nevermind."
+          button.btn.btn-primary: "I agree"
+
+    div.col-3 > div.card.rounded-4.h-100
+      div.card-img-top.gradient-overlay.bg-teal.flex-col.justify-end.h-100
+        style="background-size: cover;  background-repeat: no-repeat; background-position:center center; background-image:url(https://images.unsplash.com/photo-1778470075441-8b2c7ce123b7?q=80&w=762&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)"
+        div.card-body.p-3.text-white.position-relative.z-index-1.flex-col.justify-between.flex-1
+          div.align-self-start: "This is amazing"
+          div
+            h5.h3.card-title: "The Raven"
+            p.mb-2: "Once upon a midnight dreary, while I pondered, weak and weary, over many a quaint and curious volume of forgotten lore..."
+
+    div.col-3 > div.card.rounded-4.h-100
+      div.card-img-top.gradient-overlay.bg-teal.flex-col.justify-end.h-100
+        style="background-size: cover;  background-repeat: no-repeat; background-position:center center; background-image:url(https://images.unsplash.com/photo-1778470075441-8b2c7ce123b7?q=80&w=762&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)"
+        div.card-body.p-3.text-white.position-relative.z-index-1.flex-col.justify-between.flex-1
+          div.align-self-start: "This is amazing"
+          div
+            h5.h3.card-title: "The Raven"
+            p.mb-2: "Once upon a midnight dreary, while I pondered, weak and weary, over many a quaint and curious volume of forgotten lore..."
+
+div.mt-5
+  h5.h2.mb-3: "Hover effects"
+  p.mb-3: "Add \`.hover-zoom\` or \`.hover-rotate\` to \`.card-img-top\` for image effects on card hover. Combine with \`.ease-linear\` or \`.ease-bounce\` for different feels."
+  div.row style="height:240px;"
+    div.col-3 > div.card.rounded-4.h-100
+      div.card-img-top.gradient-overlay.gradient-top.bg-teal.flex-col.justify-end.h-100
+        div.card-img-bg.hover-zoom
+          style="background-image:url(https://images.unsplash.com/photo-1778470075441-8b2c7ce123b7?q=80&w=762&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)"
+        div.card-body.p-3.text-white.position-relative.z-index-1.flex-col.justify-between.flex-1
+          div.flex-row.w-full.justify-between
+            span: "Zoom"
+            span: "Gradient Top"
+          div
+            h5.h3.card-title: ".hover-zoom"
+            p.mb-2: "Scales up 1.12x. .gradient-top fades toward the top."
+
+    div.col-3 > div.card.rounded-4.h-100
+      div.card-img-top.gradient-overlay.gradient-teal.bg-teal.flex-col.justify-end.h-100
+        div.card-img-bg.hover-rotate
+          style="background-image:url(https://images.unsplash.com/photo-1778470075441-8b2c7ce123b7?q=80&w=762&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)"
+        div.card-body.p-3.text-white.position-relative.z-index-1.flex-col.justify-between.flex-1
+          div.flex-row.w-full.justify-between
+            span: "Rotate"
+            span: "Teal Gradient"
+          div
+            h5.h3.card-title: ".hover-rotate"
+            p.mb-2: "Rotates 2.5°. .gradient-teal gives a teal-tinted overlay."
+
+    div.col-3 > div.card.rounded-4.h-100
+      div.card-img-top.gradient-overlay.bg-teal.flex-col.justify-end.h-100
+        div.card-img-bg.hover-zoom.hover-rotate.ease-bounce
+          style="background-image:url(https://images.unsplash.com/photo-1778470075441-8b2c7ce123b7?q=80&w=762&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)"
+        div.card-body.p-3.text-white.position-relative.z-index-1.flex-col.justify-between.flex-1
+          div.flex-row.w-full.justify-between
+            span: "Zoom + Rotate"
+            span: "Bounce"
+          div
+            h5.h3.card-title: "Zoom + Rotate + Bounce"
+            p.mb-2: "Combined with .ease-bounce for a springy feel."
+
+    div.col-3 > div.card.rounded-4.h-100
+      div.card-img-top.gradient-overlay.bg-teal.flex-col.justify-end.h-100
+        div.card-img-bg.hover-zoom.ease-linear
+          style="background-image:url(https://images.unsplash.com/photo-1778470075441-8b2c7ce123b7?q=80&w=762&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)"
+        div.card-body.p-3.text-white.position-relative.z-index-1.flex-col.justify-between.flex-1
+          div.flex-row.w-full.justify-between
+            span: "Zoom"
+            span: "Linear"
+          div
+            h5.h3.card-title: "Zoom + Linear"
+            p.mb-2: ".hover-zoom.ease-linear for constant speed zoom."
+
+div.mt-5
+  h5.h2.mb-3: "Show / Hide text on hover"
+  p.mb-3: "Add \`.hover-show\` to hide text by default and reveal on card hover. Add \`.hover-hide\` to show text by default and hide on hover."
+  div.row style="height:240px;"
+    div.col-3 > div.card.rounded-4.h-100
+      div.card-img-top.gradient-overlay.bg-teal.flex-col.justify-end.h-100
+        div.card-img-bg.hover-zoom
+          style="background-image:url(https://images.unsplash.com/photo-1778470075441-8b2c7ce123b7?q=80&w=762&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)"
+        div.card-body.p-3.text-white.position-relative.z-index-1.flex-col.justify-between.flex-1
+          div.flex-row.w-full.justify-between
+            span: "Show"
+            span: "Description"
+          div.hover-show
+            p.mb-0.text-sm: "A hidden description that appears when you hover over this card."
+    div.col-3 > div.card.rounded-4.h-100
+      div.card-img-top.gradient-overlay.bg-teal.flex-col.justify-end.h-100
+        div.card-img-bg.hover-rotate
+          style="background-image:url(https://images.unsplash.com/photo-1778470075441-8b2c7ce123b7?q=80&w=762&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)"
+        div.card-body.p-3.text-white.position-relative.z-index-1.flex-col.justify-between.flex-1
+          div.flex-row.w-full.justify-between
+            span: "Show"
+            span: "Caption"
+          div.hover-show
+            p.mb-0.text-sm: "A caption fades in on hover — great for revealing additional context."
+    div.col-3 > div.card.rounded-4.h-100
+      div.card-img-top.gradient-overlay.bg-teal.flex-col.justify-end.h-100
+        div.card-img-bg.hover-zoom.hover-rotate.ease-bounce
+          style="background-image:url(https://images.unsplash.com/photo-1778470075441-8b2c7ce123b7?q=80&w=762&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)"
+        div.card-body.p-3.text-white.position-relative.z-index-1.flex-col.justify-between.flex-1
+          div.flex-row.w-full.justify-between
+            span: "Show"
+            span: "CTA"
+          div.hover-show
+            button.btn.btn-primary.btn-sm: "Read More"
+    div.col-3 > div.card.rounded-4.h-100
+      div.card-img-top.gradient-overlay.bg-teal.flex-col.justify-end.h-100
+        div.card-img-bg.hover-zoom.ease-linear
+          style="background-image:url(https://images.unsplash.com/photo-1778470075441-8b2c7ce123b7?q=80&w=762&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)"
+        div.card-body.p-3.text-white.position-relative.z-index-1.flex-col.justify-between.flex-1
+          div.flex-row.w-full.justify-between
+            span: "Show"
+            span: "Meta"
+          div.hover-show
+            div.d-flex.gap-2
+              span.badge.badge-primary: "New"
+              span.badge.badge-outline.badge-bar.badge-sm: "Updated"
+
+  div.row.mt-3 style="height:240px;"
+    div.col-3 > div.card.rounded-4.h-100
+      div.card-img-top.gradient-overlay.bg-teal.flex-col.justify-end.h-100
+        div.card-img-bg.hover-zoom
+          style="background-image:url(https://images.unsplash.com/photo-1778470075441-8b2c7ce123b7?q=80&w=762&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)"
+        div.card-body.p-3.text-white.position-relative.z-index-1.flex-col.justify-between.flex-1
+          div.flex-row.w-full.justify-between
+            span: "Hide"
+            span: "Title"
+          div.hover-hide
+            h5.h3.card-title.mb-0: "The Great Gatsby"
+    div.col-3 > div.card.rounded-4.h-100
+      div.card-img-top.gradient-overlay.bg-teal.flex-col.justify-end.h-100
+        div.card-img-bg.hover-zoom
+          style="background-image:url(https://images.unsplash.com/photo-1576566588028-4147f3842f27?q=80&w=764&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)"
+        div.card-body.p-3.text-white.position-relative.z-index-1.flex-col.justify-between.flex-1
+          div.flex-row.w-full.justify-between
+            span: "Hide"
+            span: "Price"
+          div.hover-hide
+            span.text-lg.fw-bold: "$24.99"
+    div.col-3 > div.card.rounded-4.h-100
+      div.card-img-top.gradient-overlay.bg-teal.flex-col.justify-end.h-100
+        div.card-img-bg.hover-zoom.hover-rotate.ease-bounce
+          style="background-image:url(https://images.unsplash.com/photo-1778470075441-8b2c7ce123b7?q=80&w=762&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)"
+        div.card-body.p-3.text-white.position-relative.z-index-1.flex-col.justify-between.flex-1
+          div.flex-row.w-full.justify-between
+            span: "Hide"
+            span: "Author"
+          div.hover-hide
+            p.mb-0.text-sm: "by F. Scott Fitzgerald"
+    div.col-3 > div.card.rounded-4.h-100
+      div.card-img-top.gradient-overlay.bg-teal.flex-col.justify-end.h-100
+        div.card-img-bg.hover-zoom.ease-linear
+          style="background-image:url(https://images.unsplash.com/photo-1778470075441-8b2c7ce123b7?q=80&w=762&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)"
+        div.card-body.p-3.text-white.position-relative.z-index-1.flex-col.justify-between.flex-1
+          div.flex-row.w-full.justify-between
+            span: "Hide"
+            span: "Tag"
+          div.hover-hide
+            span.badge.badge-secondary: "Classic Literature"

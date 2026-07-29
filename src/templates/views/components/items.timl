@@ -1,0 +1,71 @@
+h2.h1: "Item"
+p.lead: "Items display content in a list format with text and actions."
+div.card.p-5.my-3
+  div.row.mt-4 > div.col-12 > div.row.gap-3
+    div.col-12
+      div.card.p-3.rounded-4
+        div.flex-row.gap-5.items-center
+          div > img.img-fluid.img-rounded width="120" src="https://plus.unsplash.com/premium_photo-1675171525855-6188d23d7dae?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+          div.flex-col.flex-1
+            h5.h5.card-title: "Banana bread"
+            p: "A sweet quick bread made from mashed bananas, flour, sugar, eggs, and butter or oil, often flavored with cinnamon or vanilla. It became popular in North America in the 1930s when baking powder became widely available and..."
+          button.ml-3.btn.btn-secondary.align-self-center: "Click me"
+    div.col-12
+      div.card.p-3.rounded-4.border-0.bg-lavenderblush
+        div.flex-row.gap-5.items-center
+          div.flex-col.flex-1
+            h5.h5.card-title: "Item title"
+            p: "This is an item description."
+          button.ml-3.btn.btn-primary.align-self-center: "Check out"
+    div.col-12
+      div.card.p-3.rounded-4.border-0.bg-lavender
+        div.flex-row.gap-5.items-center
+          button.mr-3.btn.btn-secondary.align-self-center: "Check out"
+          div.flex-col.flex-1
+            h5.h5.card-title: "Item title"
+            p: "This is an item description."
+    div.col-12
+      div.card.p-3.rounded-4
+        div.flex-row.gap-5.items-center
+          div.flex-col.flex-1
+            p: "Your profile has been verified successfully"
+
+var listing1 = [
+  {
+    thumbnail: "https://plus.unsplash.com/premium_photo-1675171525855-6188d23d7dae?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    title: "Banana Bread",
+    description: "A sweet quick bread made from mashed bananas, flour, sugar, eggs, and butter or oil, often flavored with cinnamon or vanilla. It became popular in North America in the 1930s when baking powder became widely available and..."
+  },
+  {
+    thumbnail: "https://plus.unsplash.com/premium_photo-1675171525855-6188d23d7dae?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    title: "Chocolate Chip Cookies",
+    description: "Crispy edges with a soft, chewy center — loaded with semi-sweet chocolate chips. A classic American favorite that's easy to bake and impossible to resist fresh out of the oven."
+  },
+  {
+    thumbnail: "https://plus.unsplash.com/premium_photo-1675171525855-6188d23d7dae?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    title: "Sourdough Starter",
+    description: "A fermented culture of flour and water that captures wild yeast and bacteria. With daily feedings, it becomes the backbone of crusty artisan loaves with that signature tangy flavor."
+  },
+  {
+    thumbnail: "https://plus.unsplash.com/premium_photo-1675171525855-6188d23d7dae?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    title: "French Onion Soup",
+    description: "Rich caramelized onions simmered in beef broth, topped with crusty bread and melted Gruyère cheese. A comforting bistro classic that fills the kitchen with an irresistible aroma."
+  },
+  {
+    thumbnail: "https://plus.unsplash.com/premium_photo-1675171525855-6188d23d7dae?q=80&w=1171&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+    title: "Lemon Ricotta Pancakes",
+    description: "Fluffy, tender pancakes made with fresh ricotta and lemon zest. Light as air with a bright citrus note — finished with powdered sugar and a drizzle of warm honey."
+  }
+]
+h3.h2: "Items listing"
+div.card.p-5.my-3
+  div.row.g-2
+    for $item in $listing1
+      div.col-12
+        div.card.p-3.rounded-4
+          div.flex-row.gap-5.items-center
+            div > img.img-fluid.img-rounded width="120" src=$item.thumbnail
+            div.flex-col.flex-1
+              h5.h5.card-title > a.text-link href="#": $item.title
+              p: $item.description
+            button.ml-3.btn.btn-secondary.align-self-center: "Click me"

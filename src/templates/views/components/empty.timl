@@ -1,0 +1,35 @@
+h2.h1: "Empty State"
+p.lead.mb-3: "Use the .empty component to display empty states, 404 pages, or any content-less splash."
+h5.h3.mb-3: "No data"
+p.mb-3: "A generic empty state with an icon, message, and call-to-action buttons."
+div.card.p-5.my-3 > section.empty.border.rounded-4.border-gray-200
+  header
+    figure
+      svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"
+        path d="M10 10.5 8 13l2 2.5"
+        path d="m14 10.5 2 2.5-2 2.5"
+        path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2z"
+    h3: "No Projects Yet"
+    p: "You haven't created any projects yet."
+      br
+      "Get started by creating your first project."
+  footer
+    div.flex.gap-2
+      button.btn.btn-primary: "Create Project"
+      button.btn.btn-secondary: "Import Project"
+    a.text-link href="#": "Learn More "
+
+h5.h3.mb-3: "404 page"
+p.mb-3: "A 404 variant with a search input and help link."
+div.card > section.empty.border.rounded-4.border-gray-200
+  header
+    h3: "404 - Not Found"
+    p: "The page you're looking for doesn't exist."
+      br
+      "Try searching for what you need below."
+  footer
+    div.input-group
+      input.input type="search" placeholder="Try searching for pages..."
+      button.btn.btn-secondary: "Search"
+    p: "Need help? "
+      a.text-decoration-none href="#": "Contact support"

@@ -1,0 +1,51 @@
+h2.h1: "Images"
+p.lead.mb-3: "Utility classes for responsive images, rounded corners, thumbnails, object-fit, and figure captions."
+
+h5.h3.mb-3: "Fluid image"
+p.mb-3: "Add .img-fluid to make an image scale with its parent container."
+div.card.p-5.my-3
+  div style="max-width:400px"
+    img.img-fluid.rounded-4 src="https://images.unsplash.com/photo-1778470075441-8b2c7ce123b7?q=80&w=762&auto=format&fit=crop&ixlib=rb-4.1.0" alt="Books"
+
+h5.h3.mb-3: "Image shapes"
+div.card.p-5.my-3
+  div.row.g-3
+    div.col-4
+      div.field
+        label.field-label: ".img-rounded"
+        img.img-fluid.img-rounded src="https://images.unsplash.com/photo-1778470075441-8b2c7ce123b7?q=80&w=200&auto=format&fit=crop" alt="Rounded"
+    div.col-4
+      div.field
+        label.field-label: ".img-circle"
+        img.img-fluid.img-circle src="https://images.unsplash.com/photo-1778470075441-8b2c7ce123b7?q=80&w=200&auto=format&fit=crop" alt="Circle" style="aspect-ratio:1"
+    div.col-4
+      div.field
+        label.field-label: ".img-thumbnail"
+        img.img-fluid.img-thumbnail src="https://images.unsplash.com/photo-1778470075441-8b2c7ce123b7?q=80&w=200&auto=format&fit=crop" alt="Thumbnail"
+
+h5.h3.mb-3: "Object-fit"
+p.mb-3: "Use .img-cover or .img-contain to control how an image fills its container."
+div.card.p-5.my-3
+  div.row.g-3
+    div.col-6
+      div.field
+        label.field-label: ".img-cover (crops to fill)"
+        div style="height:200px; overflow:hidden; border-radius: var(--radius-md); background: var(--color-gray-100)"
+          img.img-cover src="https://images.unsplash.com/photo-1778470075441-8b2c7ce123b7?q=80&w=762&auto=format&fit=crop" alt="Cover"
+    div.col-6
+      div.field
+        label.field-label: ".img-contain (fits inside)"
+        div style="height:200px; overflow:hidden; border-radius: var(--radius-md); background: var(--color-gray-100)"
+          img.img-contain src="https://images.unsplash.com/photo-1778470075441-8b2c7ce123b7?q=80&w=762&auto=format&fit=crop" alt="Contain"
+
+h5.h3.mb-3: "Figure with caption"
+p.mb-3: "Wrap an image in .figure with .figure-img and .figure-caption."
+div.card.p-5.my-3
+  div.flex.gap-4.flex-wrap
+    figure.figure
+      img.figure-img.img-fluid.img-rounded src="https://images.unsplash.com/photo-1778470075441-8b2c7ce123b7?q=80&w=300&auto=format&fit=crop" alt="Books"
+      figcaption.figure-caption: "A quiet reading corner with vintage books."
+
+    figure.figure
+      img.figure-img.img-fluid.img-circle src="https://images.unsplash.com/photo-1778470075441-8b2c7ce123b7?q=80&w=200&auto=format&fit=crop" alt="Profile" style="aspect-ratio:1; width:200px"
+      figcaption.figure-caption: "Profile avatar placeholder"

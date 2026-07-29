@@ -1,0 +1,25 @@
+h2.h1: "Tag Input"
+p.lead.mb-3: "A container that looks like an input but holds inline badge-like tags."
+div.row.g-3
+  div.col-12
+    div.card.p-5
+      div.field
+        label.field-label: "Technologies"
+        div.input-tags
+          span.badge.badge-secondary: "html"
+          span.badge.badge-secondary: "javascript"
+          span.badge.badge-secondary: "css"
+          input.input-tags-field type="text" placeholder="Add tag..."
+  div.col-12
+    div.card.p-5
+      div.field
+        label.field-label: "Email recipients"
+        div.input-tags#emailRecipients
+          input.input-tags-field type="text" placeholder="Add email..."
+  div.col-12
+    div.card.p-5
+      div.field
+        label.field-label: "Disabled"
+        div.input-tags
+          span.badge.badge-secondary: "locked"
+          input.input-tags-field type="text" placeholder="Disabled..." disabled

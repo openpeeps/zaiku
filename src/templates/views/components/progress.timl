@@ -1,0 +1,68 @@
+div.p-4
+  div.mb-5
+    h2.h1: "Progress bars"
+    p.lead.mb-3: "Show progress with .progress and .progress-bar. Use data-zaiku-progress for JS control."
+
+    div.card.p-5.my-3
+      h5.h3.mb-3: "Basic"
+      div.progress data-zaiku-progress=""
+        div.progress-bar style="width: 45%"
+
+      h5.h3.mt-4.mb-3: "Sizes"
+      div.progress.progress-sm.mb-2 data-zaiku-progress=""
+        div.progress-bar style="width: 70%"
+      div.progress.mb-2 data-zaiku-progress=""
+        div.progress-bar style="width: 50%"
+      div.progress.progress-lg data-zaiku-progress=""
+        div.progress-bar style="width: 30%"
+
+      h5.h3.mt-4.mb-3: "Striped & animated"
+      div.progress.progress-striped.mb-2 data-zaiku-progress=""
+        div.progress-bar style="width: 60%"
+      div.progress.progress-striped.progress-animated data-zaiku-progress=""
+        div.progress-bar style="width: 80%"
+
+      h5.h3.mt-4.mb-3: "With label"
+      div.progress data-zaiku-progress=""
+        div.progress-bar style="width: 62%"
+        span.progress-label: "62%"
+
+      h5.h3.mt-4.mb-3: "Loading bar (indeterminate snake)"
+      div.progress.progress-loading.mb-2 data-zaiku-progress=""
+        div.progress-bar
+        span.progress-label: "Loading..."
+      div.progress.progress-loading.mb-3 id="loadingCounter" data-zaiku-progress=""
+        div.progress-bar
+        span.progress-label: "0%"
+      div.flex.g-2.mb-3
+        button.btn.btn-sm.btn-secondary onclick="document.getElementById('loadingCounter').zaiku.progressInstance.loading()": "Toggle Loading"
+        button.btn.btn-sm.btn-secondary onclick="document.getElementById('loadingCounter').zaiku.progressInstance.increment(5)": "+5%"
+        button.btn.btn-sm.btn-secondary onclick="document.getElementById('loadingCounter').zaiku.progressInstance.reset()": "Reset"
+
+      h5.h3.mt-4.mb-3: "Mini progress bar"
+      div.card.p-4.bg-gray-50.rounded-4.mb-3
+        div.flex.g-3.items-center
+          span.progress-mini: span.progress-bar
+          span.text-sm: "Loading..."
+      div.flex.g-3.flex-wrap
+        button.btn.btn-primary
+          span.progress-mini: span.progress-bar
+          " Loading"
+        button.btn.btn-secondary
+          span.progress-mini style="color: var(--color-gray-600)": span.progress-bar
+          " Syncing"
+        span.badge.badge-primary
+          span.progress-mini: span.progress-bar
+          " Uploading"
+
+      h5.h3.mt-4.mb-3: "JS control"
+      div.progress.mb-3 id="demoProgress" data-zaiku-progress=""
+        div.progress-bar
+        span.progress-label: "0%"
+      div.btn-group
+        button.btn.btn-sm.btn-secondary onclick="document.getElementById('demoProgress').zaiku.progressInstance.increment(10)": "+10%"
+        button.btn.btn-sm.btn-secondary onclick="document.getElementById('demoProgress').zaiku.progressInstance.reset()": "Reset"
+        button.btn.btn-sm.btn-secondary onclick="document.getElementById('demoProgress').zaiku.progressInstance.finish()": "Finish"
+        button.btn.btn-sm.btn-secondary onclick="document.getElementById('demoProgress').zaiku.progressInstance.start(100)": "Auto"
+        button.btn.btn-sm.btn-secondary onclick="document.getElementById('demoProgress').zaiku.progressInstance.stop()": "Stop"
+        button.btn.btn-sm.btn-info onclick="document.getElementById('demoProgress').zaiku.progressInstance.loading()": "Toggle Loading"

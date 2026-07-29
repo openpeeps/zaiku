@@ -1,0 +1,250 @@
+h2.h1: "Accordion"
+p.lead.mb-3: "Toggle content sections with .accordion. Each item opens independently; opening one closes others by default."
+
+h5.h3.mb-3: "Default behavior"
+div.mb-5 > div.tab-area
+  nav.tab-list.tab-list-sm role="tablist"
+    button.btn.btn-secondary.tab.tab-active role="tab" aria-selected="true"
+      svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+        path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"
+        circle cx="12" cy="12" r="3"
+      span: "Preview"
+    button.btn.btn-secondary.tab role="tab" aria-selected="false"
+      svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+        polyline points="16 18 22 12 16 6"
+        polyline points="8 6 2 12 8 18"
+      span: "Code"
+  div.tab-content
+    div.tab-panel.tab-panel-active role="tabpanel"
+      div.accordion.shadow-1 data-zaiku-accordion=""
+        div.accordion-item
+          button.accordion-header
+            span: "What is Zaiku?"
+            svg.accordion-chevron width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              polyline points="6 9 12 15 18 9"
+          div.accordion-content
+            div.accordion-body: "Zaiku is a lightweight CSS framework with server-driven form validation, preloaders, card effects, tabs, progress bars, and more."
+
+        div.accordion-item
+          button.accordion-header
+            span: "How does the accordion work?"
+            svg.accordion-chevron width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              polyline points="6 9 12 15 18 9"
+          div.accordion-content
+            div.accordion-body: "Click a header to toggle its content. By default, opening one item closes any other open item."
+
+        div.accordion-item
+          button.accordion-header
+            span: "Can I keep multiple items open?"
+            svg.accordion-chevron width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              polyline points="6 9 12 15 18 9"
+          div.accordion-content
+            div.accordion-body
+              "Yes! Add "
+              code: "data-accordion-multiple=\"true\""
+              " to the .accordion container."
+    div.tab-panel role="tabpanel"
+      pre.bg-gray-900.text-gray-100.p-4.rounded-4 style="font-size:.85rem": "&lt;h1&gt;Hello World&lt;/h1&gt;\n&lt;p&gt;This is the code view.&lt;/p&gt;"
+
+div.mt-5
+  h5.h3.mb-3: "Multiple open items"
+  div.accordion.shadow-1 data-zaiku-accordion="" data-accordion-multiple="true"
+    div.accordion-item
+      button.accordion-header
+        span: "Item one"
+        svg.accordion-chevron width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          polyline points="6 9 12 15 18 9"
+      div.accordion-content
+        div.accordion-body: "This item stays open independently of the others."
+    div.accordion-item
+      button.accordion-header
+        span: "Item two"
+        svg.accordion-chevron width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          polyline points="6 9 12 15 18 9"
+      div.accordion-content
+        div.accordion-body: "Open this while item one is still open — both remain visible."
+    div.accordion-item
+      button.accordion-header
+        span: "Item three"
+        svg.accordion-chevron width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          polyline points="6 9 12 15 18 9"
+      div.accordion-content
+        div.accordion-body: "All three can be open at the same time."
+
+div.mt-5
+  h5.h3.mb-3: "Disabled item (unclickable)"
+  div.accordion.shadow-1 data-zaiku-accordion=""
+    div.accordion-item
+      button.accordion-header
+        span: "Clickable item"
+        svg.accordion-chevron width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          polyline points="6 9 12 15 18 9"
+      div.accordion-content
+        div.accordion-body: "This item works normally."
+
+    div.accordion-item.disabled
+      button.accordion-header
+        span: "Disabled item"
+        svg.accordion-chevron width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          polyline points="6 9 12 15 18 9"
+      div.accordion-content > div.accordion-body
+
+    div.accordion-item
+      button.accordion-header
+        span: "Another clickable item"
+        svg.accordion-chevron width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          polyline points="6 9 12 15 18 9"
+      div.accordion-content
+        div.accordion-body: "This one works fine too."
+
+div.mt-5
+  h5.h3.mb-3: "Nested accordion"
+  p.mb-3: "Accordions can be nested inside other accordion items. Each nested accordion works independently."
+  div.accordion.shadow-1 data-zaiku-accordion="" data-accordion-multiple="true"
+    div.accordion-item
+      button.accordion-header
+        span: "Parent item one"
+        svg.accordion-chevron width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          polyline points="6 9 12 15 18 9"
+      div.accordion-content
+        div.accordion-body: "This is a top-level accordion item."
+
+    div.accordion-item
+      button.accordion-header
+        span: "Parent item two (with nested accordion)"
+        svg.accordion-chevron width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          polyline points="6 9 12 15 18 9"
+      div.accordion-content
+        div.accordion-body
+          div.mb-2: "This parent contains nested accordions below:"
+          div.row 
+            div.col-6
+              div.accordion.shadow-1 data-zaiku-accordion="" data-accordion-multiple="true"
+                div.accordion-item
+                  button.accordion-header
+                    span: "Nested item one"
+                    svg.accordion-chevron width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                      polyline points="6 9 12 15 18 9"
+                  div.accordion-content
+                    div.accordion-body: "Deeply nested content — this item is inside a nested accordion."
+
+                div.accordion-item
+                  button.accordion-header
+                    span: "Nested item two"
+                    svg.accordion-chevron width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                      polyline points="6 9 12 15 18 9"
+                  div.accordion-content
+                    div.accordion-body: "Each nested accordion behaves independently from the parent."
+
+                div.accordion-item
+                  button.accordion-header
+                    span: "Nested item three"
+                    svg.accordion-chevron width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                      polyline points="6 9 12 15 18 9"
+                  div.accordion-content
+                    div.accordion-body: "Multiple open works on both the parent and nested accordion."
+
+            div.col-6
+              div.accordion.shadow-1 data-zaiku-accordion="" data-accordion-multiple="true"
+                div.accordion-item
+                  button.accordion-header
+                    span: "Nested item one"
+                    svg.accordion-chevron width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                      polyline points="6 9 12 15 18 9"
+                  div.accordion-content
+                    div.accordion-body: "Deeply nested content — this item is inside a nested accordion."
+
+                div.accordion-item
+                  button.accordion-header
+                    span: "Nested item two"
+                    svg.accordion-chevron width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                      polyline points="6 9 12 15 18 9"
+                  div.accordion-content
+                    div.accordion-body: "Each nested accordion behaves independently from the parent."
+
+                div.accordion-item
+                  button.accordion-header
+                    span: "Nested item three"
+                    svg.accordion-chevron width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                      polyline points="6 9 12 15 18 9"
+                  div.accordion-content
+                    div.accordion-body: "Multiple open works on both the parent and nested accordion."
+
+    div.accordion-item
+      button.accordion-header
+        span: "Parent item three"
+        svg.accordion-chevron width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          polyline points="6 9 12 15 18 9"
+      div.accordion-content
+        div.accordion-body: "Back to the top level."
+
+div.mt-5
+  h5.h3.mb-3: "Scrollable content"
+  p.mb-3: "Add .accordion-scrollable to constrain content height and make it scroll when it overflows."
+  div.accordion.accordion-scrollable data-zaiku-accordion=""
+    div.accordion-item
+      button.accordion-header
+        span: "Large text block (scroll inside)"
+        svg.accordion-chevron width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          polyline points="6 9 12 15 18 9"
+      div.accordion-content
+        div.accordion-body
+          for $i in [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]:
+            p.mb-2: "Paragraph " & $i & " — Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+div.mt-5
+  h5.h3.mb-3: "Borderless accordion"
+  p.mb-3: "Add .accordion-borderless to remove the outer border and border-radius — keeps only the item divider borders."
+  div.accordion.accordion-borderless data-zaiku-accordion=""
+    div.accordion-item
+      button.accordion-header
+        span: "Item one"
+        svg.accordion-chevron width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          polyline points="6 9 12 15 18 9"
+      div.accordion-content
+        div.accordion-body: "Content for item one — no outer border."
+    div.accordion-item
+      button.accordion-header
+        span: "Item two"
+        svg.accordion-chevron width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          polyline points="6 9 12 15 18 9"
+      div.accordion-content
+        div.accordion-body: "Content for item two — only bottom dividers separate the items."
+    div.accordion-item
+      button.accordion-header
+        span: "Item three"
+        svg.accordion-chevron width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          polyline points="6 9 12 15 18 9"
+      div.accordion-content
+        div.accordion-body: "Content for item three — useful inside tab panels, cards, or modals."
+
+div.mt-5
+  h5.h3.mb-3: "Media embed"
+  p.mb-3: "Add data-zaiku-media with a link to a supported player (YouTube, Vimeo, SoundCloud, Spotify, Twitch). The iframe is created on open and removed on close to stop playback. Enable via Zaiku.init({ accordion: { media: true } })."
+  div.accordion.shadow-1 data-zaiku-accordion=""
+    div.accordion-item
+      button.accordion-header
+        span: "Watch demo video"
+        svg.accordion-chevron width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          polyline points="6 9 12 15 18 9"
+      div.accordion-content
+        div.accordion-body
+          div.accordion-media data-zaiku-media="https://www.youtube.com/watch?v=j__YOmUX0WI"
+
+div.mt-5
+  h5.h3.mb-3: "Programmatic callbacks"
+  p.mb-3: "onOpen and onClose callbacks fire when an accordion item opens or closes. Configure them via Zaiku.init({ accordion: { onOpen: fn, onClose: fn } }). Check the console."
+  div.accordion.shadow-1 data-zaiku-accordion=""
+    div.accordion-item
+      button.accordion-header
+        span: "Item one"
+        svg.accordion-chevron width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          polyline points="6 9 12 15 18 9"
+      div.accordion-content
+        div.accordion-body: "Opened and closed events are logged to the console."
+    div.accordion-item
+      button.accordion-header
+        span: "Item two"
+        svg.accordion-chevron width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+          polyline points="6 9 12 15 18 9"
+      div.accordion-content
+        div.accordion-body: "Open your devtools console to see the callbacks firing."

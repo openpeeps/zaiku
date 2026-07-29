@@ -1,0 +1,15 @@
+div.p-4
+  div.mb-5
+    h2.h1: "Clipboard"
+    p.lead.mb-3: "Copy content to the clipboard with data-zaiku-clipboard."
+    div.card.p-5.my-3
+      h5.h3.mb-3: "Input + button"
+      div data-zaiku-clipboard=""
+        div.input-group
+          input.input type="text" value="https://example.com/share/abc123" readonly=""
+          button.btn.btn-secondary data-copy-btn="" data-clipboard-target="input": "Copy"
+    div.card.p-5.my-3
+      h5.h3.mb-3: "Code block with inline text"
+      div data-zaiku-clipboard="" data-clipboard-text="npm install zaiku"
+        span.bg-gray-100.p-3.rounded-4: code: "npm install zaiku"
+        button.btn.btn-secondary.mt-2 data-copy-btn="": "Copy"

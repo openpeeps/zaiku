@@ -1,0 +1,27 @@
+div.p-4
+  div.mb-4
+    h2.h1: "Chatbox"
+    p.lead.mb-3: "A chatbox-like textarea with a toolbar."
+    div.row.g-3
+      div.col-6
+        div.card.p-5
+          div.field
+            label.field-label: "Message"
+            div.chatbox
+              textarea.chatbox-input placeholder="Type a message..."
+              div.chatbox-toolbar
+                button.btn.btn-sm.btn-secondary type="button" aria-label="Attach file": "\uD83D\uDCCE"
+                button.btn.btn-sm.btn-secondary type="button" aria-label="Add emoji": "\uD83D\uDE0A"
+                div.flex-1
+                button.btn.btn-sm.btn-primary type="button": "Send"
+      div.col-6
+        div.card.p-5
+          div.field
+            label.field-label: "Reply"
+            div.chatbox
+              textarea.chatbox-input placeholder="Write a reply..." rows="3"
+              div.chatbox-toolbar
+                button.btn.btn-sm.btn-secondary type="button" aria-label="Attach file": "\uD83D\uDCCE"
+                div.flex-1
+                button.btn.btn-sm.btn-secondary type="button": "Cancel"
+                button.btn.btn-sm.btn-primary type="button": "Reply"

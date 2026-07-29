@@ -1,0 +1,130 @@
+h2.h1: "Hover Sliders"
+p.lead.mb-3: "Hover-driven sliders that respond to your mouse speed! Browse images naturally with pagination, counters, and GSAP-powered transitions (gsap-aware optional feature)"
+
+div.mt-5
+  h5.h2.mb-3: "Hover Image Slider"
+  p.mb-3: "Add \`data-zaiku-hover-slider\` to a card with multiple \`.card-slide\` children. Images cycle on hover — move right for forward, left for backward. Faster movement = faster cycling."
+  div.card.p-4.rounded-4.shadow-2 > div.row style="min-height: 420px"
+    div.col-4
+      div.mb-3
+        h6.h6.mb-0: "Move to Slide"
+        p: "Move mouse for snappy navigation. Moving faster will slide faster!"
+      div data-zaiku-hover-slider data-show-pagination data-pagination-top data-move-only data-forward-only data-delay="200"
+        div.card.rounded-4
+          div.card-img-top.gradient-overlay.bg-teal.position-relative style="height:420px"
+            div.card-slide.active style="background-image:url(https://images.unsplash.com/photo-1712167631738-4dab9e53c853?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)"
+            div.card-slide style="background-image:url(https://images.unsplash.com/photo-1698108223358-903ec1c2c85f?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)"
+            div.card-slide style="background-image:url(https://images.unsplash.com/photo-1712168631921-5b9fd204ebd2?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)"
+            div.card-body.p-4.text-white.position-relative.z-index-1.flex-col.justify-end.h-100.hover-hide
+              h5.h6.mb-1: "Nike Air Max 90"
+              h5.h2: "Breathe in the future"
+              p.mb-0.text-sm: "Air cushioning meets iconic design — from the running track to the city streets, the Nike Air Max 90 delivers timeless style and unmatched comfort with every step..."
+
+    div.col-4
+      div.mb-3
+        h6.h6.mb-0: "Positional Sliding"
+        p: "Move the cursor to right for forward navigation or to left for going backwards"
+      div data-zaiku-hover-slider data-speed="1200" data-speed-boost="3" data-show-counter data-show-pagination data-counter-top data-pagination-top
+        div.card.rounded-4
+          div.card-img-top.gradient-overlay.bg-teal.position-relative style="height:420px"
+            div.card-slide.active style="background-image:url(https://images.unsplash.com/photo-1533104816931-20fa691ff6ca?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)"
+            div.card-slide style="background-image:url(https://images.unsplash.com/photo-1623682230640-124e3e027dd9?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDF8fHxlbnwwfHx8fHw%3D)"
+            div.card-slide style="background-image:url(https://plus.unsplash.com/premium_photo-1688410049290-d7394cc7d5df?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)"
+            div.card-body.p-3.text-white.position-relative.z-index-1.flex-col.justify-end.h-100 > div.p-3
+              h5.h6.mb-1: "Santorini, Greece"
+              h5.h2: "A paradise for travelers and dreamers alike"
+              p.mb-0.text-sm: "Perched on the caldera cliffs, Santorini offers stunning sunsets, whitewashed buildings with blue domes, and crystal-clear Aegean waters..."
+    div.col-4
+      div.mb-3
+        h6.h6.mb-0: "Hover to Slide"
+        p: "Move for fast forward with counter and tiny bars"
+      div data-zaiku-hover-slider data-reset-on-leave="true" data-show-counter data-show-pagination data-counter-top data-pagination-top data-forward-only
+        div.card.rounded-4
+          div.card-img-top.gradient-overlay.bg-teal.position-relative style="height:420px"
+            div.card-slide.active style="background-image:url(https://plus.unsplash.com/premium_photo-1670598265559-83ca3882ca96?q=80&w=686&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)"
+            div.card-slide style="background-image:url(https://plus.unsplash.com/premium_photo-1671379086168-a5d018d583cf?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)"
+            div.card-slide style="background-image:url(https://plus.unsplash.com/premium_photo-1670598267085-053235b0d6de?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDEwfHx8ZW58MHx8fHx8)"
+            div.card-slide style="background-image:url(https://images.unsplash.com/photo-1601004890684-d8cbf643f5f2?q=80&w=715&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)"
+            div.card-body.p-3.text-white.position-relative.z-index-1.flex-col.justify-end.h-100
+              h5.display-1.mb-3: "Stupid green"
+
+div.my-5
+  h5.h2.mb-3: "Hover Image Slider + GSAP"
+  p.mb-3: "When GSAP is loaded, add \`data-effect\` with values \`fade\`, \`slide\`, \`kenburns\`, \`blur\`, \`zoom\`, \`rotate\`, or \`skew\` for animated transitions. Tweens are killed and reset on each advance for snappy scrubbing."
+  div.card.p-4.rounded-4.shadow-2 > div.row style="height: 420px"
+    div.col-4 data-zaiku-hover-slider data-reset-on-leave="true" data-show-counter data-show-pagination data-counter-top data-pagination-top data-forward-only data-effect="kenburns"
+      div.card.rounded-4
+        div.card-img-top.gradient-overlay.bg-teal.position-relative style="height:420px"
+          div.card-slide.active style="background-image:url(https://plus.unsplash.com/premium_photo-1670598265559-83ca3882ca96?q=80&w=686&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)"
+          div.card-slide style="background-image:url(https://plus.unsplash.com/premium_photo-1671379086168-a5d018d583cf?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)"
+          div.card-slide style="background-image:url(https://plus.unsplash.com/premium_photo-1670598267085-053235b0d6de?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDEwfHx8ZW58MHx8fHx8)"
+          div.card-slide style="background-image:url(https://images.unsplash.com/photo-1601004890684-d8cbf643f5f2?q=80&w=715&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)"
+          div.card-body.p-3.text-white.position-relative.z-index-1.flex-col.justify-end.h-100
+            h5.display-1.mb-3: "Stupid green"
+
+    div.col-4 data-zaiku-hover-slider data-show-pagination data-pagination-top data-move-only data-forward-only data-delay="200" data-effect="fade"
+      div.card.rounded-4
+        div.card-img-top.gradient-overlay.bg-teal.position-relative style="height:420px"
+          div.card-slide.active style="background-image:url(https://images.unsplash.com/photo-1712167631738-4dab9e53c853?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)"
+          div.card-slide style="background-image:url(https://images.unsplash.com/photo-1698108223358-903ec1c2c85f?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)"
+          div.card-slide style="background-image:url(https://images.unsplash.com/photo-1712168631921-5b9fd204ebd2?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)"
+          div.card-body.p-4.text-white.position-relative.z-index-1.flex-col.justify-end.h-100.hover-hide
+            h5.h6.mb-1: "Nike Air Max 90"
+            h5.h2: "Breathe in the future"
+            p.mb-0.text-sm: "Air cushioning meets iconic design — from the running track to the city streets, the Nike Air Max 90 delivers timeless style and unmatched comfort with every step..."
+
+    div.col-4 data-zaiku-hover-slider data-speed="1200" data-speed-boost="3" data-show-counter data-show-pagination data-counter-top data-pagination-top data-effect="slide"
+      div.card.rounded-4
+        div.card-img-top.gradient-overlay.bg-teal.position-relative style="height:420px"
+          div.card-slide.active style="background-image:url(https://images.unsplash.com/photo-1533104816931-20fa691ff6ca?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)"
+          div.card-slide style="background-image:url(https://images.unsplash.com/photo-1623682230640-124e3e027dd9?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDF8fHxlbnwwfHx8fHw%3D)"
+          div.card-slide style="background-image:url(https://plus.unsplash.com/premium_photo-1688410049290-d7394cc7d5df?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)"
+          div.card-body.p-3.text-white.position-relative.z-index-1.flex-col.justify-end.h-100 > div.p-3
+            h5.h6.mb-1: "Santorini, Greece"
+            h5.h2: "A paradise for travelers and dreamers alike"
+            p.mb-0.text-sm: "Perched on the caldera cliffs, Santorini offers stunning sunsets, whitewashed buildings with blue domes, and crystal-clear Aegean waters..."
+  
+  div.row.my-5 style="height: 260px"
+    for $effect in ["blur", "zoom", "rotate", "skew"]:
+      div.col-3 data-zaiku-hover-slider data-reset-on-leave="true" data-show-counter data-show-pagination data-counter-top data-pagination-top data-forward-only data-effect=$effect
+        div.card.rounded-4
+          div.card-img-top.gradient-overlay.bg-teal.position-relative style="height:260px"
+            div.card-slide.active style="background-image:url(https://images.unsplash.com/photo-1712167631738-4dab9e53c853?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)"
+            div.card-slide style="background-image:url(https://images.unsplash.com/photo-1698108223358-903ec1c2c85f?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)"
+            div.card-slide style="background-image:url(https://images.unsplash.com/photo-1712168631921-5b9fd204ebd2?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)"
+            div.card-body.p-3.text-white.position-relative.z-index-1.flex-col.justify-end.h-100
+              h6.text-uppercase.mb-1: $effect
+              h5.h4.mb-0: "GSAP effect"
+
+div.mt-5
+  h5.h2.mb-3: "Lazy Loading"
+  p.mb-3: "Add \`data-zaiku-lazy\` and \`data-src\` to any element. A centered spinner shows while loading. Supports \`<img>\` and \`background-image\` elements."
+  div.row.mb-3 style="height: 420px"
+    div.col-4 > div.card.rounded-4.h-100
+      div.card-img-bg.gradient-overlay.bg-darkred.position-relative.h-100 data-zaiku-lazy data-src="https://images.unsplash.com/photo-1712167631738-4dab9e53c853?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0"
+        div.card-body.p-3.text-white.position-relative.z-index-1.flex-col.justify-end.h-100
+          h5.h3.mb-1: "Background-image"
+          p.mb-0.text-sm: "Loaded via data-src on a div"
+
+    div.col-4 > div.card.rounded-4.h-100
+      div.card-img-bg.gradient-overlay.bg-teal.flex-col.align-items-center.justify-center.h-100
+        img.rounded-circle style="width:80px; height:80px; object-fit:cover" data-zaiku-lazy data-src="https://images.unsplash.com/photo-1698108223358-903ec1c2c85f?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0"
+        div.card-body.p-3.text-white.position-relative.z-index-1
+          h5.h3.mb-1: "Avatar (img tag)"
+          p.mb-0.text-sm: "data-src swaps into src on load"
+
+    div.col-4 > div.card.rounded-4.h-100
+      div.card-img-bg.img-cover.gradient-overlay.bg-lavender.position-relative.h-100 data-zaiku-lazy data-src="https://plus.unsplash.com/premium_photo-1688410049290-d7394cc7d5df?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0"
+        div.card-body.p-3.text-white.position-relative.z-index-1.flex-col.justify-end.h-100
+          h5.h3.mb-1: "Lazy background"
+          p.mb-0.text-sm: "In view → loads → replaces placeholder"
+
+  div.row style="height: 420px;"
+    div.col-12.offset-3 > div.card.rounded-4.h-100
+      div.card-img-bg.gradient-overlay.bg-dark.position-relative.h-100 data-zaiku-lazy data-src="https://images.unsplash.com/photo-1601004890684-d8cbf643f5f2?q=80&w=715&auto=format&fit=crop&ixlib=rb-4.1.0" data-lazy-loading="<svg xmlns='http://www.w3.org/2000/svg' width='48' height='48' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'><path d='M12 3a9 9 0 1 0 9 9'/><circle cx='12' cy='12' r='9' fill='none' stroke='white' stroke-width='1.5' opacity='0.2'/></svg>"
+        div.card-body.p-3.text-white.position-relative.z-index-1.flex-col.justify-end.h-100
+          h5.h3.mb-1: "Custom loading SVG"
+          p.mb-0.text-sm: "data-lazy-loading replaces the default spinner"
+
+
+script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/gsap.min.js"

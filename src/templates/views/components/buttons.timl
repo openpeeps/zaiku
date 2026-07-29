@@ -1,0 +1,321 @@
+
+h2.h1: "Buttons"
+p.lead.mb-3: "Use the .btn class with a color modifier class to style links as buttons."
+
+div.mb-5 > div.tab-area
+  nav.tab-list.tab-list-sm role="tablist"
+    button.btn.btn-secondary.tab.tab-active role="tab" aria-selected="true"
+      svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+        path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"
+        circle cx="12" cy="12" r="3"
+      span: "Preview"
+    button.btn.btn-secondary.tab role="tab" aria-selected="false"
+      svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+        polyline points="16 18 22 12 16 6"
+        polyline points="8 6 2 12 8 18"
+      span: "Code"
+  div.tab-content
+    div.tab-panel.tab-panel-active role="tabpanel"
+      // cute small buttons
+      h5.h6: "Small buttons"
+      div.flex.w-full.flex-wrap.g-3.mb-4
+        a.btn.btn-primary.btn-sm: "Primary button"
+        a.btn.btn-secondary.btn-sm: "Secondary button"
+        button.btn.btn-outline.btn-sm: "Outline button"
+        a.btn.btn-danger.btn-sm: "Danger button"
+
+      // default size
+      h5.h6: "Small buttons"
+      div.flex.w-full.flex-wrap.g-3.mb-4
+        a.btn.btn-primary: "Primary button"
+        a.btn.btn-secondary: "Secondary button"
+        button.btn.btn-outline: "Outline button"
+        a.btn.btn-danger: "Danger button"
+
+      // large buttons
+      h5.h6: "Small buttons"
+      div.flex.w-full.flex-wrap.g-3.mb-4
+        a.btn.btn-primary.btn-lg: "Primary button"
+        a.btn.btn-secondary.btn-lg: "Secondary button"
+        button.btn.btn-outline.btn-lg: "Outline button"
+        a.btn.btn-danger.btn-lg: "Danger button"
+      
+      // extra large
+      h5.h6: "Small buttons"
+      div.flex.w-full.flex-wrap.g-3
+        a.btn.btn-primary.btn-xl: "Primary button"
+        a.btn.btn-secondary.btn-xl: "Secondary button"
+        button.btn.btn-outline.btn-xl: "Outline button"
+        a.btn.btn-danger.btn-xl: "Danger button"
+
+    div.tab-panel role="tabpanel"
+      pre.text-gray-100.p-4.rounded-4 style="font-size:.85rem": """
+// cute small buttons
+div.flex.w-full.flex-wrap.g-3
+  a.btn.btn-primary.btn-sm: "Primary button"
+  a.btn.btn-secondary.btn-sm: "Secondary button"
+  button.btn.btn-outline.btn-sm: "Outline button"
+  a.btn.btn-danger.btn-sm: "Danger button"
+
+// default size
+div.flex.w-full.flex-wrap.g-3.mt-4
+  a.btn.btn-primary: "Primary button"
+  a.btn.btn-secondary: "Secondary button"
+  button.btn.btn-outline: "Outline button"
+  a.btn.btn-danger: "Danger button"
+
+// large buttons
+div.flex.w-full.flex-wrap.g-3.mt-4
+  a.btn.btn-primary.btn-lg: "Primary button"
+  a.btn.btn-secondary.btn-lg: "Secondary button"
+  button.btn.btn-outline.btn-lg: "Outline button"
+  a.btn.btn-danger.btn-lg: "Danger button"
+
+// extra large
+div.flex.w-full.flex-wrap.g-3.mt-4
+  a.btn.btn-primary.btn-xl: "Primary button"
+  a.btn.btn-secondary.btn-xl: "Secondary button"
+  button.btn.btn-outline.btn-xl: "Outline button"
+  a.btn.btn-danger.btn-xl: "Danger button"
+"""
+
+h2.h1: "Button groups"
+p.lead.mb-3: "Group a series of buttons together on a single line with the .btn-group class."
+div.mb-5 > div.tab-area
+  nav.tab-list.tab-list-sm role="tablist"
+    button.btn.btn-secondary.tab.tab-active role="tab" aria-selected="true"
+      svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+        path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"
+        circle cx="12" cy="12" r="3"
+      span: "Preview"
+    button.btn.btn-secondary.tab role="tab" aria-selected="false"
+      svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+        polyline points="16 18 22 12 16 6"
+        polyline points="8 6 2 12 8 18"
+      span: "Code"
+  div.tab-content
+    div.tab-panel.tab-panel-active role="tabpanel"
+      div.flex.w-full.flex-wrap.mx-auto.g-2
+        button.btn.btn-secondary type="button" class="btn-icon-outline" aria-label="Go Back"
+          svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            path d="m12 19-7-7 7-7"
+            path d="M19 12H5"
+
+        div.btn-group
+          button.btn.btn-secondary type="button": "Left"
+          button.btn.btn-secondary type="button": "Middle"
+          button.btn.btn-secondary type="button": "Right"
+
+        div.btn-group
+          button.btn.btn-secondary type="button": "Extras"
+          div.dropdown
+            button.btn.btn-secondary.dropdown-toggle type="button" data-dropdown-toggle-icon="dots" aria-label="More options"
+              svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                circle cx="12" cy="12" r="1"
+                circle cx="19" cy="12" r="1"
+                circle cx="5" cy="12" r="1"
+            div.dropdown-menu.dropdown-menu-end style="width:180px;"
+              input:text.form-control.mb-2 placeholder="Type your ideas here"
+              button.dropdown-item
+                svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  path d="M5 12l5 5l10 -10"
+                span: "Mark as Read"
+              button.dropdown-item
+                svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  path d="M5 12l5 5l10 -10"
+                  path d="M5 12l5 5l10 -10" transform="translate(0,5)"
+                span: "Archive"
+              hr.dropdown-divider
+              button.dropdown-item
+                span.dropdown-item-prefix
+                  svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    path d="M9 6l11 0"
+                    path d="M9 12l11 0"
+                    path d="M9 18l11 0"
+                    path d="M5 6l0 .01"
+                    path d="M5 12l0 .01"
+                    path d="M5 18l0 .01"
+                span: "Add to List"
+              hr.dropdown-divider
+              button.dropdown-item
+                svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  path d="M4 7l16 0"
+                  path d="M10 11l0 6"
+                  path d="M14 11l0 6"
+                  path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12"
+                  path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3"
+                span: "Trash"
+    div.tab-panel role="tabpanel"
+      pre.text-gray-100.p-4.rounded-4 style="font-size:.85rem": """
+div.flex.w-full.flex-wrap.g-3
+  a.btn.btn-primary: "Primary button"
+  a.btn.btn-secondary: "Check out"
+  a.btn.btn-danger: "Delete"
+  button.btn.btn-primary: "Button element"
+"""
+
+div.mb-5
+  h2.h1: "Preloaders"
+  p.lead.mb-3: "Spinners indicate loading states. Use the .spinner class or .btn-loading for buttons."
+  div.card.p-5.my-3
+    h5.h3.mb-3: "Standalone"
+    div.flex.w-full.flex-wrap.mx-auto.g-3.items-center
+      span.spinner
+      span.spinner.spinner-sm
+      span.spinner.spinner-lg
+      span.spinner style="color: var(--color-danger-500)"
+      span.spinner style="color: var(--color-success-500)"
+
+  div.card.p-5.my-3
+    h5.h3.mb-3: "In buttons"
+    div.flex.w-full.flex-wrap.mx-auto.g-3.items-center
+      button.btn.btn-primary
+        span.spinner.spinner-sm
+        span: "Saving"
+      button.btn.btn-secondary
+        "Loading"
+        span.spinner.spinner-sm
+      button.btn.btn-danger.btn-loading
+        "Deleting"
+      button.btn.btn-primary.btn-sm.disabled
+        span.spinner.spinner-sm
+        span: "Sending"
+      button.btn.btn-primary.btn-lg disabled
+        span.spinner.spinner-sm
+        span: "Processing"
+
+div.mb-5
+  h2.h1: "Dropdowns"
+  p.lead.mb-3: "Add .dropdown-toggle to any button inside a .dropdown container."
+  div.card.p-5.my-3 style="overflow:visible"
+    h5.h3.mb-3: "Basic dropdown"
+    div.d-flex.gap-3.flex-wrap
+      div.dropdown
+        button.btn.btn-primary.dropdown-toggle: "Actions"
+        div.dropdown-menu
+          button.dropdown-item: "Edit"
+          button.dropdown-item: "Duplicate"
+          hr.dropdown-divider
+          button.dropdown-item: "Delete"
+      div.dropdown
+        button.btn.btn-secondary.dropdown-toggle: "More with Icons"
+        div.dropdown-menu
+          a.dropdown-item href="#"
+            svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"
+              path d="M12 10m-1 0a1 1 0 1 0 2 0a1 1 0 1 0 -2 0"
+              path d="M6.168 18.849l4.242 -4.242"
+              path d="M12.05 14.632l4.242 4.242"
+            span: "Profile"
+          a.dropdown-item href="#"
+            svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              path d="M10.325 4.317c.426 -1.756 2.924 -1.756 3.35 0a1.724 1.724 0 0 0 2.573 1.066c1.543 -.94 3.31 .826 2.37 2.37a1.724 1.724 0 0 0 1.065 2.572c1.756 .426 1.756 2.924 0 3.35a1.724 1.724 0 0 0 -1.066 2.573c.94 1.543 -.826 3.31 -2.37 2.37a1.724 1.724 0 0 0 -2.572 1.065c-.426 1.756 -2.924 1.756 -3.35 0a1.724 1.724 0 0 0 -2.573 -1.066c-1.543 .94 -3.31 -.826 -2.37 -2.37a1.724 1.724 0 0 0 -1.065 -2.572c-1.756 -.426 -1.756 -2.924 0 -3.35a1.724 1.724 0 0 0 1.066 -2.573c-.94 -1.543 .826 -3.31 2.37 -2.37c1 .608 2.296 .07 2.572 -1.065z"
+              path d="M15 12a3 3 0 1 0 -6 0a3 3 0 0 0 6 0z"
+            span: "Settings"
+          hr.dropdown-divider
+          a.dropdown-item href="#"
+            span: "Log out"
+            span.dropdown-item-suffix
+              svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                path d="M14 8v-2a2 2 0 0 0 -2 -2h-7a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h7a2 2 0 0 0 2 -2v-2"
+                path d="M9 12h12l-3 -3"
+                path d="M18 15l3 -3"
+      div.dropdown
+        button.btn.btn-outline.dropdown-toggle: "Position end"
+        div.dropdown-menu.dropdown-menu-end
+          button.dropdown-item
+            svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              path d="M4 20h4l10.5 -10.5a2.828 2.828 0 1 0 -4 -4l-10.5 10.5v4"
+              path d="M13.5 6.5l4 4"
+            span: "Rename"
+          button.dropdown-item
+            svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              path d="M5 4h4l3 3h7a2 2 0 0 1 2 2v8a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-11a2 2 0 0 1 2 -2"
+            span: "Move to"
+          button.dropdown-item.active
+            svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              path d="M9 12l2 2l4 -4"
+              path d="M12 3a9 9 0 1 0 9 9"
+            span: "Mark as read"
+      div.dropdown
+        button.btn.btn-danger.dropdown-toggle data-dropdown-toggle-icon="text"
+          span: "See more"
+          span.ml-1: "..."
+        div.dropdown-menu
+          button.dropdown-item: "Option A"
+          button.dropdown-item: "Option B"
+          button.dropdown-item: "Option C"
+      div.dropdown
+        button.btn.btn-success.dropdown-toggle: "Nested"
+        div.dropdown-menu style="min-width:200px"
+          div.dropdown-item.dropdown-submenu
+            span: "Edit"
+            div.dropdown-menu
+              button.dropdown-item: "Undo"
+              button.dropdown-item: "Redo"
+              hr.dropdown-divider
+              button.dropdown-item: "Cut"
+              button.dropdown-item: "Copy"
+              button.dropdown-item: "Paste"
+          div.dropdown-item.dropdown-submenu
+            span: "View"
+            div.dropdown-menu
+              button.dropdown-item: "Zoom In"
+              button.dropdown-item: "Zoom Out"
+              hr.dropdown-divider
+              button.dropdown-item: "Fullscreen"
+          hr.dropdown-divider
+          button.dropdown-item: "Help"
+  
+  div.card.p-5.my-3 style="overflow:visible"
+    h5.h3.mb-3: "In button groups"
+    div.btn-group
+      button.btn.btn-secondary type="button": "Save"
+      button.btn.btn-secondary type="button": "Save As"
+      div.dropdown
+        button.btn.btn-secondary.dropdown-toggle type="button" aria-label="More options"
+        div.dropdown-menu.dropdown-menu-end style="width:180px;"
+          button.dropdown-item
+            svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              path d="M5 12l5 5l10 -10"
+            span: "Mark as Read"
+          button.dropdown-item
+            svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              path d="M5 12l5 5l10 -10"
+              path d="M5 12l5 5l10 -10" transform="translate(0,5)"
+            span: "Archive"
+          hr.dropdown-divider
+          button.dropdown-item
+            span.dropdown-item-prefix
+              svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                path d="M9 6l11 0"
+                path d="M9 12l11 0"
+                path d="M9 18l11 0"
+                path d="M5 6l0 .01"
+                path d="M5 12l0 .01"
+                path d="M5 18l0 .01"
+            span: "Add to List"
+          hr.dropdown-divider
+          button.dropdown-item
+            svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              path d="M4 7l16 0"
+              path d="M10 11l0 6"
+              path d="M14 11l0 6"
+              path d="M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12"
+              path d="M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3"
+            span: "Trash"
+
+  div.card.p-5.my-3  style="overflow:visible"
+    h5.h3.mb-3: "With callbacks"
+    p.mb-3: "onOpen, onClose, and onSelect events fire on the dropdown. By default, clicking a dropdown item closes the menu. Add data-dropdown-stay-open to keep it open, or have onSelect return false. Configure via Zaiku.init({ dropdown: { onOpen: fn, onClose: fn, onSelect: fn } }). Check the console."
+    div.dropdown
+      button.btn.btn-primary.dropdown-toggle: "Event Demo"
+      div.dropdown-menu style="max-width:12em"
+        button.dropdown-item: "Closes (default)"
+        hr.dropdown-divider
+        div.px-2 > input:number.form-control value=1 step=1
+        hr.dropdown-divider
+        div.text-center > button.btn.btn-secondary: "Loading"
+          span.spinner.spinner-sm
+        hr.dropdown-divider
+        button.dropdown-item: "Also closes"

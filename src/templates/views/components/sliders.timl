@@ -1,0 +1,255 @@
+h2.h1: "Sliders"
+p.lead.mb-3: "A versatile slider component with prev/next controls, pagination, auto-play, drag/swipe, responsive breakpoints, and GSAP-enhanced transitions."
+
+div.mt-5
+  h5.h2.mb-3: "Basic Slider"
+  p.mb-3: "Add \`data-zaiku-slider\` to a container with \`.zaiku-slider-slide\` children. Enable controls and pagination via \`data-show-controls\` and \`data-show-pagination\`."
+  div.card.p-4
+    div.zaiku-slider data-zaiku-slider data-show-controls data-show-pagination
+      div.zaiku-slider-slide
+        div.card.rounded-4.p-4.bg-azure.text-center
+          h5.h2.mb-2: "Slide 1"
+          p.text-gray-600: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+      div.zaiku-slider-slide
+        div.card.rounded-4.p-4.bg-honeydew.text-center
+          h5.h2.mb-2: "Slide 2"
+          p.text-gray-600: "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+      div.zaiku-slider-slide
+        div.card.rounded-4.p-4.bg-mistyrose.text-center
+          h5.h2.mb-2: "Slide 3"
+          p.text-gray-600: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris."
+      div.zaiku-slider-slide
+        div.card.rounded-4.p-4.bg-lavender.text-center
+          h5.h2.mb-2: "Slide 4"
+          p.text-gray-600: "Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore."
+
+div.mt-5
+  h5.h2.mb-3: "Auto-play"
+  p.mb-3: "Use \`data-autoplay\` to auto-advance. Set \`data-interval\` on each \`.zaiku-slider-slide\` for per-slide timing (falls back to the global \`data-interval\`). A timer bar shows at the top."
+  div.card.p-4
+    div.zaiku-slider data-zaiku-slider data-autoplay data-interval="2000" data-loop data-show-controls data-show-pagination
+      div.zaiku-slider-slide
+        div.card.rounded-4.p-5.bg-lightcyan.text-center.h-100 > div.py-5.my-5
+          h5.display-1.mb-4: "You gotta be fast!"
+          p.h3.text-gray-600: "A 2 second slide for fast readers"
+      div.zaiku-slider-slide data-interval="1500"
+        div.card.rounded-4.p-5.bg-lemonchiffon.text-center.h-100 > div.py-5.my-5
+          h5.display-1.mb-4: "Hurry, hurry, hurry"
+          p.h3.text-gray-600: "1.5 seconds ~ No time for banners!"
+      div.zaiku-slider-slide data-interval="3000"
+        div.card.rounded-4.p-5.bg-lavenderblush.text-center.h-100 > div.py-5.my-5
+          h5.display-1.mb-4: "Kinda normal"
+          p.h3.text-gray-600: "3 seconds should be enough..."
+      div.zaiku-slider-slide data-interval="5000"
+        div.card.rounded-4.p-5.bg-mistyrose.text-center.h-100 > div.py-5.my-5
+          h5.display-1.mb-4: "Boring 5s slider?"
+          p.h3.text-gray-600: "No problem, take your time!"
+
+div.mt-5
+  h5.h2.mb-3: "Multi-view"
+  p.mb-3: "Show multiple slides at once with \`data-slides-per-view\`. Add \`data-gap\` to space them."
+  div.card.p-4
+    div.zaiku-slider data-zaiku-slider data-slides-per-view="2" data-gap="16" data-show-controls data-show-pagination
+      div.zaiku-slider-slide
+        div.card.rounded-4.p-4.bg-azure
+          h5.h3: "Card A"
+          p.text-sm.text-gray-600: "Two cards visible at once with 16px gap."
+      div.zaiku-slider-slide
+        div.card.rounded-4.p-4.bg-honeydew
+          h5.h3: "Card B"
+          p.text-sm.text-gray-600: "Each card is half the container width."
+      div.zaiku-slider-slide
+        div.card.rounded-4.p-4.bg-mistyrose
+          h5.h3: "Card C"
+          p.text-sm.text-gray-600: "Three slides total, controls let you browse."
+      div.zaiku-slider-slide
+        div.card.rounded-4.p-4.bg-lavender
+          h5.h3: "Card D"
+          p.text-sm.text-gray-600: "Pagination dots update on each slide change."
+
+div.mt-5
+  h5.h2.mb-3: "Vertical Slider"
+  p.mb-3: "Add \`data-direction="vertical"\` for vertical sliding. Controls, pagination, and drag/swipe adapt automatically. Add \`data-pagination-left\` to place pagination on the left."
+  div.card.p-4 style="height:380px"
+    div.zaiku-slider style="height:300px" data-zaiku-slider data-direction="vertical" data-show-controls data-show-pagination data-show-counter data-draggable
+      div.zaiku-slider-slide
+        div.card.rounded-4.p-4.bg-lightcyan.text-center.h-100
+          h5.h3: "Up"
+          p.text-sm.text-gray-600: "Swipe up or press ∨"
+      div.zaiku-slider-slide
+        div.card.rounded-4.p-4.bg-lemonchiffon.text-center.h-100
+          h5.h3: "Down"
+          p.text-sm.text-gray-600: "Swipe down or press ∧"
+      div.zaiku-slider-slide
+        div.card.rounded-4.p-4.bg-lavenderblush.text-center.h-100
+          h5.h3: "Vertical"
+          p.text-sm.text-gray-600: "Works with auto-play, loop, and counter too."
+      div.zaiku-slider-slide
+        div.card.rounded-4.p-4.bg-mistyrose.text-center.h-100
+          h5.h3: "Pagination"
+          p.text-sm.text-gray-600: "Dots stack vertically on the right side."
+
+div.mt-5
+  h5.h2.mb-3: "Drag & Swipe"
+  p.mb-3: "Enable \`data-draggable\` for mouse drag and touch swipe. Drag past 30% of a slide width to advance."
+  div.card.p-4
+    div.zaiku-slider data-zaiku-slider data-draggable data-show-pagination
+      div.zaiku-slider-slide
+        div.card.rounded-4.p-5.bg-lightcyan.text-center
+          h5.h2: "← Drag me →"
+          p.text-gray-600: "Click and drag to navigate slides."
+      div.zaiku-slider-slide
+        div.card.rounded-4.p-5.bg-lemonchiffon.text-center
+          h5.h2: "Touch ready"
+          p.text-gray-600: "Works with mouse and touch events."
+      div.zaiku-slider-slide
+        div.card.rounded-4.p-5.bg-lavenderblush.text-center
+          h5.h2: "Snappy"
+          p.text-gray-600: "Snaps to nearest slide on release."
+
+div.mt-5
+  h5.h2.mb-3: "Image slider"
+  p.mb-3: "Use \`.zaiku-slider-slide\` with background images or \`<img>\` tags for image galleries."
+  div.card.p-4
+    div.zaiku-slider data-zaiku-slider data-show-controls data-show-pagination data-loop style="border-radius:var(--radius-md);overflow:hidden"
+      div.zaiku-slider-slide style="height:320px;background-size:cover;background-position:center;background-image:url(https://images.unsplash.com/photo-1712167631738-4dab9e53c853?q=80&w=1170&auto=format&fit=crop)"
+      div.zaiku-slider-slide style="height:320px;background-size:cover;background-position:center;background-image:url(https://images.unsplash.com/photo-1698108223358-903ec1c2c85f?q=80&w=687&auto=format&fit=crop)"
+      div.zaiku-slider-slide style="height:320px;background-size:cover;background-position:center;background-image:url(https://images.unsplash.com/photo-1712168631921-5b9fd204ebd2?q=80&w=687&auto=format&fit=crop)"
+
+div.mt-5
+  h5.h2.mb-3: "Programmatic API"
+  p.mb-3: "Access the slider instance via \`container.zaiku.sliderInstance\` or create one with \`new Zaiku.Slider()\`. Use \`goTo()\`, \`next()\`, \`prev()\`, \`start()\`, \`stop()\`, and \`destroy()\`. Check the console for \`onSlide\` events."
+  div.card.p-4
+    div.zaiku-slider id="api-slider-demo" data-zaiku-slider data-show-pagination
+      div.zaiku-slider-slide
+        div.card.rounded-4.p-4.bg-azure.text-center > div.py-5.my-5
+          h5.h2: "API Demo"
+          p.text-gray-600: "Use the buttons below to control this slider."
+      div.zaiku-slider-slide
+        div.card.rounded-4.p-4.bg-honeydew.text-center > div.py-5.my-5
+          h5.h2: "goTo(3)"
+          p.text-gray-600: "Jump to any slide by index."
+      div.zaiku-slider-slide
+        div.card.rounded-4.p-4.bg-mistyrose.text-center > div.py-5.my-5
+          h5.h2: "next()"
+          p.text-gray-600: "Advance to the next slide."
+      div.zaiku-slider-slide
+        div.card.rounded-4.p-4.bg-lavender.text-center > div.py-5.my-5
+          h5.h2: "prev()"
+          p.text-gray-600: "Go back to the previous slide."
+
+    div.d-flex.gap-2.mt-3.justify-center.flex-wrap
+      button.btn.btn-secondary.btn-sm data-api-prev: "← Prev"
+      button.btn.btn-secondary.btn-sm data-api-goto="0": "1"
+      button.btn.btn-secondary.btn-sm data-api-goto="1": "2"
+      button.btn.btn-secondary.btn-sm data-api-goto="2": "3"
+      button.btn.btn-secondary.btn-sm data-api-goto="3": "4"
+      button.btn.btn-secondary.btn-sm data-api-next: "Next →"
+      button.btn.btn-secondary.btn-sm data-api-start: "▶ Start"
+      button.btn.btn-secondary.btn-sm data-api-stop: "■ Stop"
+      button.btn.btn-secondary.btn-sm data-api-destroy: "✕ Destroy"
+      button.btn.btn-secondary.btn-sm data-api-init: "↻ Init"
+      button.btn.btn-secondary.btn-sm data-api-loop data-api-loop-label: "Loop: ON"
+      button.btn.btn-secondary.btn-sm data-api-add: "+ Add slide"
+      button.btn.btn-secondary.btn-sm data-api-remove: "− Remove last"
+      button.btn.btn-secondary.btn-sm data-api-counter="toggle": "Counter: ON"
+      button.btn.btn-secondary.btn-sm data-api-status: "Status"
+      button.btn.btn-secondary.btn-sm data-api-timer data-api-timer-label: "Timer: bar"
+
+    div.mt-3.p-3.rounded-4.text-xs style="background:var(--color-gray-100);min-height:3rem;font-family:monospace;white-space:pre-wrap;overflow-y:auto;max-height:6rem" id="api-event-log"
+
+  @javascript
+Zaiku.ready(function() {
+  var el = document.getElementById('api-slider-demo')
+  var root = el.parentNode
+  var logEl = document.getElementById('api-event-log')
+  var loopBtn = root.querySelector('[data-api-loop]')
+  var loopEnabled = true
+
+  function log(msg) {
+    var t = new Date().toLocaleTimeString()
+    logEl.textContent += '[' + t + '] ' + msg + '\n'
+    logEl.scrollTop = logEl.scrollHeight
+  }
+
+  function updateLoopBtn() {
+    loopBtn.textContent = 'Loop: ' + (loopEnabled ? 'ON' : 'OFF')
+  }
+
+  function createSlider() {
+    var old = el.zaiku && el.zaiku.sliderInstance
+    if (old) old.destroy()
+    new Zaiku.Slider(el, {
+      slider: {
+        loop: loopEnabled,
+        showPagination: true,
+        draggable: true,
+        onInit: function(inst) { log('onInit') },
+        onSlide: function(to, from, inst) { log('onSlide ' + from + ' → ' + to) },
+        onStart: function(inst) { log('onStart') },
+        onDrag: function(dx, inst) { log('onDrag dx=' + dx) },
+        onSwipe: function(dx, inst) { log('onSwipe dx=' + dx) },
+        onEnd: function(inst) { log('onEnd') },
+        onCancel: function(inst) { log('onCancel') },
+        onDestroy: function(inst) { log('onDestroy') }
+      }
+    })
+  }
+
+  createSlider()
+
+  root.querySelector('[data-api-prev]').addEventListener('click', function() { var i = el.zaiku && el.zaiku.sliderInstance; i && i.prev() })
+  root.querySelector('[data-api-next]').addEventListener('click', function() { var i = el.zaiku && el.zaiku.sliderInstance; i && i.next() })
+  root.querySelector('[data-api-start]').addEventListener('click', function() { var i = el.zaiku && el.zaiku.sliderInstance; i && i.start() })
+  root.querySelector('[data-api-stop]').addEventListener('click', function() { var i = el.zaiku && el.zaiku.sliderInstance; i && i.stop() })
+  root.querySelector('[data-api-destroy]').addEventListener('click', function() {
+    var i = el.zaiku && el.zaiku.sliderInstance; if (i) { i.destroy() }
+  })
+  root.querySelector('[data-api-init]').addEventListener('click', function() { createSlider() })
+  loopBtn.addEventListener('click', function() { loopEnabled = !loopEnabled; updateLoopBtn(); createSlider() })
+  root.querySelector('[data-api-add]').addEventListener('click', function() {
+    var i = el.zaiku && el.zaiku.sliderInstance; if (!i) return
+    var n = i.getTotal() + 1
+    var slide = document.createElement('div')
+    slide.className = 'zaiku-slider-slide'
+    slide.innerHTML = '<div class="card rounded-4 p-4 text-center" style="background:var(--color-gray-100)"><h5 class="h2">Slide ' + n + '</h5><p class="text-gray-600">Added via addSlide()</p></div>'
+    i.addSlide(slide)
+    log('addSlide index=' + (n - 1))
+  })
+  root.querySelector('[data-api-remove]').addEventListener('click', function() {
+    var i = el.zaiku && el.zaiku.sliderInstance; if (!i) return
+    var t = i.getTotal()
+    if (t <= 1) { log('removeSlide: need at least 1 slide'); return }
+    i.removeSlide(t - 1)
+    log('removeSlide index=' + (t - 1))
+  })
+  root.querySelector('[data-api-counter]').addEventListener('click', function() {
+    var i = el.zaiku && el.zaiku.sliderInstance; if (!i) return
+    var btn = this
+    var on = btn.textContent.indexOf('ON') !== -1
+    i.setOptions({ showCounter: !on })
+    btn.textContent = on ? 'Counter: OFF' : 'Counter: ON'
+    log('setOptions showCounter=' + (!on))
+  })
+  root.querySelector('[data-api-status]').addEventListener('click', function() {
+    var i = el.zaiku && el.zaiku.sliderInstance; if (!i) return
+    log('current=' + i.getCurrent() + ' total=' + i.getTotal())
+  })
+  var timerBtn = root.querySelector('[data-api-timer]')
+  timerBtn.addEventListener('click', function() {
+    var i = el.zaiku && el.zaiku.sliderInstance; if (!i) return
+    var isPie = i.timerStyle === 'pie'
+    i.setOptions({ timerStyle: isPie ? 'bar' : 'pie' })
+    timerBtn.textContent = 'Timer: ' + (isPie ? 'bar' : 'pie')
+    log('setOptions timerStyle=' + (isPie ? 'bar' : 'pie'))
+  })
+  root.querySelectorAll('[data-api-goto]').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var i = el.zaiku && el.zaiku.sliderInstance
+      if (i) i.goTo(parseInt(btn.getAttribute('data-api-goto')))
+    })
+  })
+})
+  @end
+
+script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.15.0/gsap.min.js"

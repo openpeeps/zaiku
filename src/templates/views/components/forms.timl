@@ -1,0 +1,281 @@
+div.p-4
+  div.mb-4
+    h2.h1: "Text Inputs"
+    p.lead.mb-3: "Text inputs allow users to enter and edit text."
+
+    div.card.p-5.my-3
+      h5.h3.mb-3: "Basic inputs"
+      div.row.g-3
+        div.col-6
+          div.field
+            label.field-label for="input-text": "Text"
+            input#input-text.input type="text" placeholder="Enter text"
+        div.col-6
+          div.field
+            label.field-label for="input-email": "Email"
+            input#input-email.input type="email" placeholder="you@example.com"
+        div.col-6
+          div.field
+            label.field-label for="input-password": "Password"
+            input#input-password.input type="password" placeholder="Enter password"
+            span.field-hint: "Must be at least 8 characters"
+        div.col-3
+          div.field
+            label.field-label for="input-disabled": "Disabled"
+            input#input-disabled.input type="text" placeholder="Disabled input" disabled
+        div.col-3
+          div.field
+            label.field-label for="input-error": "Error"
+            input#input-error.input type="text" placeholder="Invalid input" aria-invalid="true"
+            span.field-error: "This field is required."
+        div.col-3
+          div.field
+            label.field-label for="input-select": "Select"
+            select#input-select.input
+              option: "Choose"
+              option: "Option 1"
+              option: "Option 2"
+              option: "Option 3"
+
+    div.card.p-5.my-3
+      h5.h3.mb-3: "Textarea"
+      div.field
+        label.field-label for="input-textarea": "Message"
+        textarea#input-textarea.input placeholder="Enter your message" rows="4"
+
+    div.card.p-5.my-3
+      h5.h3.mb-3: "Input sizes"
+      div.row.g-3
+        div.col-4
+          div.field
+            label.field-label: "Small"
+            input.input.input-sm type="text" placeholder="Small"
+        div.col-4
+          div.field
+            label.field-label: "Default"
+            input.input type="text" placeholder="Default"
+        div.col-4
+          div.field
+            label.field-label: "Large"
+            input.input.input-lg type="text" placeholder="Large"
+
+    div.card.p-5.my-3
+      h5.h3.mb-3: "Input groups"
+      div.row.g-3
+        div.col-6
+          div.field
+            label.field-label: "With prefix"
+            div.input-group
+              span.input-group-text: "@"
+              input.input type="text" placeholder="username"
+        div.col-6
+          div.field
+            label.field-label: "With suffix"
+            div.input-group
+              input.input type="text" placeholder="Search..."
+              span.input-group-text: "/search"
+      div.row.g-3.mt-3
+        div.col-6
+          div.field
+            label.field-label: "With buttons"
+            div.input-group
+              input.input type="text" placeholder="Search..."
+              button.btn.btn-primary type="button": "Search"
+        div.col-6
+          div.field
+            label.field-label: "Quantity"
+            div.input-group
+              button.btn.btn-secondary type="button": "-"
+              input.input.text-center type="text" value="1"
+              button.btn.btn-secondary type="button": "+"
+
+  div.mb-4
+    h2.h1: "Switches"
+    div.card.p-5.my-3
+      div.field.form-switch
+        label
+          input.mr-1 role="switch" type="checkbox"
+          "Default switch"
+    div.card.p-5.my-3
+      div.row > div.col-8.mx-auto > div.row.gap-3
+        div.col-12
+          div.card.p-3.rounded-4
+            div.flex-row.items-center
+              div.field.form-switch.mr-2
+                input role="switch" type="checkbox"
+              div.flex-col.flex-1
+                h5.h5.card-title: "Marketing emails"
+                p: "Receive updates about our products."
+        div.col-12
+          div.card.p-3.rounded-4
+            div.flex-row.items-center
+              div.field.form-switch.mr-2
+                input role="switch" checked type="checkbox"
+              div.flex-col.flex-1
+                h5.h5.card-title: "Account notifications"
+                p: "Receive notifications about account activity."
+
+  div.mb-4
+    h2.h1: "Checkboxes & Radios"
+    p.lead.mb-3: "Custom styled checkboxes and radio buttons."
+    div.row.g-3
+      div.col-6
+        div.card.p-5
+          h5.h3.mb-3: "Checkboxes"
+          div.mb-3
+            label.field-label.mb-2: "Inline"
+            div.flex.flex-wrap.gap-3
+              label.checkbox
+                input checked type="checkbox"
+                "Option A"
+              label.checkbox
+                input type="checkbox"
+                "Option B"
+              label.checkbox
+                input disabled type="checkbox"
+                "Disabled"
+          div
+            label.field-label.mb-2: "Block"
+            div.field
+              label.checkbox.checkbox-block
+                input checked type="checkbox"
+                "Option A"
+              label.checkbox.checkbox-block
+                input type="checkbox"
+                "Option B"
+              label.checkbox.checkbox-block
+                input disabled type="checkbox"
+                "Disabled"
+      div.col-6
+        div.card.p-5
+          h5.h3.mb-3: "Radio buttons"
+          div.mb-3
+            label.field-label.mb-2: "Inline"
+            div.flex.flex-wrap.gap-3
+              label.radio
+                input checked name="r1" type="radio"
+                "Option A"
+              label.radio
+                input name="r1" type="radio"
+                "Option B"
+              label.radio
+                input disabled name="r1-d" type="radio"
+                "Disabled"
+          div
+            label.field-label.mb-2: "Block"
+            div.field
+              label.radio.radio-block
+                input checked name="r2" type="radio"
+                "Option A"
+              label.radio.radio-block
+                input name="r2" type="radio"
+                "Option B"
+              label.radio.radio-block
+                input disabled name="r2-d" type="radio"
+                "Disabled"
+
+  div.mb-4
+    h2.h1: "Server-Side Validation"
+    p.lead.mb-3: "Add data-zaiku-validation to a form for live SSR validation."
+    div.row.g-3
+      div.col-6
+        div.card.p-5
+          form data-zaiku-validation="true" novalidate
+            div.field
+              label.field-label for="val-email": "Email"
+              input#val-email.input type="email" name="email" placeholder="you@example.com" autocomplete="off" required
+            div.field.mt-3
+              label.field-label for="val-pass": "Password"
+              input#val-pass.input type="text" name="password" placeholder="Your password" autocomplete="off" required
+            div.mt-3
+              button.btn.btn-primary type="submit": "Submit"
+      div.col-6
+        div.card.p-5
+          h5.h3.mb-3: "Static examples"
+          div.field
+            label.field-label: "Email (with error)"
+            input.input aria-invalid="true" type="text" value="bad"
+            div.field-msg.field-msg-danger.is-visible: "Please enter a valid email"
+          div.field.mt-3
+            label.field-label: "Username (with warning)"
+            input.input aria-invalid="true" type="text" value="a"
+            div.field-msg.field-msg-warning.is-visible: "Must be at least 3 characters"
+          div.field.mt-3
+            label.field-label: "Default (danger)"
+            input.input aria-invalid="true" type="text" value="bad"
+            div.field-msg.field-msg-danger.is-visible: "This field is required."
+
+  div.mb-4
+    h2.h1: "Drag Scrub Input"
+    p.lead.mb-3: "A drag-to-scrub number input. Drag left/right to adjust, click to edit, arrow keys to nudge."
+    div.card.p-5.my-3
+      h5.h3.mb-3: "Basic scrub"
+      div.row.g-3
+        div.col-3
+          div.field
+            label.field-label: "Opacity (%)"
+            div.input-scrub data-zaiku-scrub="" data-scrub-min="0" data-scrub-max="100" data-scrub-value="50" tabindex="0"
+              span.input-scrub-value
+              input.input-scrub-field type="text"
+              input type="hidden" name="opacity"
+        div.col-3
+          div.field
+            label.field-label: "Font size (px)"
+            div.input-scrub data-zaiku-scrub="" data-scrub-min="8" data-scrub-max="72" data-scrub-value="16" data-scrub-decimals="1" data-scrub-suffix="px" tabindex="0"
+              span.input-scrub-value
+              input.input-scrub-field type="text"
+              input type="hidden" name="font-size"
+        div.col-3
+          div.field
+            label.field-label: "Duration (s)"
+            div.input-scrub data-zaiku-scrub="" data-scrub-min="0" data-scrub-max="60" data-scrub-value="2.5" data-scrub-decimals="2" data-scrub-step="0.5" data-scrub-fine-step="0.1" data-scrub-suffix="s" tabindex="0"
+              span.input-scrub-value
+              input.input-scrub-field type="text"
+              input type="hidden" name="duration"
+        div.col-3
+          div.field
+            label.field-label: "Price ($)"
+            div.input-scrub data-zaiku-scrub="" data-scrub-min="0" data-scrub-max="9999" data-scrub-value="29.99" data-scrub-decimals="2" data-scrub-prefix="$" data-scrub-step="5" data-scrub-fine-step="0.5" tabindex="0"
+              span.input-scrub-value
+              input.input-scrub-field type="text"
+              input type="hidden" name="price"
+
+    div.card.p-5.my-3
+      h5.h3.mb-3: "JS Init with callbacks"
+      p.mb-3: "Initialize the scrub manually via JavaScript with onInput, onFocus, and onUpdate events."
+      div.row.g-3
+        div.col-3
+          div.field
+            label.field-label: "JS Scrub (0–100)"
+            div.d-block > div#js-scrub-example.input-scrub tabindex="0"
+              span.input-scrub-value
+              input.input-scrub-field type="text"
+              input type="hidden" name="js-scrub"
+        div.col-9
+          div.field
+            label.field-label: "Event log"
+            div#scrub-event-log.bg-gray-100.p-3.rounded-4.text-sm.text-gray style="min-height:4rem"
+      @javascript
+Zaiku.ready(function() {
+  var jsScrub = document.getElementById('js-scrub-example')
+  if (!jsScrub) return
+  var scrubLog = document.getElementById('scrub-event-log')
+  new Zaiku.Scrub(jsScrub, {
+    min: 0,
+    max: 100,
+    step: 2,
+    fineStep: 0.5,
+    decimals: 1,
+    suffix: '%',
+    onInput: function(val) {
+      if (scrubLog) scrubLog.textContent = 'input: ' + val
+    },
+    onFocus: function(val) {
+      if (scrubLog) scrubLog.textContent = 'focus: ' + val
+    },
+    onUpdate: function(val) {
+      if (scrubLog) scrubLog.textContent = 'update: ' + val
+    }
+  })
+});
+      @end

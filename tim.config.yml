@@ -13,6 +13,25 @@ server:
   threads: 1
   routes:
     "/": "index"
+    "/components/animations": "components/animations"
+    "/components/accordion": "components/accordion"
+    "/components/alerts": "components/alerts"
+    "/components/badges": "components/badges"
+    "/components/buttons": "components/buttons"
+    "/components/cards": "components/cards"
+    "/components/chatbox": "components/chatbox"
+    "/components/clipboard": "components/clipboard"
+    "/components/empty": "components/empty"
+    "/components/forms": "components/forms"
+    "/components/images": "components/images"
+    "/components/items": "components/items"
+    "/components/popovers": "components/popovers"
+    "/components/progress": "components/progress"
+    "/components/sliders": "components/sliders"
+    "/components/hover-sliders": "components/hover-sliders"
+    "/components/tabs": "components/tabs"
+    "/components/tags": "components/tags"
+    "/components/typography": "components/typography"
 
 browser_sync:
   port: 3500
