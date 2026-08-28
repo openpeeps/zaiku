@@ -1,0 +1,286 @@
+/* Button Utilities — extracted */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 17px;
+  gap: var(--btn-gap, 0.5rem);
+  padding: var(--btn-padding, 0.4rem 0.75rem);
+  font-size: var(--btn-font-size, .92rem);
+  font-weight: 600;
+  text-align: center;
+  text-decoration: none;
+  border: 1px solid transparent;
+  border-radius: var(--btn-radius, var(--radius-lg));
+  cursor: pointer;
+  user-select: none;
+  box-shadow: var(--btn-shadow, var(--shadow-sm));
+  transition: background-color var(--transition-fast) ease,
+              border-color var(--transition-fast) ease,
+              color var(--transition-fast) ease,
+              box-shadow var(--transition-fast) ease;
+}
+
+.btn:active {
+  scale: var(--btn-active-scale, 0.98);
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+}
+
+.btn.disabled,
+.btn[disabled],
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.btn-primary {
+  background-color: var(--color-gray-900);
+  color: #fff;
+  border-color: var(--color-gray-900);
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-900);
+  border-color: var(--color-primary-900);
+}
+
+.btn-primary:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--color-primary-200);
+}
+
+.btn-secondary {
+  background-color: var(--color-gray-100);
+  color: var(--color-gray-800);
+  border-color: var(--color-gray-300);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-gray-200);
+}
+
+.btn-secondary:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--color-gray-300);
+}
+
+.btn-success {
+  background-color: var(--color-success-500);
+  color: #fff;
+  border-color: var(--color-success-500);
+}
+
+.btn-success:hover {
+  background-color: #16a34a; /* slightly darker */
+}
+
+.btn-success:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px #bbf7d0;
+}
+
+.btn-danger {
+  background-color: var(--color-danger-500);
+  color: #fff;
+  border-color: var(--color-danger-500);
+}
+
+.btn-danger:hover {
+  background-color: #dc2626;
+}
+
+.btn-danger:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px #fecaca;
+}
+
+.btn-outline {
+  background-color: transparent;
+  color: var(--color-primary-600);
+  border-color: var(--color-primary-300);
+}
+
+.btn-outline:hover {
+  background-color: var(--color-primary-50);
+}
+
+.btn-outline:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--color-primary-200);
+}
+
+.btn-sm {
+  padding: 0.2rem 0.5rem;
+  font-size: 0.825rem;
+}
+
+.btn-lg {
+  padding: 0.5rem 1rem;
+  font-size: 1.05rem;
+}
+
+.btn-xl {
+  padding: 0.7rem 1.25rem;
+  font-size: 1.25rem;
+}
+
+.btn-block {
+  display: block;
+  width: 100%;
+}
+
+.btn-group {
+  display: inline-flex;
+  vertical-align: middle;
+  gap: 0;
+  border-radius: var(--radius-lg);
+}
+
+/* reset individual button rounding so group corners show correctly */
+.btn-group .btn {
+  border-radius: 0;
+  margin: 0;
+  position: relative;
+}
+
+/* collapse adjacent borders (prevents double borders) */
+.btn-group .btn + .btn {
+  margin-left: -1px;
+}
+
+/* restore outer radii from the group's radius */
+.btn-group .btn:first-child {
+  border-top-left-radius: inherit;
+  border-bottom-left-radius: inherit;
+}
+.btn-group .btn:last-child {
+  border-top-right-radius: inherit;
+  border-bottom-right-radius: inherit;
+}
+
+/* handle nested dropdown as first/last in button group */
+.btn-group .dropdown:first-child {
+  border-top-left-radius: inherit;
+  border-bottom-left-radius: inherit;
+}
+.btn-group .dropdown:first-child .btn {
+  border-top-left-radius: inherit;
+  border-bottom-left-radius: inherit;
+}
+.btn-group .dropdown:last-child {
+  border-top-right-radius: inherit;
+  border-bottom-right-radius: inherit;
+}
+.btn-group .dropdown:last-child .btn {
+  border-top-right-radius: inherit;
+  border-bottom-right-radius: inherit;
+}
+.btn-group .dropdown:first-child:last-child {
+  border-radius: inherit;
+}
+.btn-group .dropdown:first-child:last-child .btn {
+  border-radius: inherit;
+}
+
+.btn-group .dropdown {
+  margin-left: -1px;
+}
+.btn-group .dropdown:first-child {
+  margin-left: 0;
+}
+.btn-group .btn + .dropdown,
+.btn-group .dropdown + .btn {
+  margin-left: -1px;
+}
+
+/* vertical variant */
+.btn-group-vertical,
+.btn-group.vertical {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0;
+  border-radius: var(--radius-lg);
+}
+
+.btn-group-vertical .btn,
+.btn-group.vertical .btn {
+  border-radius: 0;
+  margin: 0;
+}
+
+.btn-group-vertical .btn + .btn,
+.btn-group.vertical .btn + .btn {
+  margin-top: -1px;
+}
+
+/* restore outer radii for vertical groups */
+.btn-group-vertical .btn:first-child,
+.btn-group.vertical .btn:first-child {
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
+}
+.btn-group-vertical .btn:last-child,
+.btn-group.vertical .btn:last-child {
+  border-bottom-left-radius: inherit;
+  border-bottom-right-radius: inherit;
+}
+
+/* handle nested dropdown in vertical button groups */
+.btn-group-vertical .dropdown:first-child,
+.btn-group.vertical .dropdown:first-child {
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
+}
+.btn-group-vertical .dropdown:first-child .btn,
+.btn-group.vertical .dropdown:first-child .btn {
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
+}
+.btn-group-vertical .dropdown:last-child,
+.btn-group.vertical .dropdown:last-child {
+  border-bottom-left-radius: inherit;
+  border-bottom-right-radius: inherit;
+}
+.btn-group-vertical .dropdown:last-child .btn,
+.btn-group.vertical .dropdown:last-child .btn {
+  border-bottom-left-radius: inherit;
+  border-bottom-right-radius: inherit;
+}
+.btn-group-vertical .dropdown:first-child:last-child,
+.btn-group.vertical .dropdown:first-child:last-child {
+  border-radius: inherit;
+}
+.btn-group-vertical .dropdown:first-child:last-child .btn,
+.btn-group.vertical .dropdown:first-child:last-child .btn {
+  border-radius: inherit;
+}
+
+.btn-group-vertical .dropdown,
+.btn-group.vertical .dropdown {
+  margin-top: -1px;
+}
+.btn-group-vertical .dropdown:first-child,
+.btn-group.vertical .dropdown:first-child {
+  margin-top: 0;
+}
+
+/* optional full-width helper */
+.btn-group.block,
+.btn-group-vertical.block {
+  display: flex;
+  width: 100%;
+}
+
+/* ensure .btn-block inside groups behaves */
+.btn-group .btn-block,
+.btn-group-vertical .btn-block {
+  width: 100%;
+}
+
+.btn svg:not([class*="size-"]) {
+  width: calc(var(--spacing) * 4);
+  height: calc(var(--spacing) * 4);
+  display: block;
+}
+

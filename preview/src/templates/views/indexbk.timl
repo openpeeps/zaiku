@@ -1,0 +1,883 @@
+div.col-12 > div.p-2
+  div.mb-5
+    h2.h1: "Typography"
+
+    h1.h1: "Heading 1"
+    h2.h2: "Heading 2"
+    h3.h3: "Heading 3"
+    h4.h4: "Heading 4"
+    h5.h5: "Heading 5"
+    h6.h6: "Heading 6"
+
+    p.lead: "This is a lead paragraph. It stands out from regular paragraphs."
+    p: "This is a regular paragraph. It provides standard text content for the page."
+    p.mt-3: "Text links:"
+    p
+      a.text-link href="#": "Default link (inherits color)"
+      span.mx-2: "·"
+      a.text-link style="--link-underline-color: var(--color-teal)" href="#": "Teal underline"
+      span.mx-2: "·"
+      a.text-link style="--link-underline-color: var(--color-gold)" href="#": "Gold underline"
+      span.mx-2: "·"
+      a.text-link.text-link-lavender href="#": "Lavender underline"
+
+  div.mb-5
+    h2.h1: "Buttons"
+    p.lead.mb-3: "Use the .btn class with a color modifier class to style links as buttons."
+    div.card.p-5.my-3
+      div.flex.w-full.flex-wrap.g-3
+        a.btn.btn-primary: "Primary button"
+        a.btn.btn-secondary: "Check out"
+        a.btn.btn-danger: "Delete"
+        button.btn.btn-primary: "Button element"
+
+  div.mb-5
+    h2.h1: "Button groups"
+    p.lead.mb-3: "Group a series of buttons together on a single line with the .btn-group class."
+    
+    div.card.p-5.my-3
+      div.flex.w-full.flex-wrap.mx-auto.g-2
+        button.btn.btn-secondary type="button" class="btn-icon-outline" aria-label="Go Back"
+          svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            path d="m12 19-7-7 7-7"
+            path d="M19 12H5"
+
+        div.btn-group
+          button.btn.btn-secondary type="button": "Left"
+          button.btn.btn-secondary type="button": "Middle"
+          button.btn.btn-secondary type="button": "Right"
+
+        div.btn-group
+          button.btn.btn-secondary type="button": "Right"
+          button.btn.btn-secondary.btn-icon type="button"
+            svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              circle cx="12" cy="12" r="1"
+              circle cx="19" cy="12" r="1"
+              circle cx="5" cy="12" r="1"
+
+  div.mb-5
+    h2.h1: "Preloaders"
+    p.lead.mb-3: "Spinners indicate loading states. Use the .spinner class as a standalone element, or pair it with buttons and badges."
+    div.card.p-5.my-3
+      h5.h3.mb-3: "Standalone"
+      div.flex.w-full.flex-wrap.mx-auto.g-3.items-center
+        span.spinner
+        span.spinner.spinner-sm
+        span.spinner.spinner-lg
+        span.spinner style="color: var(--color-danger-500)"
+        span.spinner style="color: var(--color-success-500)"
+
+    div.card.p-5.my-3
+      h5.h3.mb-3: "In buttons"
+      div.flex.w-full.flex-wrap.mx-auto.g-3.items-center
+        button.btn.btn-primary
+          span.spinner.spinner-sm
+          span: "Saving"
+        button.btn.btn-secondary
+          "Loading"
+          span.spinner.spinner-sm
+        button.btn.btn-danger.btn-loading
+          "Deleting"
+        button.btn.btn-primary.btn-sm.disabled
+          span.spinner.spinner-sm
+          span: "Sending"
+        button.btn.btn-primary.btn-lg disabled
+          span.spinner.spinner-sm
+          span: "Processing"
+        
+  div.mb-5
+    h2.h1: "Badges"
+    p.lead.mb-3: "Use the .badge class with a color modifier class to create badges for labeling or highlighting information."
+    
+    div.card.p-5.my-3
+      div.flex.w-full.flex-wrap.mx-auto.g-2
+        span.badge.badge-primary: "Badge"
+        span.badge.badge-secondary: "Secondary"
+        span.badge.badge-danger: "Bad bad not good"
+        span.badge.badge-outline.border-2: "Info"
+
+        a href="#" class="badge badge-primary": "Clickable badge"
+        span.badge.badge-status.badge-status-animate: "Online"
+
+        span.badge.badge-outline.badge-bar.border-2
+          span.badge.border-0.bg-lavender: "Important notice:"
+          span: "This badge has a lot of text and will wrap onto multiple lines if necessary."
+
+  div.mb-5
+    h2.h1: "Breadcrumbs"
+    p.lead.mb-3: "Indicate the current page’s location within a navigation hierarchy that automatically adds separators via CSS."
+    div.card.p-5.my-3
+      nav aria-label="breadcrumb"
+        ol.breadcrumb
+          li.breadcrumb-item: a href="#": "Home"
+          li.breadcrumb-item: a href="#": "Library"
+          li.breadcrumb-item.active aria-current="page": "Data"
+
+  div.mb-5
+    h2.h1: "Keyboard"
+    p.lead.mb-3: "Use the .kbd class to indicate input that is typically entered via the keyboard."
+    div.row
+      div.col-6 > div.card.p-5
+        div.inline-flex.g-3.mx-auto
+          kbd.kbd: "⌘"
+          kbd.kbd: "⇧"
+          kbd.kbd: "⌥"
+
+      div.col-6 > div.card.p-5
+        div.inline-flex.g-3.mx-auto
+          kbd.kbd: "Ctrl"
+          span: "+"
+          kbd.kbd: "C"
+
+  div.mb-4
+    h2.h1: "Cards"
+    p.lead.mb-3: "Cards are flexible content containers with various options for headers and footers, a wide variety of content, contextual background colors, and powerful display options."
+    div.card.p-5.my-3
+      div.row
+        div.col-4 > div.card.p-4.rounded-4
+          div.card-body
+            h5.h3.card-title: "Card title"
+            p.mb-2: "After a long day of work, I like to relax with a good book and a cup of tea. It helps me unwind and escape into different worlds."
+
+        div.col-4 > div.card.p-4.rounded-4
+          div.card-body
+            h5.h3.card-title: "Card title"
+            p.mb-2: "After a long day of work, I like to relax with a good book and a cup of tea. It helps me unwind and escape into different worlds."
+
+        div.col-4 > div.card.p-4.rounded-4
+          div.card-body
+            h5.h3.card-title: "Card title"
+            p.mb-2: "After a long day of work, I like to relax with a good book and a cup of tea. It helps me unwind and escape into different worlds."
+
+        div.col-3 > div.card.p-4.rounded-4
+          div.card-body
+            h5.h3.card-title: "Card title"
+            p.mb-2: "After a long day of work, I like to relax with a good book and a cup of tea. It helps me unwind and escape into different worlds."
+
+        div.col-6 > div.card.p-4.rounded-4.bg-lavender.border-0.h-full
+          div.card-body.content-center.text-center
+            h5.h1.card-title: "Card title"
+            p.mb-2: "After a long day of work, I like to relax with a good book and a cup of tea. It helps me unwind and escape into different worlds."
+
+        div.col-3 > div.card.p-4.rounded-4
+          div.card-body
+            h5.h3.card-title: "Card title"
+            p.mb-2: "After a long day of work, I like to relax with a good book and a cup of tea. It helps me unwind and escape into different worlds."
+
+    div.mt-4
+      div.row
+        div.col-3 > div.card.rounded-4
+          div.card-img-top.bg-lavender.flex.align-items-center.justify-center.text-center style="background-size: cover;  background-repeat: no-repeat; background-position:center center; background-image:url(https://images.unsplash.com/photo-1778470075441-8b2c7ce123b7?q=80&w=762&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)"
+          div.card-body.p-3
+            h5.h3.card-title: "The Great Gatsby"
+            p.mb-2: "Fitzgerald's Jazz Age masterpiece captures the glittering illusions of the American Dream."
+            div.d-flex.gap-2.justify-between
+              button.btn.btn-secondary: "Cancel"
+              button.btn.btn-primary: "I agree"
+
+        div.col-3 > div.card.rounded-4
+          div.card-img-top.gradient-overlay.bg-teal.position-relative
+            style="background-size: cover;  background-repeat: no-repeat; background-position:center center; background-image:url(https://images.unsplash.com/photo-1778470075441-8b2c7ce123b7?q=80&w=762&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)"
+          div.card-body.p-3
+            h5.h3.card-title: "Moby-Dick"
+            p.mb-2: "Melville's great white whale swims through the depths of obsession, fate, and the unknown."
+            div.d-flex.gap-2.justify-between
+              a.text-link.align-self-center: "Nevermind."
+              button.btn.btn-primary: "I agree"
+
+        div.col-3 > div.card.rounded-4.h-100
+          div.card-img-top.gradient-overlay.bg-teal.flex-col.justify-end.h-100
+            style="background-size: cover;  background-repeat: no-repeat; background-position:center center; background-image:url(https://images.unsplash.com/photo-1778470075441-8b2c7ce123b7?q=80&w=762&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)"
+            div.card-body.p-3.text-white.position-relative.z-index-1.flex-col.justify-between.flex-1
+              div.align-self-start: "This is amazing"
+              div
+                h5.h3.card-title: "The Raven"
+                p.mb-2: "Once upon a midnight dreary, while I pondered, weak and weary, over many a quaint and curious volume of forgotten lore..."
+        
+        div.col-3 > div.card.rounded-4.h-100
+          div.card-img-top.gradient-overlay.gradient-top.bg-teal.flex-col.justify-end.h-100
+            div.card-body.p-3.text-white.position-relative.z-index-1.flex-col.justify-between.flex-1
+              span.position-absolute.spinner.top-0.bottom-0.left-0.right-0.mx-auto.my-auto
+              div.align-self-start: "This is amazing"
+              div
+                h5.h3.card-title: "The Iliad"
+                p.mb-2: "Homer's epic of wrath and glory, where gods and mortals clash beneath the walls of Troy."
+
+    div.mt-4
+      h5.h3.mb-3: "Hover effects"
+      p.lead.mb-3: "Add \`.hover-zoom\` or \`.hover-rotate\` to \`.card-img-top\` for image effects on card hover. Combine with \`.ease-linear\` or \`.ease-bounce\` for different feels."
+      div.row style="height:240px;"
+        div.col-3 > div.card.rounded-4.h-100
+          div.card-img-top.gradient-overlay.gradient-top.bg-teal.flex-col.justify-end.h-100
+            div.card-img-bg.hover-zoom
+              style="background-image:url(https://images.unsplash.com/photo-1778470075441-8b2c7ce123b7?q=80&w=762&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)"
+            div.card-body.p-3.text-white.position-relative.z-index-1.flex-col.justify-between.flex-1
+              div.flex-row.w-full.justify-between
+                span: "Zoom"
+                span: "Gradient Top"
+              div
+                h5.h3.card-title: ".hover-zoom"
+                p.mb-2: "Scales up 1.12x. .gradient-top fades toward the top."
+
+        div.col-3 > div.card.rounded-4.h-100
+          div.card-img-top.gradient-overlay.gradient-teal.bg-teal.flex-col.justify-end.h-100
+            div.card-img-bg.hover-rotate
+              style="background-image:url(https://images.unsplash.com/photo-1778470075441-8b2c7ce123b7?q=80&w=762&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)"
+            div.card-body.p-3.text-white.position-relative.z-index-1.flex-col.justify-between.flex-1
+              div.flex-row.w-full.justify-between
+                span: "Rotate"
+                span: "Teal Gradient"
+              div
+                h5.h3.card-title: ".hover-rotate"
+                p.mb-2: "Rotates 2.5°. .gradient-teal gives a teal-tinted overlay."
+
+        div.col-3 > div.card.rounded-4.h-100
+          div.card-img-top.gradient-overlay.bg-teal.flex-col.justify-end.h-100
+            div.card-img-bg.hover-zoom.hover-rotate.ease-bounce
+              style="background-image:url(https://images.unsplash.com/photo-1778470075441-8b2c7ce123b7?q=80&w=762&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)"
+            div.card-body.p-3.text-white.position-relative.z-index-1.flex-col.justify-between.flex-1
+              div.flex-row.w-full.justify-between
+                span: "Zoom + Rotate"
+                span: "Bounce"
+              div
+                h5.h3.card-title: "Zoom + Rotate + Bounce"
+                p.mb-2: "Combined with .ease-bounce for a springy feel."
+
+        div.col-3 > div.card.rounded-4.h-100
+          div.card-img-top.gradient-overlay.bg-teal.flex-col.justify-end.h-100
+            div.card-img-bg.hover-zoom.ease-linear
+              style="background-image:url(https://images.unsplash.com/photo-1778470075441-8b2c7ce123b7?q=80&w=762&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D)"
+            div.card-body.p-3.text-white.position-relative.z-index-1.flex-col.justify-between.flex-1
+              div.flex-row.w-full.justify-between
+                span: "Zoom"
+                span: "Linear"
+              div
+                h5.h3.card-title: "Zoom + Linear"
+                p.mb-2: ".hover-zoom.ease-linear for constant speed zoom."
+
+  div.mb-4
+    h2.h1: "Item"
+    p.lead: "Items are simple components that can be used to display content in a list format. They can include text, images, and other elements."
+
+    div.card.p-5.my-3
+      div.row.mt-4 > div.col-12 > div.row.gap-3
+        div.col-12
+          div.card.p-3.rounded-4
+            div.flex-row.gap-5.items-center
+              div.flex-col.flex-1
+                h5.h5.card-title: "Item title"
+                p: "This is an item description. It provides more details about the item and its content."
+              button.ml-3.btn.btn-secondary.align-self-center: "Click me"
+        
+        div.col-12
+          div.card.p-3.rounded-4.border-0.bg-lavenderblush
+            div.flex-row.gap-5.items-center
+              div.flex-col.flex-1
+                h5.h5.card-title: "Item title"
+                p: "This is an item description. It provides more details about the item and its content."
+              button.ml-3.btn.btn-primary.align-self-center: "Check out"
+
+        div.col-12
+          div.card.p-3.rounded-4.border-0.bg-lavender
+            div.flex-row.gap-5.items-center
+              button.mr-3.btn.btn-secondary.align-self-center: "Check out"
+              div.flex-col.flex-1
+                h5.h5.card-title: "Item title"
+                p: "This is an item description. It provides more details about the item and its content."
+
+        div.col-12
+          div.card.p-3.rounded-4
+            div.flex-row.gap-5.items-center
+              div.flex-col.flex-1
+                p: "Your profile has been verified successfully"
+
+
+  div.mb-4
+    h2.h1: "Text Inputs"
+    p.lead.mb-3: "Text inputs allow users to enter and edit text content."
+
+    div.card.p-5.my-3
+      h5.h3.mb-3: "Basic inputs"
+      div.row.g-3
+        div.col-6
+          div.field
+            label.field-label for="input-text": "Text"
+            input#input-text.input type="text" placeholder="Enter text"
+        div.col-6
+          div.field
+            label.field-label for="input-email": "Email"
+            input#input-email.input type="email" placeholder="you@example.com"
+        div.col-6
+          div.field
+            label.field-label for="input-password": "Password"
+            input#input-password.input type="password" placeholder="Enter password"
+            span.field-hint: "Must be at least 8 characters"
+        div.col-3
+          div.field
+            label.field-label for="input-disabled": "Disabled"
+            input#input-disabled.input type="text" placeholder="Disabled input" disabled
+        div.col-3
+          div.field
+            label.field-label for="input-error": "Error"
+            input#input-error.input type="text" placeholder="Invalid input" aria-invalid="true"
+            span.field-error: "This field is required."
+        div.col-3
+          div.field
+            label.field-label for="input-select": "Select"
+            select#input-select.input
+              option: "Choose an option"
+              option: "Option 1"
+              option: "Option 2"
+              option: "Option 3"
+
+    div.card.p-5.my-3
+      h5.h3.mb-3: "Textarea"
+      div.field
+        label.field-label for="input-textarea": "Message"
+        textarea#input-textarea.input placeholder="Enter your message" rows="4"
+
+    div.card.p-5.my-3
+      h5.h3.mb-3: "Input sizes"
+      div.row.g-3
+        div.col-4
+          div.field
+            label.field-label: "Small"
+            input.input.input-sm type="text" placeholder="Small input"
+        div.col-4
+          div.field
+            label.field-label: "Default"
+            input.input type="text" placeholder="Default input"
+        div.col-4
+          div.field
+            label.field-label: "Large"
+            input.input.input-lg type="text" placeholder="Large input"
+
+    div.card.p-5.my-3
+      h5.h3.mb-3: "Input groups"
+      h6.h5.mb-2: "Text adornments"
+      div.row.g-3
+        div.col-6
+          div.field
+            label.field-label: "With prefix"
+            div.input-group
+              span.input-group-text: "@"
+              input.input type="text" placeholder="username"
+        div.col-6
+          div.field
+            label.field-label: "With suffix"
+            div.input-group
+              input.input type="text" placeholder="Search..."
+              span.input-group-text: "/search"
+
+      h6.h5.mt-4.mb-2: "With buttons"
+      div.row.g-3
+        div.col-6
+          div.field
+            label.field-label: "Search"
+            div.input-group
+              input.input type="text" placeholder="Search..."
+              button.btn.btn-primary type="button": "Search"
+        div.col-6
+          div.field
+            label.field-label: "Copy link"
+            div.input-group
+              button.btn.btn-secondary type="button": "Copy"
+              input.input type="text" value="https://example.com" readonly
+        div.col-6
+          div.field
+            label.field-label: "Quantity"
+            div.input-group
+              button.btn.btn-secondary type="button": "-"
+              input.input.text-center type="text" value="1"
+              button.btn.btn-secondary type="button": "+"
+        div.col-6
+          div.field
+            label.field-label: "With icon button"
+            div.input-group
+              input.input type="text" placeholder="Search..."
+              button.btn.btn-secondary type="button" aria-label="Search": "→"
+
+  div.mb-4
+    h2.h1: "Server-Side Validation"
+    p.lead.mb-3: "Add \`data-zaiku-validation\` to a form to enable live SSR validation. Each input is validated against the server on keystroke, and messages attach below the input with status-colored backgrounds."
+    div.row.g-3
+      div.col-6
+        div.card.p-5
+          form data-zaiku-validation="true" novalidate
+            div.field
+              label.field-label for="validate-email": "Email"
+              input#validate-email.input type="email" name="email" placeholder="you@example.com" autocomplete="off" required
+            div.field.mt-3
+              div.d-flex.gap-2.justify-between
+                label.field-label for="validate-password": "Password"
+                a tabindex="-1" href="#": "Forgot your password?"
+              input#validate-password.input type="text" name="password" placeholder="Your password" autocomplete="off" required
+            div.mt-3
+              button.btn.btn-primary type="submit": "Submit"
+
+      div.col-6
+        div.card.p-5
+          h5.h3.mb-3: "Static examples"
+          p.mb-3: "The \`.field-msg\` component works standalone — no JS required."
+          div.field
+            label.field-label: "Email (with error)"
+            input.input aria-invalid="true" type="text" value="bad"
+            div.field-msg.field-msg-danger.is-visible: "Please enter a valid email"
+          div.field.mt-3
+            label.field-label: "Username (with warning)"
+            input.input aria-invalid="true" type="text" value="a"
+            div.field-msg.field-msg-warning.is-visible: "Must be at least 3 characters"
+          div.field.mt-3
+            label.field-label: "Default (danger)"
+            input.input aria-invalid="true" type="text" value="bad"
+            div.field-msg.field-msg-danger.is-visible: "This field is required."
+
+  div.mb-4
+    h2.h1: "Switches"
+    div.row.g-3 > div.col-12
+      div.card.p-5.my-3.text-center
+        div.field.form-switch
+          label
+            input.mr-1 role="switch" type="checkbox"
+            "Default switch checkbox input"
+      
+      div.card.p-5.my-3
+        div.row > div.col-8.mx-auto > div.row.gap-3
+          div.col-12
+            div.card.p-3.rounded-4
+              div.flex-row.items-center
+                div.field.form-switch.mr-2
+                  input role="switch" type="checkbox"
+                div.flex-col.flex-1
+                  h5.h5.card-title: "Marketing emails"
+                  p: "Receive updates and promotions about our products and services."
+
+          div.col-12
+            div.card.p-3.rounded-4
+              div.flex-row.items-center
+                div.field.form-switch.mr-2
+                  input role="switch" checked type="checkbox"
+                div.flex-col.flex-1
+                  h5.h5.card-title: "Account notifications"
+                  p: "Receive notifications about account activity and updates."
+
+  div.mb-4
+    h2.h1: "Checkboxes & Radios"
+    p.lead.mb-3: "Custom styled checkboxes and radio buttons with support for checked, disabled, and focus states."
+
+    div.row.g-3
+      div.col-6
+        div.card.p-5
+          h5.h3.mb-3: "Checkboxes"
+          div.mb-3
+            label.field-label.mb-2: "Inline"
+            div.flex.flex-wrap.gap-3
+              label.checkbox
+                input checked type="checkbox"
+                "Option A"
+              label.checkbox
+                input type="checkbox"
+                "Option B"
+              label.checkbox
+                input type="checkbox"
+                "Option C"
+              label.checkbox
+                input disabled type="checkbox"
+                "Disabled"
+          div
+            label.field-label.mb-2: "Block"
+            div.field
+              label.checkbox.checkbox-block
+                input checked type="checkbox"
+                "Option A"
+              label.checkbox.checkbox-block
+                input type="checkbox"
+                "Option B"
+              label.checkbox.checkbox-block
+                input type="checkbox"
+                "Option C"
+              label.checkbox.checkbox-block
+                input disabled type="checkbox"
+                "Disabled"
+
+      div.col-6
+        div.card.p-5
+          h5.h3.mb-3: "Radio buttons"
+          div.mb-3
+            label.field-label.mb-2: "Inline"
+            div.flex.flex-wrap.gap-3
+              label.radio
+                input checked name="radio-inline" type="radio"
+                "Option A"
+              label.radio
+                input name="radio-inline" type="radio"
+                "Option B"
+              label.radio
+                input name="radio-inline" type="radio"
+                "Option C"
+              label.radio
+                input disabled name="radio-inline-d" type="radio"
+                "Disabled"
+          div
+            label.field-label.mb-2: "Block"
+            div.field
+              label.radio.radio-block
+                input checked name="radio-block" type="radio"
+                "Option A"
+              label.radio.radio-block
+                input name="radio-block" type="radio"
+                "Option B"
+              label.radio.radio-block
+                input name="radio-block" type="radio"
+                "Option C"
+              label.radio.radio-block
+                input disabled name="radio-block-d" type="radio"
+                "Disabled"
+  div.mb-4
+    h2.h1: "Tag Input"
+    p.lead.mb-3: "A container that looks like an input but holds inline badge-like tags. Add JS to handle adding/removing tags."
+    div.row.g-3
+      div.col-12
+        div.card.p-5
+          div.field
+            label.field-label: "Technologies"
+            div.input-tags
+              span.badge.badge-secondary: "html"
+              span.badge.badge-secondary: "javascript"
+              span.badge.badge-secondary: "css"
+              input.input-tags-field type="text" placeholder="Add tag..."
+
+      div.col-6
+        div.card.p-5
+          div.field
+            label.field-label: "Email recipients"
+            div.input-tags#emailRecipients
+              input.input-tags-field type="text" placeholder="Add email..."
+
+      div.col-6
+        div.card.p-5
+          div.field
+            label.field-label: "Disabled"
+            div.input-tags
+              span.badge.badge-secondary: "locked"
+              input.input-tags-field type="text" placeholder="Disabled..." disabled
+
+  div.mb-4
+    h2.h1: "Chatbox"
+    p.lead.mb-3: "A chatbox-like textarea with a toolbar for actions like a chat input."
+    div.row.g-3
+      div.col-6
+        div.card.p-5
+          div.field
+            label.field-label: "Message"
+            div.chatbox
+              textarea.chatbox-input placeholder="Type a message..."
+              div.chatbox-toolbar
+                button.btn.btn-sm.btn-secondary type="button" aria-label="Attach file": "📎"
+                button.btn.btn-sm.btn-secondary type="button" aria-label="Add emoji": "😊"
+                div.flex-1
+                button.btn.btn-sm.btn-primary type="button": "Send"
+      div.col-6
+        div.card.p-5
+          div.field
+            label.field-label: "Reply"
+            div.chatbox
+              textarea.chatbox-input placeholder="Write a reply..." rows="3"
+              div.chatbox-toolbar
+                button.btn.btn-sm.btn-secondary type="button" aria-label="Attach file": "📎"
+                div.flex-1
+                button.btn.btn-sm.btn-secondary type="button": "Cancel"
+                button.btn.btn-sm.btn-primary type="button": "Reply"
+
+  div.mb-4
+    h2.h1: "Alerts & Toasts"
+    p.lead.mb-3: "Alerts provide contextual feedback messages. Toasts are alerts with a shadow for overlay positioning."
+
+    h5.h3.mb-3: "Alert variants"
+    div.row.g-3
+      div.col-6
+        div.alert.alert-info
+          span.alert-icon
+            svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              circle cx="12" cy="12" r="10"
+              path d="M12 16v-4"
+              path d="M12 8h.01"
+          div.alert-content
+            strong: "Info: "
+            "This is an informational alert."
+          button.alert-dismiss type="button" aria-label="Close": "×"
+
+      div.col-6
+        div.alert.alert-success
+          span.alert-icon
+            svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              circle cx="12" cy="12" r="10"
+              path d="m9 12 2 2 4-4"
+          div.alert-content
+            strong: "Success! "
+            "Your changes have been saved."
+          button.alert-dismiss type="button" aria-label="Close": "×"
+
+      div.col-6
+        div.alert.alert-warning
+          span.alert-icon
+            svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"
+              path d="M12 9v4"
+              path d="M12 17h.01"
+          div.alert-content
+            strong: "Warning: "
+            "Your session is about to expire."
+          button.alert-dismiss type="button" aria-label="Close": "×"
+
+      div.col-6
+        div.alert.alert-danger
+          span.alert-icon
+            svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              circle cx="12" cy="12" r="10"
+              path d="m15 9-6 6"
+              path d="m9 9 6 6"
+          div.alert-content
+            strong: "Error! "
+            "Something went wrong. Please try again."
+          button.alert-dismiss type="button" aria-label="Close": "×"
+
+    div.card.p-5.my-3
+      h5.h3.mb-3: "Toast example"
+      p.mb-3: "Toasts share alert styling with an added shadow. Position them with utility classes."
+      div.row.g-3
+        div.col-6
+          div.toast.alert.alert-info
+            span.alert-icon
+              svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                circle cx="12" cy="12" r="10"
+                path d="M12 16v-4"
+                path d="M12 8h.01"
+            div.alert-content: "New message received"
+            button.alert-dismiss type="button" aria-label="Close": "×"
+        div.col-6
+          div.toast.alert.alert-danger
+            span.alert-icon
+              svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                circle cx="12" cy="12" r="10"
+                path d="m15 9-6 6"
+                path d="m9 9 6 6"
+            div.alert-content: "Connection lost. Retrying..."
+            button.alert-dismiss type="button" aria-label="Close": "×"
+
+  div.mb-5
+    h2.h1: "Clipboard"
+    p.lead.mb-3: "Copy content to the clipboard with data-zaiku-clipboard and a data-copy-btn button."
+
+    div.card.p-5.my-3
+      h5.h3.mb-3: "Input + button"
+      div data-zaiku-clipboard=""
+        div.input-group
+          input.input type="text" value="https://example.com/share/abc123" readonly=""
+          button.btn.btn-secondary data-copy-btn="" data-clipboard-target="input": "Copy"
+
+    div.card.p-5.my-3
+      h5.h3.mb-3: "Code block with inline text"
+      div data-zaiku-clipboard="" data-clipboard-text="npm install zaiku"
+        span.bg-gray-100.p-3.rounded-4: code: "npm install zaiku"
+        button.btn.btn-secondary.mt-2 data-copy-btn="": "Copy"
+
+  div.mb-5.d-none
+    h2.h1: "Progress bars"
+    p.lead.mb-3: "Show progress with .progress and .progress-bar. Use data-zaiku-progress for JS control."
+
+    div.card.p-5.my-3
+      h5.h3.mb-3: "Basic"
+      div.progress data-zaiku-progress=""
+        div.progress-bar style="width: 45%"
+
+      h5.h3.mt-4.mb-3: "Sizes"
+      div.progress.progress-sm.mb-2 data-zaiku-progress=""
+        div.progress-bar style="width: 70%"
+      div.progress.mb-2 data-zaiku-progress=""
+        div.progress-bar style="width: 50%"
+      div.progress.progress-lg data-zaiku-progress=""
+        div.progress-bar style="width: 30%"
+
+      h5.h3.mt-4.mb-3: "Striped & animated"
+      div.progress.progress-striped.mb-2 data-zaiku-progress=""
+        div.progress-bar style="width: 60%"
+      div.progress.progress-striped.progress-animated data-zaiku-progress=""
+        div.progress-bar style="width: 80%"
+
+      h5.h3.mt-4.mb-3: "With label"
+      div.progress data-zaiku-progress=""
+        div.progress-bar style="width: 62%"
+        span.progress-label: "62%"
+
+      h5.h3.mt-4.mb-3: "Loading bar (indeterminate snake)"
+      p.mb-2: "Add .progress-loading for a looping snake animation. The label updates independently via JS."
+
+      div.progress.progress-loading.mb-2 data-zaiku-progress=""
+        div.progress-bar
+        span.progress-label: "Loading..."
+
+      div.progress.progress-loading.mb-3 id="loadingCounter" data-zaiku-progress=""
+        div.progress-bar
+        span.progress-label: "0%"
+      div.flex.g-2.mb-3
+        button.btn.btn-sm.btn-secondary onclick="document.getElementById('loadingCounter').zaiku.progressInstance.loading()": "Toggle Loading"
+        button.btn.btn-sm.btn-secondary onclick="document.getElementById('loadingCounter').zaiku.progressInstance.increment(5)": "+5%"
+        button.btn.btn-sm.btn-secondary onclick="document.getElementById('loadingCounter').zaiku.progressInstance.reset()": "Reset"
+
+      h5.h3.mt-4.mb-3: "Mini progress bar"
+      p.mb-2: "Use .progress-mini inline with text. It inherits the text color via currentColor, so it adapts to any parent."
+      div.card.p-4.bg-gray-50.rounded-4.mb-3
+        div.flex.g-3.items-center
+          span.progress-mini: span.progress-bar
+          span.text-sm: "Loading..."
+
+      div.flex.g-3.flex-wrap
+        button.btn.btn-primary
+          span.progress-mini: span.progress-bar
+          " Loading"
+        button.btn.btn-secondary
+          span.progress-mini style="color: var(--color-gray-600)": span.progress-bar
+          " Syncing"
+        span.badge.badge-primary
+          span.progress-mini: span.progress-bar
+          " Uploading"
+
+      h5.h3.mt-4.mb-3: "JS control"
+      div.progress.mb-3 id="demoProgress" data-zaiku-progress=""
+        div.progress-bar
+        span.progress-label: "0%"
+      div.flex.g-2
+      div.btn-group
+        button.btn.btn-sm.btn-secondary onclick="document.getElementById('demoProgress').zaiku.progressInstance.increment(10)": "+10%"
+        button.btn.btn-sm.btn-secondary onclick="document.getElementById('demoProgress').zaiku.progressInstance.reset()": "Reset"
+        button.btn.btn-sm.btn-secondary onclick="document.getElementById('demoProgress').zaiku.progressInstance.finish()": "Finish"
+        button.btn.btn-sm.btn-secondary onclick="document.getElementById('demoProgress').zaiku.progressInstance.start(100)": "Auto"
+        button.btn.btn-sm.btn-secondary onclick="document.getElementById('demoProgress').zaiku.progressInstance.stop()": "Stop"
+        button.btn.btn-sm.btn-info onclick="document.getElementById('demoProgress').zaiku.progressInstance.loading()": "Toggle Loading"
+
+  div.mb-5
+    h2.h1: "Tabs"
+    p.lead.mb-3: "Switch between content panels with .tab-area. Use .tab-list and .tab-content for the visual tab system."
+
+    div.card.overflow-hidden.my-3
+      div.tab-area
+        nav.tab-list.tab-list-sm role="tablist"
+          button.btn.btn-secondary.tab.tab-active role="tab" aria-selected="true"
+            svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"
+              circle cx="12" cy="12" r="3"
+            " Preview"
+          button.btn.btn-secondary.tab role="tab" aria-selected="false"
+            svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              polyline points="16 18 22 12 16 6"
+              polyline points="8 6 2 12 8 18"
+            " Code"
+        div.tab-content.border-top-0
+          div.tab-panel.tab-panel-active role="tabpanel"
+            div.rounded-4.bg-gray-100.p-4.text-center
+              span.text-gray-500: "Rendered preview content"
+          div.tab-panel role="tabpanel"
+            pre.bg-gray-900.text-gray-100.p-4.rounded-4 style="font-size:.85rem": "&lt;h1&gt;Hello World&lt;/h1&gt;\n&lt;p&gt;This is the code view.&lt;/p&gt;"
+
+    div.card.p-5.my-3
+      h5.h3.mb-3: "Account / Password switching"
+      div.tab-area data-tab-hash=""
+        nav.tab-list role="tablist" 
+          button.btn.btn-secondary.tab.tab-active role="tab" aria-selected="true"
+            svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"
+              circle cx="12" cy="7" r="4"
+            " Account"
+          button.btn.btn-secondary.tab role="tab" aria-selected="false"
+            svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              rect x="3" y="11" width="18" height="11" rx="2" ry="2"
+              path d="M7 11V7a5 5 0 0 1 10 0v4"
+            " Password"
+        div.tab-content
+          div.tab-panel.tab-panel-active role="tabpanel" id="account"
+            div.flex.flex-column.g-3
+              div: strong: "Account Settings"
+              div.input-group
+                span.input-group-text: "Email"
+                input.input type="email" value="user@example.com" readonly=""
+              div.input-group
+                span.input-group-text: "Name"
+                input.input type="text" value="John Doe" readonly=""
+              button.btn.btn-primary: "Save Changes"
+          div.tab-panel role="tabpanel" id="password"
+            div.flex.flex-column.g-3
+              div: strong: "Change Password"
+              div.input-group
+                span.input-group-text: "Current"
+                input.input type="password" value="••••••••" readonly=""
+              div.input-group
+                span.input-group-text: "New"
+                input.input type="password" value="" placeholder="Enter new password"
+              div.input-group
+                span.input-group-text: "Confirm"
+                input.input type="password" value="" placeholder="Confirm new password"
+              button.btn.btn-primary: "Update Password"
+
+    div.card.p-5.my-3
+      h5.h3.mb-3: "Vertical tabs"
+      div.row
+        // tabs vertical with the tab list on the left side (default)
+        div.col-6
+          div.tabs-vertical.tab-area.g-0
+            nav.tab-list role="tablist"
+              button.btn.btn-secondary.tab.tab-active role="tab" aria-selected="true"
+                svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"
+                  circle cx="12" cy="7" r="4"
+                " Profile"
+              button.btn.btn-secondary.tab role="tab" aria-selected="false"
+                svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  circle cx="12" cy="12" r="3"
+                  path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"
+                " Settings"
+              button.btn.btn-secondary.tab role="tab" aria-selected="false"
+                svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"
+                  path d="M13.73 21a2 2 0 0 1-3.46 0"
+                " Notifications"
+            div.tab-content
+              div.tab-panel.tab-panel-active role="tabpanel": "Profile settings content — change your avatar, bio, and contact details."
+              div.tab-panel role="tabpanel": "System preferences — theme, language, and notification preferences."
+              div.tab-panel role="tabpanel": "Notification settings — configure email and push notifications."
+
+        // tabs vertical with the tab list on the right side
+        div.col-6
+          div.tabs-vertical-right.tab-area.g-0
+            nav.tab-list role="tablist"
+              button.btn.btn-secondary.tab.tab-active role="tab" aria-selected="true"
+                svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"
+                  circle cx="12" cy="7" r="4"
+                " Profile"
+              button.btn.btn-secondary.tab role="tab" aria-selected="false"
+                svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  circle cx="12" cy="12" r="3"
+                  path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"
+                " Settings"
+              button.btn.btn-secondary.tab role="tab" aria-selected="false"
+                svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"
+                  path d="M13.73 21a2 2 0 0 1-3.46 0"
+                " Notifications"
+            div.tab-content
+              div.tab-panel.tab-panel-active role="tabpanel": "Profile settings content — change your avatar, bio, and contact details."
+              div.tab-panel role="tabpanel": "System preferences — theme, language, and notification preferences."
+              div.tab-panel role="tabpanel": "Notification settings — configure email and push notifications."
+
+    div.card.p-5.my-3
+      h5.h3.mb-3: "Disabled tab"
+      div.tab-area
+        nav.tab-list role="tablist"
+          button.btn.btn-secondary.tab.tab-active role="tab" aria-selected="true": "Enabled"
+          button.btn.btn-secondary.tab.disabled role="tab" aria-selected="false" aria-disabled="true": "Disabled"
+          button.btn.btn-secondary.tab role="tab" aria-selected="false": "Enabled too"
+        div.tab-content
+          div.tab-panel.tab-panel-active role="tabpanel": "The middle tab is disabled — clicking it does nothing."
+          div.tab-panel role="tabpanel": "You should not see this."
+          div.tab-panel role="tabpanel": "This is the third panel."

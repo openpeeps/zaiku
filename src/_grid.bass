@@ -1,0 +1,237 @@
+/* Grid System — generated with Bro `for` loops and ${size} interpolation */
+
+/* Container */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.container-fluid {
+  width: 100%;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+.row
+  display: flex
+  flex-wrap: wrap
+  gap: var(--gutter-x, 1.5rem)
+
+.col
+  flex: 1 0 0%
+
+/* Base columns */
+for $size in range(1, 12):
+  .col-${size}
+    if $size == 1:
+      flex: 0 0 calc(8.333% - var(--gutter-x, 1.5rem) * 11 / 12)
+      max-width: calc(8.333% - var(--gutter-x, 1.5rem) * 11 / 12)
+    elif $size == 2:
+      flex: 0 0 calc(16.666% - var(--gutter-x, 1.5rem) * 10 / 12)
+      max-width: calc(16.666% - var(--gutter-x, 1.5rem) * 10 / 12)
+    elif $size == 3:
+      flex: 0 0 calc(25% - var(--gutter-x, 1.5rem) * 9 / 12)
+      max-width: calc(25% - var(--gutter-x, 1.5rem) * 9 / 12)
+    elif $size == 4:
+      flex: 0 0 calc(33.333% - var(--gutter-x, 1.5rem) * 8 / 12)
+      max-width: calc(33.333% - var(--gutter-x, 1.5rem) * 8 / 12)
+    elif $size == 5:
+      flex: 0 0 calc(41.666% - var(--gutter-x, 1.5rem) * 7 / 12)
+      max-width: calc(41.666% - var(--gutter-x, 1.5rem) * 7 / 12)
+    elif $size == 6:
+      flex: 0 0 calc(50% - var(--gutter-x, 1.5rem) * 6 / 12)
+      max-width: calc(50% - var(--gutter-x, 1.5rem) * 6 / 12)
+    elif $size == 7:
+      flex: 0 0 calc(58.333% - var(--gutter-x, 1.5rem) * 5 / 12)
+      max-width: calc(58.333% - var(--gutter-x, 1.5rem) * 5 / 12)
+    elif $size == 8:
+      flex: 0 0 calc(66.666% - var(--gutter-x, 1.5rem) * 4 / 12)
+      max-width: calc(66.666% - var(--gutter-x, 1.5rem) * 4 / 12)
+    elif $size == 9:
+      flex: 0 0 calc(75% - var(--gutter-x, 1.5rem) * 3 / 12)
+      max-width: calc(75% - var(--gutter-x, 1.5rem) * 3 / 12)
+    elif $size == 10:
+      flex: 0 0 calc(83.333% - var(--gutter-x, 1.5rem) * 2 / 12)
+      max-width: calc(83.333% - var(--gutter-x, 1.5rem) * 2 / 12)
+    elif $size == 11:
+      flex: 0 0 calc(91.666% - var(--gutter-x, 1.5rem) * 1 / 12)
+      max-width: calc(91.666% - var(--gutter-x, 1.5rem) * 1 / 12)
+    elif $size == 12:
+      flex: 0 0 100%
+      max-width: 100%
+
+/* xs (explicit) */
+for $size in range(1, 12):
+  .col-xs-${size}
+    if $size == 1:
+      flex: 0 0 calc(8.333% - var(--gutter-x, 1.5rem) * 11 / 12)
+      max-width: calc(8.333% - var(--gutter-x, 1.5rem) * 11 / 12)
+    elif $size == 2:
+      flex: 0 0 calc(16.666% - var(--gutter-x, 1.5rem) * 10 / 12)
+      max-width: calc(16.666% - var(--gutter-x, 1.5rem) * 10 / 12)
+    elif $size == 3:
+      flex: 0 0 calc(25% - var(--gutter-x, 1.5rem) * 9 / 12)
+      max-width: calc(25% - var(--gutter-x, 1.5rem) * 9 / 12)
+    elif $size == 4:
+      flex: 0 0 calc(33.333% - var(--gutter-x, 1.5rem) * 8 / 12)
+      max-width: calc(33.333% - var(--gutter-x, 1.5rem) * 8 / 12)
+    elif $size == 5:
+      flex: 0 0 calc(41.666% - var(--gutter-x, 1.5rem) * 7 / 12)
+      max-width: calc(41.666% - var(--gutter-x, 1.5rem) * 7 / 12)
+    elif $size == 6:
+      flex: 0 0 calc(50% - var(--gutter-x, 1.5rem) * 6 / 12)
+      max-width: calc(50% - var(--gutter-x, 1.5rem) * 6 / 12)
+    elif $size == 7:
+      flex: 0 0 calc(58.333% - var(--gutter-x, 1.5rem) * 5 / 12)
+      max-width: calc(58.333% - var(--gutter-x, 1.5rem) * 5 / 12)
+    elif $size == 8:
+      flex: 0 0 calc(66.666% - var(--gutter-x, 1.5rem) * 4 / 12)
+      max-width: calc(66.666% - var(--gutter-x, 1.5rem) * 4 / 12)
+    elif $size == 9:
+      flex: 0 0 calc(75% - var(--gutter-x, 1.5rem) * 3 / 12)
+      max-width: calc(75% - var(--gutter-x, 1.5rem) * 3 / 12)
+    elif $size == 10:
+      flex: 0 0 calc(83.333% - var(--gutter-x, 1.5rem) * 2 / 12)
+      max-width: calc(83.333% - var(--gutter-x, 1.5rem) * 2 / 12)
+    elif $size == 11:
+      flex: 0 0 calc(91.666% - var(--gutter-x, 1.5rem) * 1 / 12)
+      max-width: calc(91.666% - var(--gutter-x, 1.5rem) * 1 / 12)
+    elif $size == 12:
+      flex: 0 0 100%
+      max-width: 100%
+
+/* sm – 576px */
+@media (min-width: 576px) {
+  for $size in range(1, 12):
+    .col-sm-${size}
+      if $size == 1:
+        flex: 0 0 calc(8.333% - var(--gutter-x, 1.5rem) * 11 / 12)
+        max-width: calc(8.333% - var(--gutter-x, 1.5rem) * 11 / 12)
+      elif $size == 2:
+        flex: 0 0 calc(16.666% - var(--gutter-x, 1.5rem) * 10 / 12)
+        max-width: calc(16.666% - var(--gutter-x, 1.5rem) * 10 / 12)
+      elif $size == 3:
+        flex: 0 0 calc(25% - var(--gutter-x, 1.5rem) * 9 / 12)
+        max-width: calc(25% - var(--gutter-x, 1.5rem) * 9 / 12)
+      elif $size == 4:
+        flex: 0 0 calc(33.333% - var(--gutter-x, 1.5rem) * 8 / 12)
+        max-width: calc(33.333% - var(--gutter-x, 1.5rem) * 8 / 12)
+      elif $size == 5:
+        flex: 0 0 calc(41.666% - var(--gutter-x, 1.5rem) * 7 / 12)
+        max-width: calc(41.666% - var(--gutter-x, 1.5rem) * 7 / 12)
+      elif $size == 6:
+        flex: 0 0 calc(50% - var(--gutter-x, 1.5rem) * 6 / 12)
+        max-width: calc(50% - var(--gutter-x, 1.5rem) * 6 / 12)
+      elif $size == 7:
+        flex: 0 0 calc(58.333% - var(--gutter-x, 1.5rem) * 5 / 12)
+        max-width: calc(58.333% - var(--gutter-x, 1.5rem) * 5 / 12)
+      elif $size == 8:
+        flex: 0 0 calc(66.666% - var(--gutter-x, 1.5rem) * 4 / 12)
+        max-width: calc(66.666% - var(--gutter-x, 1.5rem) * 4 / 12)
+      elif $size == 9:
+        flex: 0 0 calc(75% - var(--gutter-x, 1.5rem) * 3 / 12)
+        max-width: calc(75% - var(--gutter-x, 1.5rem) * 3 / 12)
+      elif $size == 10:
+        flex: 0 0 calc(83.333% - var(--gutter-x, 1.5rem) * 2 / 12)
+        max-width: calc(83.333% - var(--gutter-x, 1.5rem) * 2 / 12)
+      elif $size == 11:
+        flex: 0 0 calc(91.666% - var(--gutter-x, 1.5rem) * 1 / 12)
+        max-width: calc(91.666% - var(--gutter-x, 1.5rem) * 1 / 12)
+      elif $size == 12:
+        flex: 0 0 100%
+        max-width: 100%
+}
+
+/* md – 768px */
+@media (min-width: 768px) {
+  for $size in range(1, 12):
+    .col-md-${size}
+      if $size == 1:
+        flex: 0 0 calc(8.333% - var(--gutter-x, 1.5rem) * 11 / 12)
+        max-width: calc(8.333% - var(--gutter-x, 1.5rem) * 11 / 12)
+      elif $size == 2:
+        flex: 0 0 calc(16.666% - var(--gutter-x, 1.5rem) * 10 / 12)
+        max-width: calc(16.666% - var(--gutter-x, 1.5rem) * 10 / 12)
+      elif $size == 3:
+        flex: 0 0 calc(25% - var(--gutter-x, 1.5rem) * 9 / 12)
+        max-width: calc(25% - var(--gutter-x, 1.5rem) * 9 / 12)
+      elif $size == 4:
+        flex: 0 0 calc(33.333% - var(--gutter-x, 1.5rem) * 8 / 12)
+        max-width: calc(33.333% - var(--gutter-x, 1.5rem) * 8 / 12)
+      elif $size == 5:
+        flex: 0 0 calc(41.666% - var(--gutter-x, 1.5rem) * 7 / 12)
+        max-width: calc(41.666% - var(--gutter-x, 1.5rem) * 7 / 12)
+      elif $size == 6:
+        flex: 0 0 calc(50% - var(--gutter-x, 1.5rem) * 6 / 12)
+        max-width: calc(50% - var(--gutter-x, 1.5rem) * 6 / 12)
+      elif $size == 7:
+        flex: 0 0 calc(58.333% - var(--gutter-x, 1.5rem) * 5 / 12)
+        max-width: calc(58.333% - var(--gutter-x, 1.5rem) * 5 / 12)
+      elif $size == 8:
+        flex: 0 0 calc(66.666% - var(--gutter-x, 1.5rem) * 4 / 12)
+        max-width: calc(66.666% - var(--gutter-x, 1.5rem) * 4 / 12)
+      elif $size == 9:
+        flex: 0 0 calc(75% - var(--gutter-x, 1.5rem) * 3 / 12)
+        max-width: calc(75% - var(--gutter-x, 1.5rem) * 3 / 12)
+      elif $size == 10:
+        flex: 0 0 calc(83.333% - var(--gutter-x, 1.5rem) * 2 / 12)
+        max-width: calc(83.333% - var(--gutter-x, 1.5rem) * 2 / 12)
+      elif $size == 11:
+        flex: 0 0 calc(91.666% - var(--gutter-x, 1.5rem) * 1 / 12)
+        max-width: calc(91.666% - var(--gutter-x, 1.5rem) * 1 / 12)
+      elif $size == 12:
+        flex: 0 0 100%
+        max-width: 100%
+}
+
+/* lg – 992px – demonstrates ${size + 1} evaluation inside selector */
+@media (min-width: 992px) {
+  for $size in range(1, 12):
+    .col-lg-${size}
+      if $size == 1:
+        flex: 0 0 calc(8.333% - var(--gutter-x, 1.5rem) * 11 / 12)
+        max-width: calc(8.333% - var(--gutter-x, 1.5rem) * 11 / 12)
+      elif $size == 2:
+        flex: 0 0 calc(16.666% - var(--gutter-x, 1.5rem) * 10 / 12)
+        max-width: calc(16.666% - var(--gutter-x, 1.5rem) * 10 / 12)
+      elif $size == 3:
+        flex: 0 0 calc(25% - var(--gutter-x, 1.5rem) * 9 / 12)
+        max-width: calc(25% - var(--gutter-x, 1.5rem) * 9 / 12)
+      elif $size == 4:
+        flex: 0 0 calc(33.333% - var(--gutter-x, 1.5rem) * 8 / 12)
+        max-width: calc(33.333% - var(--gutter-x, 1.5rem) * 8 / 12)
+      elif $size == 5:
+        flex: 0 0 calc(41.666% - var(--gutter-x, 1.5rem) * 7 / 12)
+        max-width: calc(41.666% - var(--gutter-x, 1.5rem) * 7 / 12)
+      elif $size == 6:
+        flex: 0 0 calc(50% - var(--gutter-x, 1.5rem) * 6 / 12)
+        max-width: calc(50% - var(--gutter-x, 1.5rem) * 6 / 12)
+      elif $size == 7:
+        flex: 0 0 calc(58.333% - var(--gutter-x, 1.5rem) * 5 / 12)
+        max-width: calc(58.333% - var(--gutter-x, 1.5rem) * 5 / 12)
+      elif $size == 8:
+        flex: 0 0 calc(66.666% - var(--gutter-x, 1.5rem) * 4 / 12)
+        max-width: calc(66.666% - var(--gutter-x, 1.5rem) * 4 / 12)
+      elif $size == 9:
+        flex: 0 0 calc(75% - var(--gutter-x, 1.5rem) * 3 / 12)
+        max-width: calc(75% - var(--gutter-x, 1.5rem) * 3 / 12)
+      elif $size == 10:
+        flex: 0 0 calc(83.333% - var(--gutter-x, 1.5rem) * 2 / 12)
+        max-width: calc(83.333% - var(--gutter-x, 1.5rem) * 2 / 12)
+      elif $size == 11:
+        flex: 0 0 calc(91.666% - var(--gutter-x, 1.5rem) * 1 / 12)
+        max-width: calc(91.666% - var(--gutter-x, 1.5rem) * 1 / 12)
+      elif $size == 12:
+        flex: 0 0 100%
+        max-width: 100%
+
+  for $size in range(1, 11) {
+    .offset-lg-${size} {
+      order: ${size + 1}
+    }
+  }
+}

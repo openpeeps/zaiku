@@ -33,16 +33,16 @@ html class="scale-1"
           div.mt-3
             h6.h6: "Components"
             a href="/components/accordion": "Accordion"
+            a href="/components/calendar": "Calendar"
             a href="/components/chatbox": "Chatbox"
             a href="/components/hover-sliders": "Hover Sliders"
             a href="/components/sliders": "Sliders"
             a href="/components/tabs": "Tabs"
 
       main.main-content
-        div.container.p-4 > div.row
-          div.col-10
+        div.container-fluid.p-0 > div.row
+          div.col-12
             @view
-          div.col-2
         footer.container.py-5 > div.row > div.col-12
           hr
           div.row

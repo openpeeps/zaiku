@@ -1,0 +1,394 @@
+header.px-4.my-3
+  h2.h1: "Calendar"
+  p.lead.mb-3: "Stacked like a deck of playing cards, each calendar cycles through granular \`--cal-*\` themes with gradient backgrounds."
+
+div.w-100.overflow-hidden.py-5 > div.d-flex.justify-center style="padding-top:4rem;overflow:visible"
+  div style="margin:0 -1.5rem;transform:rotate(-20deg);transform-origin:50% 100%;z-index:1" class="cal-palette"
+    div data-zaiku-calendar data-type="single"
+  div style="margin:0 -1.5rem;transform:rotate(-12deg);transform-origin:50% 100%;z-index:2" class="cal-palette"
+    div data-zaiku-calendar data-type="single"
+  div style="margin:0 -1.5rem;transform:rotate(-4deg);transform-origin:50% 100%;z-index:3" class="cal-palette"
+    div data-zaiku-calendar data-type="single"
+  div style="margin:0 -1.5rem;transform:rotate(4deg);transform-origin:50% 100%;z-index:6" class="cal-palette"
+    div data-zaiku-calendar data-type="single"
+  div style="margin:0 -1.5rem;transform:rotate(12deg);transform-origin:50% 100%;z-index:5" class="cal-palette"
+    div data-zaiku-calendar data-type="single"
+  div style="margin:0 -1.5rem;transform:rotate(20deg);transform-origin:50% 100%;z-index:4" class="cal-palette"
+    div data-zaiku-calendar data-type="single"
+
+div.row > div.col-9.mx-auto
+  div.mt-5
+    h5.h2.mb-3: "Inline Calendar"
+    p.mb-3: "Add \`data-zaiku-calendar\` to a container. Use \`data-type\` for single, range, or multiple selection."
+    div.card.p-4
+      div.mx-auto.my-4 style="max-width:30em" data-zaiku-calendar data-type="single"
+
+  div.mt-5
+    h5.h2.mb-3: "Range Selection"
+    p.mb-3: "Click two dates to select a range."
+    div.card.p-4
+      div.mx-auto.my-4 style="max-width:30em" data-zaiku-calendar data-type="range"
+
+  div.mt-5
+    h5.h2.mb-3: "Grouped Calendar (Dual Panel)"
+    p.mb-3: "Use \`data-panels="2"\` to show two months side-by-side with shared navigation. The g is configurable via \`data-panel-g\`."
+    div.card.p-4
+      div.mx-auto.my-4 style="min-width:50em" data-zaiku-calendar data-type="single" data-panels="2" data-panel-g="1.5"
+
+  div.mt-5
+    h5.h2.mb-3: "Grouped Range"
+    p.mb-3: "Two panels with range selection — perfect for booking widgets. With \`data-split-range\`, ranges that cross disabled dates are split into segments. Use \`data-min-stay\` to require a minimum number of nights per segment (default 1)."
+    div.card.p-4
+      div.mx-auto.my-4 style="min-width:50em" id="range-demo" data-zaiku-calendar data-type="range" data-panels="2" data-prevent-past-days data-disabled-days="[0,6]" data-split-range
+
+      div.mt-3 id="range-summary" style="display:none"
+        div.p-3.rounded-4 style="background:var(--color-gray-100)"
+          div.d-flex.g-4.flex-wrap id="range-segments"
+          div.d-flex.g-4.flex-wrap.mt-2.pt-2 style="border-top:1px solid var(--color-gray-200)"
+            div
+              span.text-xs.text-gray-500: "Total nights"
+              div.text-sm.font-600 id="range-total-display": "—"
+
+    @javascript
+  Zaiku.ready(function() {
+    var el = document.getElementById('range-demo')
+    var inst = el.zaiku && el.zaiku.calendarInstance
+    if (!inst) return
+    var summary = document.getElementById('range-summary')
+    var segmentsEl = document.getElementById('range-segments')
+    var totalEl = document.getElementById('range-total-display')
+
+    function buildSegmentHTML(seg, i) {
+      var s = new Date(seg.start)
+      var e = new Date(seg.end)
+      var nights = Math.max(1, Math.round((e - s) / (1000 * 60 * 60 * 24)))
+      return '<div>' +
+        '<span class="text-xs text-gray-500">Segment ' + (i + 1) + '</span>' +
+        '<div class="text-xs font-600">' + seg.start + ' → ' + seg.end + ' <span class="text-gray-500">(' + nights + ' nights)</span></div>' +
+        '</div>'
+    }
+
+    var origEnd = inst.onRangeEnd
+    inst.onRangeEnd = function(start, end, i) {
+      var val = i.getValue()
+      segmentsEl.innerHTML = ''
+      var totalNights = 0
+      if (i.splitRange && Array.isArray(val)) {
+        for (var j = 0; j < val.length; j++) {
+          segmentsEl.innerHTML += buildSegmentHTML(val[j], j)
+          var s = new Date(val[j].start)
+          var e = new Date(val[j].end)
+          totalNights += Math.max(1, Math.round((e - s) / (1000 * 60 * 60 * 24)))
+        }
+      } else {
+        segmentsEl.innerHTML += buildSegmentHTML({ start: i._formatDate(start), end: i._formatDate(end) }, 0)
+        totalNights += Math.max(1, Math.round((end - start) / (1000 * 60 * 60 * 24)))
+      }
+      totalEl.textContent = totalNights + (totalNights !== 1 ? ' nights' : ' night')
+      summary.style.display = 'block'
+      if (origEnd) origEnd(start, end, i)
+    }
+
+    var origStart = inst.onRangeStart
+    inst.onRangeStart = function(date, i) {
+      summary.style.display = 'none'
+      if (origStart) origStart(date, i)
+    }
+  })
+    @end
+
+  div.mt-5
+    h5.h2.mb-3: "Popover Calendar"
+    p.mb-3: "Link a calendar to an input via \`data-target\`. Click the input to open, select a date to fill it."
+    div.card.p-4
+      input.form-control type="text" placeholder="Click to pick a date" id="popover-trigger"
+      div data-zaiku-calendar data-target="#popover-trigger" data-type="single"
+
+  div.mt-5
+    h5.h2.mb-3: "Popover Grouped Range"
+    p.mb-3: "A dual-panel range picker in popover mode — ideal for check-in / check-out booking forms."
+    div.card.p-4
+      input.form-control type="text" placeholder="Check-in — Check-out" id="popover-range-trigger"
+      div data-zaiku-calendar data-target="#popover-range-trigger" data-type="range" data-panels="2" data-prevent-past-days data-disabled-days="[0,6]" data-split-range
+
+  div.mt-5
+    h5.h2.mb-3: "Disabled Dates"
+    p.mb-3: "Use \`data-min-date\`, \`data-max-date\`, \`data-disabled-dates\`, or \`data-disabled-days\` to restrict selection."
+    div.card.p-4
+      div.mx-auto.my-4 style="min-width:25em" data-zaiku-calendar data-type="single" data-min-date="2026-07-15" data-max-date="2026-09-15" data-disabled-days="[0,6]"
+
+  div.mt-5
+    h5.h2.mb-3: "Multiple Selection"
+    p.mb-3: "Click multiple dates to toggle them."
+    div.card.p-4
+      div data-zaiku-calendar data-type="multiple"
+
+  div.mt-5
+    h5.h2.mb-3: "Blocked Dates"
+    p.mb-3: "Mark specific dates as blocked with extra info via \`data-blocked-dates\`. Click a blocked date to retrieve its data — useful for showing holidays, bookings, or unavailable slots."
+    div.card.p-4
+      div.mx-auto.my-4 style="min-width:25em" data-zaiku-calendar data-type="single" id="blocked-demo"
+
+      div.mt-3.p-3.rounded-4.text-xs style="background:var(--color-gray-100);min-height:2.5rem;font-family:monospace;white-space:pre-wrap" id="blocked-log": "Click a blocked date to see details"
+
+    @javascript
+  Zaiku.ready(function() {
+    var el = document.getElementById('blocked-demo')
+    var inst = el && el.zaiku && el.zaiku.calendarInstance
+    if (!inst) return
+    inst.blockedDates = [
+      { date: '2026-07-15', label: 'Company Holiday', description: 'Office closed for summer break' },
+      { date: '2026-07-20', label: 'Team Offsite', description: 'All-hands meeting at conference center' },
+      { date: '2026-08-03', label: 'Maintenance', description: 'Server maintenance window' }
+    ]
+    inst._render()
+    var log = document.getElementById('blocked-log')
+    inst.onBlockedClick = function(date, data, i) {
+      log.textContent = 'Blocked: ' + i._formatDate(date) + ' — ' + data.label + (data.description ? ' (' + data.description + ')' : '')
+    }
+  })
+    @end
+
+  div.mt-5
+    h5.h2.mb-3: "Date Details"
+    p.mb-3: "Enable \`data-enable-date-details\` to open a popover when clicking a date. Use \`onDetailOpen(popoverEl, date, instance)\` to inject your own content into the popover."
+    div.card.p-4 style="overflow: visible"
+      div.mx-auto.my-4 style="min-width:25em" data-zaiku-calendar data-type="single" data-enable-date-details id="detail-demo"
+
+      div.mt-3.p-3.rounded-4.text-xs style="background:var(--color-gray-100);min-height:2.5rem;font-family:monospace;white-space:pre-wrap" id="detail-log": "Select a date to add details"
+
+    @javascript
+  Zaiku.ready(function() {
+    var el = document.getElementById('detail-demo')
+    var inst = el && el.zaiku && el.zaiku.calendarInstance
+    if (!inst) return
+    var logEl = document.getElementById('detail-log')
+    var details = {}
+
+    inst.onDetailOpen = function(popoverEl, date, i) {
+      var ds = i._formatDate(date)
+      var existing = details[ds]
+
+      popoverEl.innerHTML =
+        '<div class="p-3" style="max-width:180px">' +
+          '<div class="text-xs font-600 mb-2">' + i.formatDate(date, 'ddd, MMM D, YYYY') + '</div>' +
+          (existing && existing.title ? '<div class="text-xs font-600 mb-1">' + existing.title + '</div>' : '') +
+          '<input class="input input-sm mb-2" placeholder="Title" id="detail-title" value="' + (existing ? existing.title || '' : '') + '">' +
+          '<textarea class="input input-sm mb-2" placeholder="Notes" id="detail-notes" style="min-height:60px">' + (existing ? existing.notes || '' : '') + '</textarea>' +
+          '<div class="d-flex justify-end g-2">' +
+            '<button class="btn btn-primary btn-sm" id="detail-save">Save</button>' +
+            (existing ? '<button class="btn btn-danger btn-sm" id="detail-delete">Delete</button>' : '') +
+          '</div>' +
+        '</div>'
+
+      popoverEl.querySelector('#detail-save').addEventListener('click', function() {
+        details[ds] = {
+          title: popoverEl.querySelector('#detail-title').value,
+          notes: popoverEl.querySelector('#detail-notes').value
+        }
+        logEl.textContent = 'Saved: ' + ds + (details[ds].title ? ' — ' + details[ds].title : '')
+        i.closePopover()
+        inst._render()
+      })
+
+      var delBtn = popoverEl.querySelector('#detail-delete')
+      if (delBtn) {
+        delBtn.addEventListener('click', function() {
+          delete details[ds]
+          logEl.textContent = 'Deleted details for ' + ds
+          i.closePopover()
+          inst._render()
+        })
+      }
+    }
+  })
+    @end
+
+  div.mt-5
+    h5.h2.mb-3: "Programmatic API"
+    p.mb-3: "Access the calendar instance via \`container.zaiku.calendarInstance\`. Use \`getValue()\`, \`prevMonth()\`, \`nextMonth()\`, \`isWeekday()\`, and runtime options like \`preventPastDays\` and \`preventPastMonths\`."
+    div.card.p-4
+      div id="api-calendar-demo" data-zaiku-calendar data-type="single" data-panels="2"
+
+      div.d-flex.g-2.mt-3.justify-center.flex-wrap
+        button.btn.btn-secondary.btn-sm data-api-get-value: "Get value"
+        button.btn.btn-secondary.btn-sm data-api-prev: "← Prev month"
+        button.btn.btn-secondary.btn-sm data-api-next: "Next month →"
+        button.btn.btn-secondary.btn-sm data-api-weekday: "Check weekday"
+        button.btn.btn-secondary.btn-sm data-api-past-days data-api-past-days-label: "Past days: free"
+        button.btn.btn-secondary.btn-sm data-api-past-months data-api-past-months-label: "Past months: free"
+        button.btn.btn-secondary.btn-sm data-api-range-toggle: "Mode: single"
+
+      div.mt-3.p-3.rounded-4.text-xs style="background:var(--color-gray-100);min-height:3rem;font-family:monospace;white-space:pre-wrap;overflow-y:auto;max-height:6rem" id="api-calendar-log"
+
+  @javascript
+Zaiku.ready(function() {
+  var el = document.getElementById('api-calendar-demo')
+  var logEl = document.getElementById('api-calendar-log')
+
+  function log(msg) {
+    var t = new Date().toLocaleTimeString()
+    logEl.textContent += '[' + t + '] ' + msg + '\n'
+    logEl.scrollTop = logEl.scrollHeight
+  }
+
+  function getInst() {
+    return el.zaiku && el.zaiku.calendarInstance
+  }
+
+  var inst = getInst()
+
+  if (inst) {
+    inst.onDayClick = function(date, i) { log('onDayClick ' + i._formatDate(date)) }
+    inst.onDateSelect = function(date, i) { log('onDateSelect ' + i._formatDate(date)) }
+    inst.onMonthChange = function(y, m, i) { log('onMonthChange ' + (m + 1) + '/' + y) }
+    inst.onRangeStart = function(date, i) { log('onRangeStart ' + i._formatDate(date)) }
+    inst.onRangeEnd = function(start, end, i) { log('onRangeEnd ' + i._formatDate(start) + ' — ' + i._formatDate(end)) }
+  }
+
+  var root = el.parentNode
+  root.querySelector('[data-api-get-value]').addEventListener('click', function() {
+    var i = getInst(); if (!i) return
+    log('getValue → ' + JSON.stringify(i.getValue()))
+  })
+  root.querySelector('[data-api-prev]').addEventListener('click', function() {
+    var i = getInst(); if (i) i.prevMonth()
+  })
+  root.querySelector('[data-api-next]').addEventListener('click', function() {
+    var i = getInst(); if (i) i.nextMonth()
+  })
+  root.querySelector('[data-api-weekday]').addEventListener('click', function() {
+    var i = getInst(); if (!i) return
+    var v = i.getValue()
+    if (!v || v === 'null') { log('isWeekday: no date selected'); return }
+    log('isWeekday(' + v + ') → ' + i.isWeekday(v))
+  })
+  var pastDaysBtn = root.querySelector('[data-api-past-days]')
+  pastDaysBtn.addEventListener('click', function() {
+    var i = getInst(); if (!i) return
+    i.preventPastDays = !i.preventPastDays
+    pastDaysBtn.textContent = 'Past days: ' + (i.preventPastDays ? 'blocked' : 'free')
+    i._render()
+    log('setOptions preventPastDays=' + i.preventPastDays)
+  })
+  var pastMonthsBtn = root.querySelector('[data-api-past-months]')
+  pastMonthsBtn.addEventListener('click', function() {
+    var i = getInst(); if (!i) return
+    i.preventPastMonths = !i.preventPastMonths
+    pastMonthsBtn.textContent = 'Past months: ' + (i.preventPastMonths ? 'blocked' : 'free')
+    i._render()
+    log('setOptions preventPastMonths=' + i.preventPastMonths)
+  })
+  var rangeToggle = root.querySelector('[data-api-range-toggle]')
+  rangeToggle.addEventListener('click', function() {
+    var i = getInst(); if (!i) return
+    i.type = i.type === 'single' ? 'range' : 'single'
+    i._selectedDates = []
+    i._rangeStart = null
+    i._rangeEnd = null
+    i._rangeSegments = null
+    rangeToggle.textContent = 'Mode: ' + i.type
+    i._build()
+    log('setOptions type=' + i.type)
+  })
+})
+  @end
+
+
+  @javascript
+Zaiku.ready(function() {
+  var cals = document.querySelectorAll('.cal-palette')
+  var themes = [
+    {
+      '--cal-bg': 'linear-gradient(135deg, #fef6f2 0%, #fde8e4 100%)',
+      '--cal-border': '#fecdba', '--cal-title-color': '#9b2c1d',
+      '--cal-nav-color': '#c0392b', '--cal-nav-hover-bg': '#fde8e4',
+      '--cal-weekday-color': '#c0392b', '--cal-day-color': '#5c1a10',
+      '--cal-day-hover-bg': '#fde8e4', '--cal-today-color': '#c0392b',
+      '--cal-selected-bg': '#c0392b', '--cal-selected-color': '#fff',
+      '--cal-selected-hover-bg': '#9b2c1d', '--cal-disabled-color': '#fecdba',
+      '--cal-other-month-color': '#fdd5c6', '--cal-range-in-bg': '#fde8e4',
+      '--cal-header-border': '#fecdba', '--cal-weekend-color': '#e05a3a'
+    },
+    {
+      '--cal-bg': 'linear-gradient(135deg, #f0fdfa 0%, #ccfbf1 100%)',
+      '--cal-border': '#99f6e4', '--cal-title-color': '#0d7770',
+      '--cal-nav-color': '#115e59', '--cal-nav-hover-bg': '#ccfbf1',
+      '--cal-weekday-color': '#115e59', '--cal-day-color': '#064e3b',
+      '--cal-day-hover-bg': '#ccfbf1', '--cal-today-color': '#115e59',
+      '--cal-selected-bg': '#115e59', '--cal-selected-color': '#fff',
+      '--cal-selected-hover-bg': '#0d7770', '--cal-disabled-color': '#99f6e4',
+      '--cal-other-month-color': '#a7f3d0', '--cal-range-in-bg': '#ccfbf1',
+      '--cal-header-border': '#99f6e4', '--cal-weekend-color': '#0d9488'
+    },
+    {
+      '--cal-bg': 'linear-gradient(135deg, #fffbeb 0%, #fef3c7 100%)',
+      '--cal-border': '#fde68a', '--cal-title-color': '#92400e',
+      '--cal-nav-color': '#b8860b', '--cal-nav-hover-bg': '#fef3c7',
+      '--cal-weekday-color': '#b8860b', '--cal-day-color': '#5c3a0a',
+      '--cal-day-hover-bg': '#fef3c7', '--cal-today-color': '#b8860b',
+      '--cal-selected-bg': '#b8860b', '--cal-selected-color': '#fff',
+      '--cal-selected-hover-bg': '#92400e', '--cal-disabled-color': '#fde68a',
+      '--cal-other-month-color': '#fde68a', '--cal-range-in-bg': '#fef3c7',
+      '--cal-header-border': '#fde68a', '--cal-weekend-color': '#d97706'
+    },
+    {
+      '--cal-bg': 'linear-gradient(135deg, #faf5ff 0%, #f3e8ff 100%)',
+      '--cal-border': '#e9d5ff', '--cal-title-color': '#6b21a8',
+      '--cal-nav-color': '#7b68ae', '--cal-nav-hover-bg': '#f3e8ff',
+      '--cal-weekday-color': '#7b68ae', '--cal-day-color': '#3b0764',
+      '--cal-day-hover-bg': '#f3e8ff', '--cal-today-color': '#7b68ae',
+      '--cal-selected-bg': '#7b68ae', '--cal-selected-color': '#fff',
+      '--cal-selected-hover-bg': '#6b21a8', '--cal-disabled-color': '#e9d5ff',
+      '--cal-other-month-color': '#d8b4fe', '--cal-range-in-bg': '#f3e8ff',
+      '--cal-header-border': '#e9d5ff', '--cal-weekend-color': '#9333ea'
+    },
+    {
+      '--cal-bg': 'linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%)',
+      '--cal-border': '#bae6fd', '--cal-title-color': '#075985',
+      '--cal-nav-color': '#4682b4', '--cal-nav-hover-bg': '#e0f2fe',
+      '--cal-weekday-color': '#4682b4', '--cal-day-color': '#0c4a6e',
+      '--cal-day-hover-bg': '#e0f2fe', '--cal-today-color': '#4682b4',
+      '--cal-selected-bg': '#4682b4', '--cal-selected-color': '#fff',
+      '--cal-selected-hover-bg': '#075985', '--cal-disabled-color': '#bae6fd',
+      '--cal-other-month-color': '#bae6fd', '--cal-range-in-bg': '#e0f2fe',
+      '--cal-header-border': '#bae6fd', '--cal-weekend-color': '#0284c7'
+    },
+    {
+      '--cal-bg': 'linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)',
+      '--cal-border': '#2a2a4a', '--cal-title-color': '#e0e0e0',
+      '--cal-nav-color': '#8888aa', '--cal-nav-hover-bg': '#2a2a4a',
+      '--cal-weekday-color': '#8888aa', '--cal-day-color': '#c0c0d0',
+      '--cal-day-hover-bg': '#2a2a4a', '--cal-today-color': '#00d4aa',
+      '--cal-selected-bg': '#00d4aa', '--cal-selected-color': '#1a1a2e',
+      '--cal-selected-hover-bg': '#00b894', '--cal-disabled-color': '#3a3a5a',
+      '--cal-other-month-color': '#3a3a5a', '--cal-range-in-bg': '#2a2a4a',
+      '--cal-header-border': '#2a2a4a', '--cal-weekend-color': '#ff6b6b'
+    }
+  ]
+  var offsets = [0, 1, 2, 3, 4, 5]
+
+  function applyTheme(el, t) {
+    var cal = el.querySelector('[data-zaiku-calendar]')
+    if (!cal) return
+    for (var key in t) cal.style.setProperty(key, t[key])
+  }
+
+  cals.forEach(function(el, i) {
+    applyTheme(el, themes[offsets[i]])
+    var cal = el.querySelector('[data-zaiku-calendar]')
+    var inst = cal && cal.zaiku && cal.zaiku.calendarInstance
+    if (inst) {
+      var now = new Date()
+      var days = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate()
+      var d = Math.floor(Math.random() * days) + 1
+      inst._selectDate(now.getFullYear(), now.getMonth(), d)
+    }
+  })
+
+  setInterval(function() {
+    offsets = offsets.map(function(o) { return (o + 1) % 6 })
+    cals.forEach(function(el, i) { applyTheme(el, themes[offsets[i]]) })
+  }, 1500)
+})
+  @end

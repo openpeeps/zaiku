@@ -1,0 +1,49 @@
+/* Spacing utilities — generated via Bro array iteration with objects */
+var $spacings = [
+  {k: 0, v: 0},
+  {k: 1, v: 0.25rem},
+  {k: 2, v: 0.5rem},
+  {k: 3, v: 1rem},
+  {k: 4, v: 1.5rem},
+  {k: 5, v: 3rem}
+]
+
+for $s in $spacings:
+  .p-${$s.k}
+    padding: $s.v !important
+  .pt-${$s.k}
+    padding-top: $s.v !important
+  .pr-${$s.k}
+    padding-right: $s.v !important
+  .pb-${$s.k}
+    padding-bottom: $s.v !important
+  .pl-${$s.k}
+    padding-left: $s.v !important
+  .px-${$s.k}
+    padding-left: $s.v !important
+    padding-right: $s.v !important
+  .py-${$s.k}
+    padding-top: $s.v !important
+    padding-bottom: $s.v !important
+
+for $s in $spacings:
+  .m-${$s.k}
+    margin: $s.v
+  .mt-${$s.k}
+    margin-top: $s.v !important
+  .mr-${$s.k}
+    margin-right: $s.v !important
+  .mb-${$s.k}
+    margin-bottom: $s.v !important
+  .ml-${$s.k}
+    margin-left: $s.v !important
+  .mx-${$s.k}
+    margin-left: $s.v !important
+    margin-right: $s.v !important
+  .my-${$s.k}
+    margin-top: $s.v !important
+    margin-bottom: $s.v !important
+
+.m-auto { margin: auto; }
+.mx-auto { margin-left: auto !important; margin-right: auto !important; }
+.my-auto { margin-top: auto !important; margin-bottom: auto !important; }

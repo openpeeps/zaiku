@@ -1,4 +1,4 @@
-div.p-4
+div.p-4 > div.container > div.row > div.col-lg-10
   div.mb-5
     h2.h1: "Badges"
     p.lead.mb-3: "Use the .badge class with color modifiers for labels."
@@ -45,7 +45,7 @@ div.p-4
     p.lead.mb-3: "Use .badge-counter for notification counts inside buttons, icons, or inline text."
     div.card.p-5.my-3
       h5.h3.mb-3: "In buttons"
-      div.d-flex.gap-3.flex-wrap
+      div.d-flex.g-3.flex-wrap
         button.btn.btn-primary
           "Messages"
           span.badge.badge-counter.badge-danger: "3"
@@ -61,7 +61,7 @@ div.p-4
     div.card.p-5.my-3
       h5.h3.mb-3: "Positioned on icons"
       p.mb-3: "Wrap an icon in a relative container and use .badge-position-top-right to float the counter."
-      div.d-flex.gap-4.flex-wrap
+      div.d-flex.g-4.flex-wrap
         div style="position:relative"
           svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
             path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"
@@ -75,7 +75,7 @@ div.p-4
     div.card.p-5.my-3
       h5.h3.mb-3: "Dot indicator"
       p.mb-3: "Use .badge-dot for a minimal presence indicatorm no number, just a colored dot."
-      div.d-flex.gap-3.flex-wrap.align-items-center
+      div.d-flex.g-3.flex-wrap.align-items-center
         button.btn.btn-primary
           "Live"
           span.badge.badge-dot.badge-danger

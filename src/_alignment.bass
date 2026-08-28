@@ -1,0 +1,110 @@
+/* Flex & Alignment Utilities — extracted from style.bass */
+/* Flexbox Grid System */
+.inline-flex {
+  display: inline-flex;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.align-items-start {
+  align-items: flex-start;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.align-items-end {
+  align-items: flex-end;
+}
+
+.justify-start {
+  justify-content: flex-start;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-end {
+  justify-content: flex-end;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.justify-around {
+  justify-content: space-around;
+}
+
+.content-start {
+  align-content: flex-start;
+}
+
+.content-center {
+  align-content: center;
+}
+
+/* Justify Content Utilities */
+.justify-start    { justify-content: flex-start; }
+.justify-end      { justify-content: flex-end; }
+.justify-center   { justify-content: center; }
+.justify-between  { justify-content: space-between; }
+.justify-around   { justify-content: space-around; }
+.justify-evenly   { justify-content: space-evenly; }
+
+/* Align Items Utilities */
+.align-items-start      { align-items: flex-start; }
+.align-items-end        { align-items: flex-end; }
+.align-items-center     { align-items: center; }
+.align-items-baseline   { align-items: baseline; }
+.align-items-stretch    { align-items: stretch; }
+
+/* Align Self Utilities */
+.align-self-auto        { align-self: auto; }
+.align-self-start       { align-self: flex-start; }
+.align-self-end         { align-self: flex-end; }
+.align-self-center      { align-self: center; }
+.align-self-baseline    { align-self: baseline; }
+.align-self-stretch     { align-self: stretch; }
+
+/* Flex Shrink Utilities */
+.shrink-0        { flex-shrink: 0; }
+.shrink          { flex-shrink: 1; }
+
+.flex-col, .flex-column {
+  flex-direction: column;
+  display: flex;
+} 
+
+.flex-row {
+  flex-direction: row;
+  display: flex;
+}
+
+.flex-1 {
+  flex: 1 1 0%;
+}
+
+.flex {
+  display: flex;
+}
+
+.w-fit {
+  width: fit-content;
+}

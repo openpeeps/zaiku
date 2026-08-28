@@ -123,6 +123,29 @@ Zaiku.defaults = {
     onDrag: null,
     onSwipe: null,
     onEnd: null
+  },
+  calendar: {
+    type: 'single',
+    format: 'YYYY-MM-DD',
+    firstDayOfWeek: 1,
+    panels: 1,
+    panelGap: 1,
+    minDate: null,
+    maxDate: null,
+    disabledDates: null,
+    disabledDays: null,
+    preventPastMonths: false,
+    preventPastDays: false,
+    splitRange: false,
+    minStay: 0,
+    onSelect: null,
+    onOpen: null,
+    onClose: null,
+    onDayClick: null,
+    onDateSelect: null,
+    onRangeStart: null,
+    onRangeEnd: null,
+    onMonthChange: null
   }
 }
 
@@ -294,6 +317,10 @@ Zaiku.init = function (options) {
 
   document.querySelectorAll('[data-zaiku-slider]').forEach(function (el) {
     new Zaiku.Slider(el, opts)
+  })
+
+  document.querySelectorAll('[data-zaiku-calendar]').forEach(function (el) {
+    new Zaiku.Calendar(el, opts)
   })
 
   if (opts.stopMediaPlayerByMediaObserver) Zaiku.initStopMediaObserver(opts)
@@ -884,7 +911,16 @@ class ZaikuProgress {
 
 Zaiku.Progress = ZaikuProgress
 
+/**
+ * @class ZaikuTabs
+ * @classdesc Tabbed content switcher that toggles between panels on tab click.
+ * Supports hash-based navigation and ARIA attributes. Applied to `.tab-area` elements.
+ */
 class ZaikuTabs {
+  /**
+   * @param {Element|string} container - The tabs container element or CSS selector.
+   * @param {Object} [opts] - Global options object containing {@link Zaiku.defaults.tabs}.
+   */
   constructor(container, opts) {
     if (typeof container === 'string') container = document.querySelector(container)
     if (!container) return
@@ -910,6 +946,11 @@ class ZaikuTabs {
     this.init()
   }
 
+  /**
+   * @private
+   * @returns {boolean} Whether any tab triggers were found.
+   * Find and associate tab triggers with their panels.
+   */
   findTabs() {
     this._triggers = Array.prototype.slice.call(this.container.querySelectorAll(this.tabSelector))
     var panels = this.container.querySelectorAll(this.panelSelector)
@@ -930,6 +971,10 @@ class ZaikuTabs {
     return this._triggers.length > 0
   }
 
+  /**
+   * @private
+   * @returns {number} The panel index matching the current URL hash, or -1.
+   */
   findTabByHash() {
     var hash = location.hash.slice(1)
     if (!hash) return -1
@@ -939,6 +984,10 @@ class ZaikuTabs {
     return -1
   }
 
+  /**
+   * Initialize the tabs: determine the initial active tab, set up click delegation,
+   * and optionally listen for hashchange events.
+   */
   init() {
     var initial = -1
     this._triggers.forEach(function (t, i) {
@@ -968,6 +1017,10 @@ class ZaikuTabs {
     this.activate(initial)
   }
 
+  /**
+   * Activate a tab by index, updating classes, ARIA attributes, hash, and firing the onSwitch callback.
+   * @param {number} index - The index of the tab to activate.
+   */
   activate(index) {
     if (index === this._activeIndex) return
     if (index < 0 || index >= this._triggers.length) return
@@ -1000,9 +1053,23 @@ class ZaikuTabs {
   }
 }
 
+/**
+ * @memberof Zaiku
+ * @type {typeof ZaikuTabs}
+ */
 Zaiku.Tabs = ZaikuTabs
 
+/**
+ * @class ZaikuAccordion
+ * @classdesc Accordion component that toggles sections open/closed.
+ * Supports single or multiple open panels and optional media auto-embed.
+ * Triggered via `data-zaiku-accordion` attribute.
+ */
 class ZaikuAccordion {
+  /**
+   * @param {Element|string} container - The accordion container element or CSS selector.
+   * @param {Object} [opts] - Global options object containing {@link Zaiku.defaults.accordion}.
+   */
   constructor(container, opts) {
     if (typeof container === 'string') container = document.querySelector(container)
     if (!container) return
@@ -1021,6 +1088,9 @@ class ZaikuAccordion {
     this.init()
   }
 
+  /**
+   * Initialize the accordion: delegate click events on `.accordion-header`.
+   */
   init() {
     this.container.addEventListener('click', function (e) {
       var header = e.target.closest('.accordion-header')
@@ -1033,6 +1103,10 @@ class ZaikuAccordion {
     }.bind(this))
   }
 
+  /**
+   * Toggle the open/closed state of an accordion item.
+   * @param {Element} item - The `.accordion-item` element.
+   */
   toggle(item) {
     var content = item.querySelector('.accordion-content')
     if (!content) return
@@ -1051,6 +1125,10 @@ class ZaikuAccordion {
     }
   }
 
+  /**
+   * Open an accordion item and optionally embed media players.
+   * @param {Element} item - The `.accordion-item` element.
+   */
   open(item) {
     var content = item.querySelector('.accordion-content')
     var header = item.querySelector('.accordion-header')
@@ -1078,6 +1156,10 @@ class ZaikuAccordion {
     if (this.onOpen) this.onOpen(item, this)
   }
 
+  /**
+   * Close an accordion item and remove any embedded media iframes.
+   * @param {Element} item - The `.accordion-item` element.
+   */
   close(item) {
     var content = item.querySelector('.accordion-content')
     var header = item.querySelector('.accordion-header')
@@ -1095,23 +1177,44 @@ class ZaikuAccordion {
     if (this.onClose) this.onClose(item, this)
   }
 
+  /**
+   * Open the accordion item at the given index.
+   * @param {number} index - The index of the item to open.
+   */
   openByIndex(index) {
     var items = this.container.querySelectorAll('.accordion-item')
     if (items[index]) this.open(items[index])
   }
 
+  /**
+   * Close the accordion item at the given index.
+   * @param {number} index - The index of the item to close.
+   */
   closeByIndex(index) {
     var items = this.container.querySelectorAll('.accordion-item')
     if (items[index]) this.close(items[index])
   }
 
+  /**
+   * Toggle the accordion item at the given index.
+   * @param {number} index - The index of the item to toggle.
+   */
   toggleByIndex(index) {
     var items = this.container.querySelectorAll('.accordion-item')
     if (items[index]) this.toggle(items[index])
   }
 }
 
+/**
+ * @class ZaikuScrub
+ * @classdesc Numeric scrubber that allows value adjustment via horizontal drag,
+ * keyboard arrows, and direct text input. Triggered via `data-zaiku-scrub` attribute.
+ */
 class ZaikuScrub {
+  /**
+   * @param {Element|string} container - The scrub container element or CSS selector.
+   * @param {Object} [opts] - Global options object containing {@link Zaiku.defaults.scrub}.
+   */
   constructor(container, opts) {
     if (typeof container === 'string') container = document.querySelector(container)
     if (!container) return
@@ -1154,9 +1257,16 @@ class ZaikuScrub {
     this.init()
   }
 
+  /**
+   * Get the current scrub value.
+   * @type {number}
+   */
   get value() { return this._value }
   set value(v) { this.setValue(v) }
 
+  /**
+   * Initialize the scrubber: attach mouse, keyboard, and edit-field event listeners.
+   */
   init() {
     this.container.addEventListener('mousedown', this._onMouseDown.bind(this))
     document.addEventListener('mousemove', this._onMouseMove.bind(this))
@@ -1171,6 +1281,11 @@ class ZaikuScrub {
     this._render()
   }
 
+  /**
+   * Set the scrub value, clamping to min/max and rounding to the configured decimals.
+   * @param {number} v - New value.
+   * @param {boolean} [updateHidden=true] - Whether to sync the hidden input.
+   */
   setValue(v, updateHidden) {
     if (updateHidden === undefined) updateHidden = true
     v = Math.max(this.min, Math.min(this.max, v))
@@ -1180,17 +1295,30 @@ class ZaikuScrub {
     if (this.onInput) this.onInput(this._value, this)
   }
 
+  /**
+   * @private
+   * @param {number} v
+   * @returns {number} The value rounded to the configured number of decimal places.
+   */
   _round(v) {
     var f = Math.pow(10, this.decimals)
     return Math.round(v * f) / f
   }
 
+  /**
+   * @private
+   * Update the display element with the current formatted value.
+   */
   _render() {
     if (this.valueDisplay) {
       this.valueDisplay.textContent = this.prefix + this._value.toFixed(this.decimals) + this.suffix
     }
   }
 
+  /**
+   * @private
+   * Write the current value to the hidden input and dispatch a change event.
+   */
   _syncHidden() {
     if (this.hiddenInput) {
       this.hiddenInput.value = this._value
@@ -1200,6 +1328,11 @@ class ZaikuScrub {
     }
   }
 
+  /**
+   * @private
+   * @param {MouseEvent} e
+   * Handle mousedown to start a drag scrub.
+   */
   _onMouseDown(e) {
     if (this._editMode) return
     if (e.target.closest('.input-scrub-field, .input-scrub-btn')) return
@@ -1211,6 +1344,11 @@ class ZaikuScrub {
     e.preventDefault()
   }
 
+  /**
+   * @private
+   * @param {MouseEvent} e
+   * Handle mousemove during a drag scrub to update the value.
+   */
   _onMouseMove(e) {
     if (!this._dragging) return
     var dx = e.clientX - this._dragStartX
@@ -1221,6 +1359,11 @@ class ZaikuScrub {
     this.setValue(this._dragStartValue + dx * step)
   }
 
+  /**
+   * @private
+   * @param {MouseEvent} e
+   * Handle mouseup to stop dragging; either commit or enter edit mode.
+   */
   _onMouseUp(e) {
     if (!this._dragging) return
     this._dragging = false
@@ -1232,6 +1375,10 @@ class ZaikuScrub {
     }
   }
 
+  /**
+   * @private
+   * Switch to keyboard edit mode.
+   */
   _enterEditMode() {
     this._editMode = true
     this._savedValue = this._value
@@ -1242,11 +1389,19 @@ class ZaikuScrub {
     if (this.onFocus) this.onFocus(this._value, this)
   }
 
+  /**
+   * @private
+   * Exit keyboard edit mode without saving.
+   */
   _exitEditMode() {
     this._editMode = false
     this.container.classList.remove('is-editing')
   }
 
+  /**
+   * @private
+   * Commit the edited value (on Enter or blur).
+   */
   _commitEdit() {
     var raw = this.editField.value.trim()
     var val = parseFloat(raw)
@@ -1260,11 +1415,20 @@ class ZaikuScrub {
     if (this.onUpdate) this.onUpdate(this._value, this)
   }
 
+  /**
+   * @private
+   * Revert to the saved value (on Escape).
+   */
   _revertEdit() {
     this.setValue(this._savedValue)
     this._exitEditMode()
   }
 
+  /**
+   * @private
+   * @param {KeyboardEvent} e
+   * Handle arrow keys, Home/End, and Enter/Space for the scrub container.
+   */
   _onKeyDown(e) {
     if (this._editMode) return
     var step = this.step
@@ -1282,17 +1446,39 @@ class ZaikuScrub {
     }
   }
 
+  /**
+   * @private
+   * @param {KeyboardEvent} e
+   * Handle Enter (commit) and Escape (revert) in the edit field.
+   */
   _onEditKeyDown(e) {
     if (e.key === 'Enter') { e.preventDefault(); this._commitEdit() }
     else if (e.key === 'Escape') { e.preventDefault(); this._revertEdit() }
   }
 }
 
+/**
+ * @memberof Zaiku
+ * @type {typeof ZaikuAccordion}
+ */
 Zaiku.Accordion = ZaikuAccordion
 
+/**
+ * @memberof Zaiku
+ * @type {typeof ZaikuScrub}
+ */
 Zaiku.Scrub = ZaikuScrub
 
+/**
+ * @class ZaikuDropdown
+ * @classdesc Dropdown menu component with submenu support and auto-placement.
+ * Applied to elements with class `.dropdown` (excluding `.popover`).
+ */
 class ZaikuDropdown {
+  /**
+   * @param {Element|string} container - The dropdown container element or CSS selector.
+   * @param {Object} [opts] - Global options object containing {@link Zaiku.defaults.dropdown}.
+   */
   constructor(container, opts) {
     if (typeof container === 'string') container = document.querySelector(container)
     if (!container) return
@@ -1318,6 +1504,10 @@ class ZaikuDropdown {
     this._init()
   }
 
+  /**
+   * @private
+   * Initialize event listeners for toggle, outside click, Escape key, submenus, and item selection.
+   */
   _init() {
     if (this.toggleBtn) {
       this.toggleBtn.addEventListener('click', function (e) {
@@ -1360,6 +1550,10 @@ class ZaikuDropdown {
     }
   }
 
+  /**
+   * @private
+   * Initialize submenu hover/click behavior and positioning.
+   */
   _initSubmenus() {
     if (!this.menu) return
     var items = this.menu.querySelectorAll('.dropdown-submenu')
@@ -1401,6 +1595,11 @@ class ZaikuDropdown {
     })
   }
 
+  /**
+   * @private
+   * @param {Element} item - The submenu item to keep open.
+   * Close all sibling submenus of the given item.
+   */
   _closeSiblingSubmenus(item) {
     var parent = item.parentNode
     if (!parent) return
@@ -1412,6 +1611,12 @@ class ZaikuDropdown {
     }
   }
 
+  /**
+   * @private
+   * @param {Element} item - The submenu parent item.
+   * @param {Element} nestedMenu - The nested dropdown-menu element.
+   * Position a submenu to avoid overflow (dropstart / vertical flip).
+   */
   _positionSubmenu(item, nestedMenu) {
     if (!this.autoPlacement) return
 
@@ -1456,6 +1661,10 @@ class ZaikuDropdown {
     }
   }
 
+  /**
+   * @private
+   * Close all open submenus within this dropdown.
+   */
   _closeAllSubmenus() {
     if (this.menu) {
       this.menu.querySelectorAll('.dropdown-submenu.show').forEach(function (item) {
@@ -1470,6 +1679,9 @@ class ZaikuDropdown {
     }
   }
 
+  /**
+   * Toggle the dropdown open/closed.
+   */
   toggle() {
     if (this.container.classList.contains('show')) {
       this.close()
@@ -1478,6 +1690,9 @@ class ZaikuDropdown {
     }
   }
 
+  /**
+   * Open the dropdown, closing any other open dropdowns first.
+   */
   open() {
     document.querySelectorAll('.dropdown.show').forEach(function (d) {
       if (d.zaiku && d.zaiku.dropdownInstance && d !== this.container) {
@@ -1498,6 +1713,9 @@ class ZaikuDropdown {
     if (this.onOpen) this.onOpen(this)
   }
 
+  /**
+   * Close the dropdown and all submenus.
+   */
   close() {
     this.container.classList.remove('show', 'dropup')
     this._closeAllSubmenus()
@@ -1505,8 +1723,24 @@ class ZaikuDropdown {
   }
 }
 
+/**
+ * @memberof Zaiku
+ * @type {typeof ZaikuDropdown}
+ */
 Zaiku.Dropdown = ZaikuDropdown
 
+/**
+ * @namespace ZaikuHoverSliderEffects
+ * @description Built-in GSAP transition effects for the hover slider.
+ * Each effect exposes `leave(el, dir)` and `appear(el, dir, done)` functions.
+ * @property {Object} fade - Opacity and scale crossfade.
+ * @property {Object} slide - Sliding directional transition.
+ * @property {Object} kenburns - Ken Burns zoom effect.
+ * @property {Object} blur - Blur-to-clear transition.
+ * @property {Object} zoom - Scale zoom transition with bounce.
+ * @property {Object} rotate - Rotation transition.
+ * @property {Object} skew - Skew transform transition.
+ */
 ZaikuHoverSliderEffects = {
   fade: {
     leave: function (el) {
@@ -1566,7 +1800,17 @@ ZaikuHoverSliderEffects = {
   }
 }
 
+/**
+ * @class ZaikuHoverSlider
+ * @classdesc Hover-driven image or content slider that advances based on mouse movement
+ * velocity. Triggered via `data-zaiku-hover-slider` attribute. Supports GSAP effects,
+ * counters, and pagination.
+ */
 class ZaikuHoverSlider {
+  /**
+   * @param {Element|string} container - The slider container element or CSS selector.
+   * @param {Object} [opts] - Global options object containing {@link Zaiku.defaults.hoverSlider}.
+   */
   constructor(container, opts) {
     if (typeof container === 'string') container = document.querySelector(container)
     if (!container) return
@@ -1652,6 +1896,11 @@ class ZaikuHoverSlider {
     if (this.onInit) this.onInit(this)
   }
 
+  /**
+   * @private
+   * Initialize the hover slider: set up initial state, effects, counter, pagination,
+   * and mouse event listeners.
+   */
   _init() {
     var self = this
     this.slides[0].classList.add('active')
@@ -1722,6 +1971,10 @@ class ZaikuHoverSlider {
     })
   }
 
+  /**
+   * @private
+   * Create and append the slide counter overlay element.
+   */
   _createCounter() {
     var imgTop = this.container.querySelector('.card-img-top')
     if (!imgTop) return
@@ -1734,6 +1987,10 @@ class ZaikuHoverSlider {
     imgTop.appendChild(this._counterEl)
   }
 
+  /**
+   * @private
+   * Create and append pagination dots overlay element.
+   */
   _createPagination() {
     var imgTop = this.container.querySelector('.card-img-top')
     if (!imgTop) return
@@ -1752,6 +2009,11 @@ class ZaikuHoverSlider {
     imgTop.appendChild(wrap)
   }
 
+  /**
+   * @private
+   * @param {number} timestamp - Current timestamp from requestAnimationFrame.
+   * Animation loop that advances the slide based on accumulated time and mouse velocity.
+   */
   _tick(timestamp) {
     var self = this
     if (this.isHovering && this.total > 1) {
@@ -1775,6 +2037,10 @@ class ZaikuHoverSlider {
     this.rafId = requestAnimationFrame(function (t) { self._tick(t) })
   }
 
+  /**
+   * Navigate to the slide at the given index.
+   * @param {number} index - Target slide index.
+   */
   gotoSlide(index) {
     var prev = this.current
     var proceed = true
@@ -1791,10 +2057,20 @@ class ZaikuHoverSlider {
     }
   }
 
+  /**
+   * @private
+   * @returns {string|null} The resolved effect type name.
+   */
   _effectType() {
     return typeof this.effects === 'string' ? this.effects : (this.effects && this.effects.type) || null
   }
 
+  /**
+   * @private
+   * @param {number} to - Target slide index.
+   * @param {number} from - Previous slide index.
+   * Animate the transition between slides using GSAP effects.
+   */
   _animateSlide(to, from) {
     var self = this
     var outEl = this.slides[from]
@@ -1820,6 +2096,10 @@ class ZaikuHoverSlider {
     fx.appear(inEl, dir, done)
   }
 
+  /**
+   * @private
+   * Update the counter and pagination UI to reflect the current slide.
+   */
   _updateUI() {
     if (this._counterEl) this._counterEl.textContent = (this.current + 1) + '/' + this.total
     if (this._pagItems) {
@@ -1829,6 +2109,9 @@ class ZaikuHoverSlider {
     }
   }
 
+  /**
+   * Advance to the next slide.
+   */
   next() {
     var next = this.current + 1
     if (this.loop) next = next % this.total
@@ -1836,6 +2119,9 @@ class ZaikuHoverSlider {
     this.gotoSlide(next)
   }
 
+  /**
+   * Go to the previous slide.
+   */
   prev() {
     var prev = this.current - 1
     if (this.loop) prev = ((prev % this.total) + this.total) % this.total
@@ -1843,6 +2129,9 @@ class ZaikuHoverSlider {
     this.gotoSlide(prev)
   }
 
+  /**
+   * Programmatically start the hover-slider animation loop.
+   */
   start() {
     this.isHovering = true
     this.velocity = 0
@@ -1851,12 +2140,20 @@ class ZaikuHoverSlider {
     if (this.onStart) this.onStart(this)
   }
 
+  /**
+   * Programmatically stop the hover-slider animation loop.
+   */
   stop() {
     this.isHovering = false
     this.velocity = 0
     if (this.onFinish) this.onFinish(this)
   }
 
+  /**
+   * Update the hover-slider options at runtime.
+   * @param {Object} opts - Partial options object with hover-slider properties.
+   * @returns {ZaikuHoverSlider} This instance for chaining.
+   */
   setOptions(opts) {
     if (!opts) return this
     var keys = ['speed', 'speedBoost', 'loop', 'resetOnLeave', 'moveOnly', 'forwardOnly', 'delay', 'effects', 'showCounter', 'showPagination', 'onSlide', 'onStart', 'onFinish']
@@ -1866,6 +2163,12 @@ class ZaikuHoverSlider {
     return this
   }
 
+  /**
+   * @private
+   * @param {Element} el - The slide element.
+   * @param {string} src - Image URL.
+   * Preload a background image for a slide.
+   */
   _loadSlide(el, src) {
     if (!src) return
     var img = new Image()
@@ -1875,6 +2178,9 @@ class ZaikuHoverSlider {
     img.src = src
   }
 
+  /**
+   * Destroy the hover-slider instance: stop animation, kill GSAP tweens, cancel RAF.
+   */
   destroy() {
     this.stop()
     if (this._hasGSAP && this.effects) gsap.killTweensOf(this.slides)
@@ -1885,9 +2191,21 @@ class ZaikuHoverSlider {
   }
 }
 
+/**
+ * @memberof Zaiku
+ * @type {typeof ZaikuHoverSlider}
+ */
 Zaiku.HoverSlider = ZaikuHoverSlider
 
+/**
+ * @class ZaikuLazyLoader
+ * @classdesc Lazy-loads images and background images using IntersectionObserver.
+ * Watches `data-zaiku-lazy` elements and dynamically observes new DOM nodes via MutationObserver.
+ */
 class ZaikuLazyLoader {
+  /**
+   * @param {Object} [opts] - Global options object containing {@link Zaiku.defaults.lazyLoader}.
+   */
   constructor(opts) {
     var cfg = (opts && opts.lazyLoader) || opts || {}
 
@@ -1904,6 +2222,10 @@ class ZaikuLazyLoader {
     this._init()
   }
 
+  /**
+   * @private
+   * Initialize the IntersectionObserver and MutationObserver.
+   */
   _init() {
     var self = this
     this._observer = new IntersectionObserver(function (entries) {
@@ -1935,6 +2257,11 @@ class ZaikuLazyLoader {
     }
   }
 
+  /**
+   * @private
+   * @param {Element} el - The element to observe.
+   * Start observing an element and show a loading indicator.
+   */
   _add(el) {
     if (el._lazyLoaded) return
     el._lazyLoaded = true
@@ -1959,6 +2286,11 @@ class ZaikuLazyLoader {
     el.appendChild(indicator)
   }
 
+  /**
+   * @private
+   * @param {Element} el
+   * Load the element's image source, apply it, and clean up.
+   */
   _load(el) {
     var self = this
     var src = el.getAttribute(this.srcAttr)
@@ -1987,6 +2319,11 @@ class ZaikuLazyLoader {
     img.src = src
   }
 
+  /**
+   * @private
+   * @param {Element} el
+   * Remove the loading indicator and apply the loaded class.
+   */
   _cleanup(el) {
     var indicator = el.querySelector('.lazy-loading-indicator')
     if (indicator) indicator.remove()
@@ -1994,19 +2331,39 @@ class ZaikuLazyLoader {
     el.classList.add(this.loadedClass)
   }
 
+  /**
+   * Manually observe a lazy-load element.
+   * @param {Element} el - The element to observe.
+   */
   observe(el) {
     if (this._observer) this._add(el)
   }
 
+  /**
+   * Destroy the lazy loader: disconnect both observers.
+   */
   destroy() {
     if (this._observer) this._observer.disconnect()
     if (this._mo) this._mo.disconnect()
   }
 }
 
+/**
+ * @memberof Zaiku
+ * @type {typeof ZaikuLazyLoader}
+ */
 Zaiku.LazyLoader = ZaikuLazyLoader
 
+/**
+ * @class ZaikuElasticCards
+ * @classdesc Interactive card row that expands the hovered card and collapses neighbors.
+ * Triggered via `data-zaiku-card-elastic` attribute.
+ */
 class ZaikuElasticCards {
+  /**
+   * @param {Element|string} container - The container element or CSS selector.
+   * @param {Object} [opts] - Global options object containing {@link Zaiku.defaults.elasticCards}.
+   */
   constructor(container, opts) {
     if (typeof container === 'string') container = document.querySelector(container)
     if (!container) return
@@ -2033,6 +2390,10 @@ class ZaikuElasticCards {
     this._init()
   }
 
+  /**
+   * @private
+   * Initialize mouse event listeners on the container and each card.
+   */
   _init() {
     var self = this
     this._resize = function () { self._setEqual() }
@@ -2057,6 +2418,10 @@ class ZaikuElasticCards {
     this._setEqual()
   }
 
+  /**
+   * @private
+   * Reset all cards to equal width.
+   */
   _setEqual() {
     var prev = this._active
     this._active = -1
@@ -2080,6 +2445,11 @@ class ZaikuElasticCards {
     }
   }
 
+  /**
+   * @private
+   * @param {number} index - Index of the hovered card.
+   * Apply proportional widths: expand the hovered card, shrink neighbors.
+   */
   _hover(index) {
     if (index === this._active) return
     var prev = this._active
@@ -2122,6 +2492,10 @@ class ZaikuElasticCards {
     }
   }
 
+  /**
+   * @private
+   * @returns {number} The computed gap between cards in pixels.
+   */
   _getGap() {
     var style = getComputedStyle(this.container)
     var g = style.gap || style.columnGap
@@ -2132,6 +2506,9 @@ class ZaikuElasticCards {
     return 0
   }
 
+  /**
+   * Destroy the elastic cards instance: remove resize listener and reset card widths.
+   */
   destroy() {
     window.removeEventListener('resize', this._resize)
     for (var i = 0; i < this._cards.length; i++) {
@@ -2140,7 +2517,16 @@ class ZaikuElasticCards {
   }
 }
 
+/**
+ * @class ZaikuSlider
+ * @classdesc Responsive carousel/slider component with drag/swipe, autoplay, breakpoints,
+ * pagination, counter, and timer support. Triggered via `data-zaiku-slider` attribute.
+ */
 class ZaikuSlider {
+  /**
+   * @param {Element|string} container - The slider container element or CSS selector.
+   * @param {Object} [opts] - Global options object containing {@link Zaiku.defaults.slider}.
+   */
   constructor(container, opts) {
     if (typeof container === 'string') container = document.querySelector(container)
     if (!container) return
@@ -2210,6 +2596,11 @@ class ZaikuSlider {
     this._init()
   }
 
+  /**
+   * @private
+   * Initialize the slider: build track, apply breakpoints, set up controls/pagination/drag,
+   * and start autoplay if configured.
+   */
   _init() {
     this._buildTrack()
     this._slides = Array.from(this._track.children).filter(function (s) {
@@ -2235,6 +2626,10 @@ class ZaikuSlider {
     if (this.onInit) this.onInit(this)
   }
 
+  /**
+   * @private
+   * Find or create the slider track element.
+   */
   _buildTrack() {
     this._track = this.container.querySelector('.zaiku-slider-track')
     if (!this._track) {
@@ -2248,6 +2643,10 @@ class ZaikuSlider {
     }
   }
 
+  /**
+   * @private
+   * Calculate and apply slide widths/heights based on slidesPerView and gap.
+   */
   _updateSlideSizes() {
     var containerSize = this.container[this._axis.sizeProp]
     var spv = this._slidesPerView || this.slidesPerView
@@ -2262,6 +2661,10 @@ class ZaikuSlider {
     this._slideStep = slideSize + this.gap
   }
 
+  /**
+   * @private
+   * Determine the effective slidesPerView based on viewport width breakpoints.
+   */
   _applyBreakpoints() {
     this._slidesPerView = this.slidesPerView
     if (!this.breakpoints) return
@@ -2276,6 +2679,10 @@ class ZaikuSlider {
     }
   }
 
+  /**
+   * @private
+   * Debounced resize handler that recalculates slide sizes and repositions.
+   */
   _debouncedResize() {
     clearTimeout(this._resizeTimer)
     var self = this
@@ -2287,6 +2694,10 @@ class ZaikuSlider {
     }, 150)
   }
 
+  /**
+   * @private
+   * Create and append previous/next navigation buttons.
+   */
   _buildControls() {
     if (this.container.querySelector('.zaiku-slider-btn')) return
 
@@ -2308,6 +2719,10 @@ class ZaikuSlider {
     this.container.appendChild(next)
   }
 
+  /**
+   * @private
+   * Create and append pagination dots.
+   */
   _buildPagination() {
     if (this.container.querySelector('.zaiku-slider-pagination')) return
 
@@ -2334,6 +2749,10 @@ class ZaikuSlider {
     this._paginationEl = el
   }
 
+  /**
+   * @private
+   * Create and append the slide counter element.
+   */
   _buildCounter() {
     if (this.container.querySelector('.zaiku-slider-counter')) return
     var el = document.createElement('span')
@@ -2345,6 +2764,10 @@ class ZaikuSlider {
     this._counterEl = el
   }
 
+  /**
+   * @private
+   * Update pagination dots and counter text to reflect the current slide.
+   */
   _updatePagination() {
     if (!this._paginationEl) return
     var dots = this._paginationEl.children
@@ -2356,6 +2779,10 @@ class ZaikuSlider {
     }
   }
 
+  /**
+   * @private
+   * Initialize drag/swipe interaction on the slider track.
+   */
   _initDrag() {
     var self = this
     var startPos = 0
@@ -2363,17 +2790,30 @@ class ZaikuSlider {
     var dragging = false
     var track = this._track
 
+    /**
+     * @private
+     * @returns {number}
+     */
     function getMaxTranslate() {
       var spv = self._slidesPerView || self.slidesPerView
       return -((self._slides.length - spv) * self._slideStep)
     }
 
+    /**
+     * @private
+     * @param {Event} e
+     * @returns {number}
+     */
     function getPointerPos(e) {
       return self._axis.client === 'clientY'
         ? (e.clientY || (e.touches && e.touches[0].clientY))
         : (e.clientX || (e.touches && e.touches[0].clientX))
     }
 
+    /**
+     * @private
+     * @param {Event} e
+     */
     function onPointerDown(e) {
       if (self._slides.length <= 1) return
       dragging = true
@@ -2390,6 +2830,10 @@ class ZaikuSlider {
       if (self.onStart) self.onStart(self)
     }
 
+    /**
+     * @private
+     * @param {Event} e
+     */
     function onPointerMove(e) {
       if (!dragging) return
       e.preventDefault()
@@ -2409,6 +2853,10 @@ class ZaikuSlider {
       if (self.onDrag) self.onDrag(delta, self)
     }
 
+    /**
+     * @private
+     * @param {Event} e
+     */
     function onPointerUp(e) {
       if (!dragging) return
       dragging = false
@@ -2456,10 +2904,18 @@ class ZaikuSlider {
     }
   }
 
+  /**
+   * @private
+   * @returns {number}
+   */
   _getTranslate() {
     return this._currentTranslate
   }
 
+  /**
+   * @private
+   * Set up event listeners to pause autoplay when the mouse enters the container.
+   */
   _initPauseOnHover() {
     if (this._pauseCleanup) return
     var self = this
@@ -2484,6 +2940,10 @@ class ZaikuSlider {
     }
   }
 
+  /**
+   * @private
+   * Pause the autoplay timer animation, recording the current progress.
+   */
   _pauseTimer() {
     if (!this._timerEl) return
     if (this.timerStyle === 'pie') {
@@ -2501,6 +2961,10 @@ class ZaikuSlider {
     }
   }
 
+  /**
+   * @private
+   * Resume the autoplay timer animation from the previously paused progress.
+   */
   _resumeTimer() {
     if (!this._autoTimer || !this._timerEl) return
     if (this._timerEl.style.transition !== 'none') return
@@ -2521,6 +2985,11 @@ class ZaikuSlider {
     }
   }
 
+  /**
+   * Navigate to the slide at the given index.
+   * @param {number} index - Target slide index.
+   * @param {boolean} [animate=true] - Whether to animate the transition.
+   */
   goTo(index, animate) {
     if (this._destroyed) return
     if (animate === undefined) animate = true
@@ -2562,6 +3031,12 @@ class ZaikuSlider {
     if (this._autoTimer) this._resetTimer()
   }
 
+  /**
+   * @private
+   * @param {number} index
+   * @param {boolean} animate
+   * Perform the visual slide transition (CSS transform or GSAP animation).
+   */
   _slideTo(index, animate) {
     var p = -(index * this._slideStep)
     var track = this._track
@@ -2585,22 +3060,40 @@ class ZaikuSlider {
     }
   }
 
+  /**
+   * Advance to the next slide.
+   */
   next() {
     this.goTo(this._current + 1)
   }
 
+  /**
+   * Go to the previous slide.
+   */
   prev() {
     this.goTo(this._current - 1)
   }
 
+  /**
+   * Get the current slide index.
+   * @returns {number}
+   */
   getCurrent() {
     return this._current
   }
 
+  /**
+   * Get the total number of slides.
+   * @returns {number}
+   */
   getTotal() {
     return this._slides.length
   }
 
+  /**
+   * Update slider options at runtime.
+   * @param {Object} opts - Partial options object with slider properties to update.
+   */
   setOptions(opts) {
     if (!opts) return
     var changed = false
@@ -2668,6 +3161,11 @@ class ZaikuSlider {
     if (opts.timerStroke !== undefined) { this.timerStroke = opts.timerStroke; changed = true }
   }
 
+  /**
+   * Add a slide to the slider at the specified index.
+   * @param {Element} el - The slide element to insert.
+   * @param {number} [index] - Insert position (appended if omitted or out of bounds).
+   */
   addSlide(el, index) {
     if (!this._track) return
     if (index < 0 || index >= this._slides.length) {
@@ -2689,6 +3187,10 @@ class ZaikuSlider {
     if (this._autoTimer) this._resetTimer()
   }
 
+  /**
+   * Remove a slide at the given index.
+   * @param {number} index - Index of the slide to remove.
+   */
   removeSlide(index) {
     if (index < 0 || index >= this._slides.length) return
     var el = this._slides[index]
@@ -2712,6 +3214,9 @@ class ZaikuSlider {
     if (this._autoTimer) this._resetTimer()
   }
 
+  /**
+   * Start autoplay.
+   */
   start() {
     if (this._autoTimer) return
     if (this._slides.length <= 1) return
@@ -2720,6 +3225,10 @@ class ZaikuSlider {
     this._resetTimer()
   }
 
+  /**
+   * @private
+   * Build the autoplay timer indicator element (bar or pie style).
+   */
   _buildTimer() {
     if (this._timerEl) return
     var self = this
@@ -2791,6 +3300,10 @@ class ZaikuSlider {
     }
   }
 
+  /**
+   * @private
+   * Reset the autoplay timer animation back to the start.
+   */
   _resetTimer() {
     if (!this._timerEl) return
     var slide = this._slides[this._current]
@@ -2812,6 +3325,9 @@ class ZaikuSlider {
     }
   }
 
+  /**
+   * Stop autoplay and reset the timer indicator.
+   */
   stop() {
     this._autoTimer = null
     this._wasPlaying = false
@@ -2825,6 +3341,9 @@ class ZaikuSlider {
     }
   }
 
+  /**
+   * Destroy the slider instance: stop autoplay, remove event listeners, clean up DOM.
+   */
   destroy() {
     this._destroyed = true
     this.stop()
@@ -2841,6 +3360,858 @@ class ZaikuSlider {
   }
 }
 
+/**
+ * @memberof Zaiku
+ * @type {typeof ZaikuSlider}
+ */
 Zaiku.Slider = ZaikuSlider
 
-Zaiku.ElasticCards = ZaikuElasticCards
+/**
+ * @constant
+ * @type {string[]}
+ * @default
+ * @description Full month names used by {@link ZaikuCalendar} for date formatting.
+ */
+var MONTHS = ['January','February','March','April','May','June','July','August','September','October','November','December']
+/**
+ * @constant
+ * @type {string[]}
+ * @default
+ * @description Abbreviated month names used by {@link ZaikuCalendar} for date formatting.
+ */
+var MONTHS_MIN = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']
+/**
+ * @constant
+ * @type {string[]}
+ * @default
+ * @description Full day-of-week names used by {@link ZaikuCalendar} for date formatting.
+ */
+var DAYS = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']
+/**
+ * @constant
+ * @type {string[]}
+ * @default
+ * @description Abbreviated day-of-week names used by {@link ZaikuCalendar} for date formatting.
+ */
+var DAYS_MIN = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat']
+
+/**
+ * @class ZaikuCalendar
+ * @classdesc Date-picker calendar component supporting single, multiple, and range selection.
+ * Triggered via `data-zaiku-calendar` attribute. Can render inline or as a popover attached
+ * to a target input.
+ */
+class ZaikuCalendar {
+  /**
+   * @param {Element|string} container - The calendar container element or CSS selector.
+   * @param {Object} [opts] - Global options object containing {@link Zaiku.defaults.calendar}.
+   */
+  constructor(container, opts) {
+    if (typeof container === 'string') container = document.querySelector(container)
+    if (!container) return
+    if (container.zaiku && container.zaiku.calendarInstance) return container.zaiku.calendarInstance
+
+    this.container = container
+    var cfg = (opts && opts.calendar) || opts || {}
+
+    this.type = container.getAttribute('data-type') || cfg.type || 'single'
+    this.format = container.getAttribute('data-format') || cfg.format || 'YYYY-MM-DD'
+    this.firstDayOfWeek = parseInt(container.getAttribute('data-first-day')) || cfg.firstDayOfWeek || 1
+    this.panels = parseInt(container.getAttribute('data-panels')) || cfg.panels || 1
+    this.panelGap = parseFloat(container.getAttribute('data-panel-gap')) || cfg.panelGap || 1
+    this.minDate = container.getAttribute('data-min-date') || cfg.minDate || null
+    this.maxDate = container.getAttribute('data-max-date') || cfg.maxDate || null
+    this.disabledDates = JSON.parse(container.getAttribute('data-disabled-dates') || cfg.disabledDates || 'null')
+    this.disabledDays = JSON.parse(container.getAttribute('data-disabled-days') || cfg.disabledDays || 'null')
+    this.preventPastMonths = container.hasAttribute('data-prevent-past-months') || cfg.preventPastMonths || false
+    this.preventPastDays = container.hasAttribute('data-prevent-past-days') || cfg.preventPastDays || false
+    this.splitRange = container.hasAttribute('data-split-range') || cfg.splitRange || false
+    this.minStay = parseInt(container.getAttribute('data-min-stay')) || cfg.minStay || 0
+    this.onSelect = cfg.onSelect
+    this.onOpen = cfg.onOpen
+    this.onClose = cfg.onClose
+    this.onDayClick = cfg.onDayClick
+    this.onDateSelect = cfg.onDateSelect
+    this.onRangeStart = cfg.onRangeStart
+    this.onRangeEnd = cfg.onRangeEnd
+    this.onMonthChange = cfg.onMonthChange
+    this.dayFilter = cfg.dayFilter
+    this.blockedDates = JSON.parse(container.getAttribute('data-blocked-dates') || cfg.blockedDates || 'null')
+    this.onBlockedClick = cfg.onBlockedClick
+    this.enableDateDetails = container.hasAttribute('data-enable-date-details') || cfg.enableDateDetails || false
+    this.onDetailOpen = cfg.onDetailOpen
+    this.detailPlacement = container.getAttribute('data-detail-placement') || cfg.detailPlacement || 'bottom'
+    this.activeDayColor = container.getAttribute('data-active-day-color') || cfg.activeDayColor || null
+    this.activeDayColorClass = container.getAttribute('data-active-day-color-class') || cfg.activeDayColorClass || null
+    this.calendarBgColor = container.getAttribute('data-calendar-bg-color') || cfg.calendarBgColor || null
+    this.calendarBgColorClass = container.getAttribute('data-calendar-bg-color-class') || cfg.calendarBgColorClass || null
+    this.todayColor = container.getAttribute('data-today-color') || cfg.todayColor || null
+    this.todayColorClass = container.getAttribute('data-today-color-class') || cfg.todayColorClass || null
+    this._detailPopoverEl = null
+    this._currentDetailDate = null
+    this._target = document.querySelector(container.getAttribute('data-target'))
+    this._inline = !this._target
+
+    var now = new Date()
+    this._viewYear = now.getFullYear()
+    this._viewMonth = now.getMonth()
+    this._selectedDates = []
+    this._rangeStart = null
+    this._rangeEnd = null
+    this._rangeSegments = null
+
+    if (cfg.value) this._setInitialValue(cfg.value)
+
+    container.zaiku = container.zaiku || {}
+    container.zaiku.calendarInstance = this
+
+    this._build()
+    if (!this._inline) this._initPopover()
+  }
+
+  /**
+   * @private
+   * @param {Object|string|Array} val - Initial value.
+   */
+  _setInitialValue(val) {
+    if (this.type === 'range' && val && val.start && val.end) {
+      this._rangeStart = this._parseDate(val.start)
+      this._rangeEnd = this._parseDate(val.end)
+    } else if (this.type === 'multiple' && Array.isArray(val)) {
+      this._selectedDates = val.map(function (d) { return new Date(d) })
+    } else if (val) {
+      this._selectedDates = [this._parseDate(val)]
+    }
+  }
+
+  /**
+   * @private
+   * @param {string} str - Date string in 'YYYY-MM-DD' format.
+   * @returns {Date|null}
+   */
+  _parseDate(str) {
+    if (!str) return null
+    var parts = str.split('-')
+    return new Date(parseInt(parts[0]), parseInt(parts[1]) - 1, parseInt(parts[2]))
+  }
+
+  /**
+   * @private
+   * @param {Date} d - Date to format.
+   * @returns {string}
+   */
+  _formatDate(d) {
+    return this.formatDate(d, this.format)
+  }
+
+  /**
+   * Format a Date to a string using the given format pattern.
+   * Supports YYYY/YY/yyyy/yy, MMMM/MMM/MM, D/d/DD/dd, dddd/ddd.
+   * @param {Date} d - Date to format.
+   * @param {string} [fmt] - Format pattern (defaults to instance format).
+   * @returns {string}
+   */
+  formatDate(d, fmt) {
+    if (!d) return ''
+    if (!fmt) fmt = this.format || 'YYYY-MM-DD'
+    var y = d.getFullYear()
+    var m = d.getMonth()
+    var day = d.getDate()
+    var wd = d.getDay()
+    var map = {
+      'YYYY': y,
+      'yyyy': y,
+      'YY': String(y).slice(-2),
+      'yy': String(y).slice(-2),
+      'MMMM': MONTHS[m],
+      'MMM': MONTHS_MIN[m],
+      'MM': ('0' + (m + 1)).slice(-2),
+      'DD': ('0' + day).slice(-2),
+      'dd': ('0' + day).slice(-2),
+      'dddd': DAYS[wd],
+      'ddd': DAYS_MIN[wd]
+    }
+    var keys = ['YYYY','yyyy','MMMM','MMM','dddd','ddd','YY','yy','MM','DD','dd']
+    var result = fmt
+    for (var i = 0; i < keys.length; i++) {
+      result = result.split(keys[i]).join(map[keys[i]])
+    }
+    result = result.replace(/D(?!D)/g, day).replace(/d(?!d)/g, day)
+    return result
+  }
+
+  /**
+   * @private
+   * @param {Date} a
+   * @param {Date} b
+   * @returns {boolean}
+   */
+  _dateEquals(a, b) {
+    return a && b && a.getFullYear() === b.getFullYear() && a.getMonth() === b.getMonth() && a.getDate() === b.getDate()
+  }
+
+  /**
+   * @private
+   * @param {number} y - Year.
+   * @param {number} m - Month (0-indexed).
+   * @returns {number} Number of days in the month.
+   */
+  _daysInMonth(y, m) {
+    return new Date(y, m + 1, 0).getDate()
+  }
+
+  /**
+   * @private
+   * @param {number} y - Year.
+   * @param {number} m - Month (0-indexed).
+   * @param {number} d - Day of month.
+   * @returns {number} Day of week (0=Sunday).
+   */
+  _dayOfWeek(y, m, d) {
+    return new Date(y, m, d).getDay()
+  }
+
+  /**
+   * @private
+   * @param {number} y - Year.
+   * @param {number} m - Month (0-indexed).
+   * @param {number} d - Day of month.
+   * @returns {boolean}
+   */
+  _isDisabled(y, m, d) {
+    var date = new Date(y, m, d)
+    if (this.dayFilter && !this.dayFilter(date)) return true
+    if (this.preventPastDays) {
+      var today = new Date(); today.setHours(0, 0, 0, 0)
+      if (date < today) return true
+    }
+    if (this.minDate && date < this._parseDate(this.minDate)) return true
+    if (this.maxDate && date > this._parseDate(this.maxDate)) return true
+    if (this.disabledDates) {
+      var ds = this._formatDate(date)
+      for (var i = 0; i < this.disabledDates.length; i++) {
+        if (this.disabledDates[i] === ds) return true
+      }
+    }
+    if (this.disabledDays) {
+      var dw = date.getDay()
+      for (var i = 0; i < this.disabledDays.length; i++) {
+        if (this.disabledDays[i] === dw) return true
+      }
+    }
+    return false
+  }
+
+  /**
+   * @private
+   * @param {number} y
+   * @param {number} m
+   * @param {number} d
+   * @returns {boolean}
+   */
+  _isSelected(y, m, d) {
+    for (var i = 0; i < this._selectedDates.length; i++) {
+      if (this._dateEquals(this._selectedDates[i], new Date(y, m, d))) return true
+    }
+    return false
+  }
+
+  /**
+   * @private
+   * @param {number} y
+   * @param {number} m
+   * @param {number} d
+   * @returns {boolean}
+   */
+  _isToday(y, m, d) {
+    var t = new Date()
+    return t.getFullYear() === y && t.getMonth() === m && t.getDate() === d
+  }
+
+  /**
+   * @private
+   * @param {number} y
+   * @param {number} m
+   * @param {number} d
+   * @returns {Object|null} Blocked date entry or null.
+   */
+  _getBlocked(y, m, d) {
+    if (!this.blockedDates) return null
+    var ds = this._formatDate(new Date(y, m, d))
+    for (var i = 0; i < this.blockedDates.length; i++) {
+      if (this.blockedDates[i].date === ds) return this.blockedDates[i]
+    }
+    return null
+  }
+
+  /**
+   * @private
+   * @param {number} y
+   * @param {number} m
+   * @param {number} d
+   * @returns {boolean}
+   */
+  _inRange(y, m, d) {
+    if (!this._rangeStart) return false
+    var date = new Date(y, m, d)
+    if (this._rangeEnd) {
+      return date >= this._rangeStart && date <= this._rangeEnd
+    }
+    return this._dateEquals(date, this._rangeStart)
+  }
+
+  /**
+   * @private
+   * Build the calendar DOM structure including panels, headers, grids, and popover elements.
+   */
+  _build() {
+    this.container.innerHTML = ''
+    this._panelsEl = document.createElement('div')
+    this._panelsEl.className = 'zaiku-calendar-panels'
+    this._panelsEl.style.gap = this.panelGap + 'rem'
+
+    if (this.panels > 1) {
+      this._buildGroupHeader()
+    }
+
+    for (var i = 0; i < this.panels; i++) {
+      this._renderPanel(i)
+    }
+
+    this.container.appendChild(this._panelsEl)
+    this.container.classList.add('zaiku-calendar')
+    if (this.panels > 1) this.container.classList.add('zaiku-calendar-grouped')
+    if (this.enableDateDetails) this._initDetailPopover()
+    if (this.calendarBgColor) this.container.style.backgroundColor = this.calendarBgColor
+    if (this.calendarBgColorClass) this.container.classList.add(this.calendarBgColorClass)
+  }
+
+  /**
+   * @private
+   * Build the navigation header used when multiple panels are displayed.
+   */
+  _buildGroupHeader() {
+    var hdr = document.createElement('div')
+    hdr.className = 'zaiku-calendar-group-header'
+    var prev = document.createElement('button')
+    prev.className = 'zaiku-calendar-nav zaiku-calendar-prev'
+    prev.innerHTML = '‹'
+    var self = this
+    prev.addEventListener('click', function () { self._navigate(-1) })
+    var title = document.createElement('span')
+    title.className = 'zaiku-calendar-title'
+    this._groupTitle = title
+    this._updateGroupTitle()
+    var next = document.createElement('button')
+    next.className = 'zaiku-calendar-nav'
+    next.innerHTML = '›'
+    next.addEventListener('click', function () { self._navigate(1) })
+    hdr.appendChild(prev)
+    hdr.appendChild(title)
+    hdr.appendChild(next)
+    this.container.appendChild(hdr)
+  }
+
+  /**
+   * @private
+   * Update the group header title text to reflect the current view range.
+   */
+  _updateGroupTitle() {
+    if (!this._groupTitle) return
+    if (this.panels === 1) return
+    var m = this._viewMonth
+    var y = this._viewYear
+    var endM = (m + this.panels - 1) % 12
+    var endY = y + Math.floor((m + this.panels - 1) / 12)
+    this._groupTitle.textContent = MONTHS[m] + ' ' + y + ' - ' + MONTHS[endM] + ' ' + endY
+  }
+
+  /**
+   * @private
+   * @param {number} offset - Panel offset from the current view month.
+   * Render a single month panel within the calendar.
+   */
+  _renderPanel(offset) {
+    var m = (this._viewMonth + offset) % 12
+    var y = this._viewYear + Math.floor((this._viewMonth + offset) / 12)
+    if (m < 0) { m += 12; y -= 1 }
+
+    var panel = document.createElement('div')
+    panel.className = 'zaiku-calendar-panel'
+
+    if (this.panels === 1) {
+      var hdr = document.createElement('div')
+      hdr.className = 'zaiku-calendar-header'
+      var prev = document.createElement('button')
+      prev.className = 'zaiku-calendar-nav zaiku-calendar-prev'
+      prev.innerHTML = '‹'
+      var self = this
+      prev.addEventListener('click', function () { self._navigate(-1) })
+      var title = document.createElement('span')
+      title.className = 'zaiku-calendar-title'
+      title.textContent = MONTHS[m] + ' ' + y
+      var next = document.createElement('button')
+      next.className = 'zaiku-calendar-nav'
+      next.innerHTML = '›'
+      next.addEventListener('click', function () { self._navigate(1) })
+      hdr.appendChild(prev)
+      hdr.appendChild(title)
+      hdr.appendChild(next)
+      panel.appendChild(hdr)
+    }
+
+    var grid = document.createElement('div')
+    grid.className = 'zaiku-calendar-grid'
+
+    var weekdays = document.createElement('div')
+    weekdays.className = 'zaiku-calendar-weekdays'
+    for (var d = 0; d < 7; d++) {
+      var wd = document.createElement('span')
+      wd.className = 'zaiku-calendar-weekday'
+      wd.textContent = DAYS_MIN[(d + this.firstDayOfWeek) % 7]
+      weekdays.appendChild(wd)
+    }
+    grid.appendChild(weekdays)
+
+    var startDow = this._dayOfWeek(y, m, 1)
+    var daysInMonth = this._daysInMonth(y, m)
+    var prevDays = this._daysInMonth(y, m - 1 < 0 ? 11 : m - 1, y - (m < 1 ? 1 : 0))
+    var startOffset = (startDow - this.firstDayOfWeek + 7) % 7
+    var totalCells = Math.ceil((startOffset + daysInMonth) / 7) * 7
+
+    var self = this
+    var week = null
+    for (var i = 0; i < totalCells; i++) {
+      if (i % 7 === 0) {
+        week = document.createElement('div')
+        week.className = 'zaiku-calendar-week'
+        grid.appendChild(week)
+      }
+      var cellDay, cellMonth, cellYear, isOther = false
+      if (i < startOffset) {
+        cellDay = prevDays - startOffset + i + 1
+        cellMonth = m - 1 < 0 ? 11 : m - 1
+        cellYear = m < 1 ? y - 1 : y
+        isOther = true
+      } else if (i >= startOffset + daysInMonth) {
+        cellDay = i - startOffset - daysInMonth + 1
+        cellMonth = m + 1 > 11 ? 0 : m + 1
+        cellYear = m > 10 ? y + 1 : y
+        isOther = true
+      } else {
+        cellDay = i - startOffset + 1
+        cellMonth = m
+        cellYear = y
+      }
+
+      var cell = document.createElement('div')
+      cell.className = 'zaiku-calendar-day-cell'
+      var btn = document.createElement('button')
+      btn.className = 'zaiku-calendar-day'
+      btn.textContent = cellDay
+      if (isOther) btn.classList.add('other-month')
+      if (this._isToday(cellYear, cellMonth, cellDay)) btn.classList.add('today')
+      var blockedData = this._getBlocked(cellYear, cellMonth, cellDay)
+      var isDisabled = this._isDisabled(cellYear, cellMonth, cellDay) || !!blockedData
+      if (isDisabled) btn.classList.add('disabled')
+      if (blockedData) {
+        btn.classList.add('blocked')
+        btn.dataset.blockedLabel = blockedData.label || ''
+      }
+      if (this._isSelected(cellYear, cellMonth, cellDay)) btn.classList.add('selected')
+
+      if (this.type === 'range') {
+        var date = new Date(cellYear, cellMonth, cellDay)
+        if (this._rangeStart && this._rangeEnd && date > this._rangeStart && date < this._rangeEnd) {
+          btn.classList.add('in-range')
+        }
+        if (this._dateEquals(date, this._rangeStart)) btn.classList.add('range-start')
+        if (this._dateEquals(date, this._rangeEnd)) btn.classList.add('range-end')
+      }
+
+      if (btn.classList.contains('selected') || btn.classList.contains('range-start') || btn.classList.contains('range-end')) {
+        if (this.activeDayColor) btn.style.backgroundColor = this.activeDayColor
+        if (this.activeDayColorClass) btn.classList.add(this.activeDayColorClass)
+      }
+      if (btn.classList.contains('today')) {
+        if (this.todayColor) btn.style.color = this.todayColor
+        if (this.todayColorClass) btn.classList.add(this.todayColorClass)
+      }
+
+      if (!isDisabled) {
+        ;(function (cy, cm, cd, b) {
+          b.addEventListener('click', function () {
+            self._lastClickedCell = b
+            self._selectDate(cy, cm, cd)
+          })
+        }(cellYear, cellMonth, cellDay, btn))
+      }
+      if (blockedData) {
+        ;(function (cy, cm, cd, bd, b) {
+          b.addEventListener('click', function (e) {
+            e.stopPropagation()
+            if (self.onBlockedClick) self.onBlockedClick(new Date(cy, cm, cd), bd, self)
+          })
+        }(cellYear, cellMonth, cellDay, blockedData, btn))
+      }
+
+      cell.appendChild(btn)
+      week.appendChild(cell)
+    }
+
+    panel.appendChild(grid)
+    this._panelsEl.appendChild(panel)
+  }
+
+  /**
+   * @private
+   * @param {number} y
+   * @param {number} m
+   * @param {number} d
+   * Handle date selection based on the current selection type.
+   */
+  _selectDate(y, m, d) {
+    var date = new Date(y, m, d)
+
+    var cellRect = null
+    if (this.enableDateDetails && this._lastClickedCell) {
+      cellRect = this._lastClickedCell.getBoundingClientRect()
+    }
+
+    if (this.onDayClick) this.onDayClick(date, this)
+
+    if (this.type === 'single') {
+      this._selectedDates = [date]
+      if (this.onDateSelect) this.onDateSelect(date, this)
+    } else if (this.type === 'multiple') {
+      var idx = -1
+      for (var i = 0; i < this._selectedDates.length; i++) {
+        if (this._dateEquals(this._selectedDates[i], date)) { idx = i; break }
+      }
+      if (idx >= 0) this._selectedDates.splice(idx, 1)
+      else this._selectedDates.push(date)
+      if (this.onDateSelect) this.onDateSelect(date, this)
+    } else if (this.type === 'range') {
+      if (!this._rangeStart || (this._rangeStart && this._rangeEnd)) {
+        this._rangeStart = date
+        this._rangeEnd = null
+        this._rangeSegments = null
+        if (this.onRangeStart) this.onRangeStart(date, this)
+      } else {
+        if (date < this._rangeStart) {
+          this._rangeEnd = this._rangeStart
+          this._rangeStart = date
+        } else {
+          this._rangeEnd = date
+        }
+        if (this.splitRange) this._splitRange()
+        if (this.onRangeEnd) this.onRangeEnd(this._rangeStart, this._rangeEnd, this)
+      }
+    }
+
+    this._render()
+    if (this.onSelect) this.onSelect(this.getValue(), this)
+    if (!this._inline) this._writeToTarget()
+    if (this.enableDateDetails && date) {
+      this._openDateDetail(date, cellRect)
+      this._lastClickedCell = null
+    }
+  }
+
+  /**
+   * Get the currently selected value(s) according to the calendar type.
+   * @returns {string|Object|Array|null}
+   */
+  getValue() {
+    if (this.type === 'range') {
+      if (this.splitRange && this._rangeSegments) return this._rangeSegments
+      return { start: this._formatDate(this._rangeStart), end: this._formatDate(this._rangeEnd) }
+    }
+    if (this.type === 'multiple') return this._selectedDates.map(function (d) { return this._formatDate(d) }, this)
+    return this._formatDate(this._selectedDates[0] || null)
+  }
+
+  /**
+   * @private
+   * Split the selected range into segments around disabled dates.
+   * Filters segments by minStay if configured.
+   */
+  _splitRange() {
+    if (!this._rangeStart || !this._rangeEnd) return
+    var segments = []
+    var current = new Date(this._rangeStart)
+    var segStart = new Date(current)
+    while (current <= this._rangeEnd) {
+      var y = current.getFullYear()
+      var m = current.getMonth()
+      var d = current.getDate()
+      if (this._isDisabled(y, m, d)) {
+        if (segStart < current) {
+          var segEnd = new Date(current)
+          segEnd.setDate(segEnd.getDate() - 1)
+          segments.push({ start: this._formatDate(segStart), end: this._formatDate(segEnd) })
+        }
+        segStart = new Date(current)
+        segStart.setDate(segStart.getDate() + 1)
+      }
+      current.setDate(current.getDate() + 1)
+    }
+    if (segStart <= this._rangeEnd) {
+      segments.push({ start: this._formatDate(segStart), end: this._formatDate(this._rangeEnd) })
+    }
+    if (this.minStay > 0) {
+      segments = segments.filter(function (s) {
+        var diff = Math.round((new Date(s.end) - new Date(s.start)) / 86400000)
+        return diff >= this.minStay
+      }, this)
+    }
+    this._rangeSegments = segments.length > 0 ? segments : null
+  }
+
+  /**
+   * @private
+   * @param {number} delta - Direction and number of months to navigate (-1 or 1).
+   */
+  _navigate(delta) {
+    if (delta < 0 && this.preventPastMonths) {
+      var targetMonth = this._viewMonth + delta
+      var targetYear = this._viewYear
+      if (targetMonth < 0) { targetMonth += 12; targetYear -= 1 }
+      var now = new Date()
+      if (targetYear < now.getFullYear() || (targetYear === now.getFullYear() && targetMonth < now.getMonth())) {
+        return
+      }
+    }
+    this._viewMonth += delta
+    if (this._viewMonth < 0) { this._viewMonth += 12; this._viewYear -= 1 }
+    if (this._viewMonth > 11) { this._viewMonth -= 12; this._viewYear += 1 }
+    this._updateGroupTitle()
+    this._render()
+    if (this.onMonthChange) this.onMonthChange(this._viewYear, this._viewMonth, this)
+  }
+
+  /**
+   * Navigate to the previous month.
+   */
+  prevMonth() {
+    this._navigate(-1)
+  }
+
+  /**
+   * Navigate to the next month.
+   */
+  nextMonth() {
+    this._navigate(1)
+  }
+
+  /**
+   * Check whether a given date falls on a weekday.
+   * @param {Date|string} date - Date object or date string.
+   * @returns {boolean}
+   */
+  isWeekday(date) {
+    var d = date instanceof Date ? date : this._parseDate(date)
+    return d && d.getDay() !== 0 && d.getDay() !== 6
+  }
+
+  /**
+   * @private
+   * Re-render all calendar panels and update navigation state.
+   */
+  _render() {
+    this._panelsEl.innerHTML = ''
+    for (var i = 0; i < this.panels; i++) this._renderPanel(i)
+    this._updateNavState()
+  }
+
+  /**
+   * @private
+   * Enable/disable the previous-month navigation button based on preventPastMonths.
+   */
+  _updateNavState() {
+    this.container.querySelectorAll('.zaiku-calendar-prev').forEach(function (btn) {
+      btn.removeAttribute('disabled')
+    })
+    if (!this.preventPastMonths) return
+    var now = new Date()
+    var atBoundary = this._viewYear < now.getFullYear() || (this._viewYear === now.getFullYear() && this._viewMonth <= now.getMonth())
+    if (atBoundary) {
+      this.container.querySelectorAll('.zaiku-calendar-prev').forEach(function (btn) {
+        btn.setAttribute('disabled', 'disabled')
+      })
+    }
+  }
+
+  /**
+   * @private
+   * Initialize popover behavior when the calendar targets an input element.
+   */
+  _initPopover() {
+    if (!this._target) return
+    var self = this
+    this.container.classList.add('zaiku-calendar-popover')
+    this._target.addEventListener('click', function (e) { e.preventDefault(); self.toggle() })
+    this.container.addEventListener('click', function () {
+      self._clickedInside = true
+    })
+    document.addEventListener('click', function (e) {
+      if (self._clickedInside) { self._clickedInside = false; return }
+      if (self.container.classList.contains('show') && !self.container.contains(e.target) && e.target !== self._target && !self._target.contains(e.target)) {
+        self.close()
+      }
+    })
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') self.close()
+    })
+  }
+
+  /**
+   * Toggle the calendar popover open/closed.
+   */
+  toggle() {
+    if (this.container.classList.contains('show')) this.close()
+    else this.open()
+  }
+
+  /**
+   * Open the calendar popover.
+   */
+  open() {
+    this.container.classList.add('show')
+    if (this.onOpen) this.onOpen(this)
+  }
+
+  /**
+   * Close the calendar popover.
+   */
+  close() {
+    this.container.classList.remove('show')
+    if (this.onClose) this.onClose(this)
+  }
+
+  /**
+   * @private
+   * Write the current selection to the target input element's value.
+   */
+  _writeToTarget() {
+    if (!this._target || this._target.tagName !== 'INPUT') return
+    var val = this.getValue()
+    if (this.type === 'range') {
+      if (this.splitRange && Array.isArray(val)) {
+        this._target.value = val.map(function (s) { return s.start + ' — ' + s.end }).join(' | ')
+      } else if (val && val.start) {
+        this._target.value = val.start + ' — ' + val.end
+      }
+    } else if (this.type === 'multiple' && Array.isArray(val)) {
+      this._target.value = val.join(', ')
+    } else {
+      this._target.value = val || ''
+    }
+  }
+
+  /**
+   * @private
+   * Initialize the date-detail popover element and its event listeners.
+   */
+  _initDetailPopover() {
+    if (this._detailPopoverEl) return
+    var el = document.createElement('div')
+    el.className = 'dropdown popover zaiku-calendar-detail-popover'
+    el.setAttribute('data-popover-placement', 'bottom')
+    var menu = document.createElement('div')
+    menu.className = 'dropdown-menu'
+    el.appendChild(menu)
+    this.container.appendChild(el)
+    this._detailPopoverEl = el
+    var self = this
+    this.container.addEventListener('click', function () {
+      self._detailClickedInside = true
+    })
+    document.addEventListener('click', function (e) {
+      if (self._detailClickedInside) { self._detailClickedInside = false; return }
+      if (!self._detailPopoverEl.classList.contains('show')) return
+      if (!self._detailPopoverEl.contains(e.target)) {
+        self.closePopover()
+      }
+    })
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && self._detailPopoverEl.classList.contains('show')) {
+        self.closePopover()
+      }
+    })
+  }
+
+  /**
+   * @private
+   * @param {Date} date - The clicked date.
+   * @param {DOMRect|null} cellRect - Bounding rect of the clicked cell for positioning.
+   * Open the detail popover for a specific date.
+   */
+  _openDateDetail(date, cellRect) {
+    if (!this._detailPopoverEl) this._initDetailPopover()
+    this._currentDetailDate = date
+    var menu = this._detailPopoverEl.querySelector('.dropdown-menu')
+    menu.innerHTML = ''
+    if (this.onDetailOpen) this.onDetailOpen(menu, date, this)
+    var placement = this.detailPlacement || 'bottom'
+    this._detailPopoverEl.setAttribute('data-popover-placement', placement)
+    if (cellRect) {
+      var cr = this.container.getBoundingClientRect()
+      var left = cellRect.left - cr.left
+      var top = cellRect.top - cr.top
+      this._detailPopoverEl.style.left = (left + cellRect.width / 2) + 'px'
+      if (placement === 'right') {
+        this._detailPopoverEl.style.top = top + 'px'
+      } else if (placement === 'top') {
+        this._detailPopoverEl.style.top = (top - 4) + 'px'
+      } else if (placement === 'left') {
+        this._detailPopoverEl.style.top = top + 'px'
+      } else {
+        this._detailPopoverEl.style.top = (top + cellRect.height + 4) + 'px'
+      }
+      this._detailPopoverEl.classList.add('show')
+      var pw = this._detailPopoverEl.offsetWidth
+      var ph = this._detailPopoverEl.offsetHeight
+      if (placement === 'right') {
+        this._detailPopoverEl.style.left = (cellRect.right - cr.left + 4) + 'px'
+      } else if (placement === 'top') {
+        this._detailPopoverEl.style.top = (top - ph - 4) + 'px'
+        this._detailPopoverEl.style.left = (left + cellRect.width / 2) + 'px'
+      } else if (placement === 'left') {
+        this._detailPopoverEl.style.left = (cellRect.left - cr.left - pw - 4) + 'px'
+        this._detailPopoverEl.style.top = (top + cellRect.height / 2 - ph / 2) + 'px'
+      }
+    } else {
+      this._detailPopoverEl.classList.add('show')
+    }
+  }
+
+  /**
+   * Close the date-detail popover.
+   */
+  closePopover() {
+    if (!this._detailPopoverEl) return
+    this._detailPopoverEl.classList.remove('show')
+    var menu = this._detailPopoverEl.querySelector('.dropdown-menu')
+    menu.innerHTML = ''
+    this._currentDetailDate = null
+  }
+
+  /**
+   * Destroy the calendar instance, clean up the detail popover, and remove the instance reference.
+   */
+  destroy() {
+    if (this._detailPopoverEl) {
+      this.closePopover()
+      this._detailPopoverEl.parentNode.removeChild(this._detailPopoverEl)
+      this._detailPopoverEl = null
+    }
+    this.container.zaiku.calendarInstance = null
+  }
+}
+
+/**
+ * @memberof Zaiku
+ * @type {typeof ZaikuCalendar}
+ */
+Zaiku.Calendar = ZaikuCalendar

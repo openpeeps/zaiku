@@ -1,0 +1,23 @@
+/* Gap utilities — generated with Bro for loops */
+for $n in range(0, 7):
+  .g-${n}
+    if $n == 0:
+      gap: 0
+    else:
+      gap: calc(var(--spacing) * ${n})
+
+/* Horizontal only – gx-* */
+for $n in range(0, 5):
+  .gx-${n}
+    if $n == 0:
+      column-gap: 0
+    else:
+      column-gap: calc(var(--spacing) * ${n})
+
+/* Vertical only – gy-* */
+for $n in range(0, 5):
+  .gy-${n}
+    if $n == 0:
+      row-gap: 0
+    else:
+      row-gap: calc(var(--spacing) * ${n})
