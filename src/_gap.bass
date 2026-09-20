@@ -1,4 +1,4 @@
-/* Gap utilities — generated with Bro for loops */
+/* Gap utilities — generated with bowdy for loops */
 for $n in range(0, 7):
   .g-${n}
     if $n == 0:

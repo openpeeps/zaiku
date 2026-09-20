@@ -1,0 +1,65 @@
+@layer components {
+  /* Breadcrumb component */
+  .breadcrumb {
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    color: var(--color-gray-700);
+  }
+
+  /* support either <ol> or <ul> inside .breadcrumb */
+  .breadcrumb ol,
+  .breadcrumb ul {
+    list-style: none;
+    display: flex;
+    gap: 0;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+  }
+
+  .breadcrumb li {
+    display: inline-flex;
+    align-items: center;
+    white-space: nowrap;
+  }
+
+  /* page separator using U+203A (›). use CSS var to allow override */
+  .breadcrumb li + li::before {
+    content: var(--breadcrumb-sep, "\203A");
+    margin: 0 0.5rem;
+    color: currentColor;
+    opacity: 0.6;
+    font-size: 0.95em;
+    speak: none;
+    display: inline-block;
+    line-height: 1;
+  }
+
+  /* links */
+  .breadcrumb a {
+    color: var(--color-primary-600);
+    text-decoration: none;
+  }
+  .breadcrumb a:hover,
+  .breadcrumb a:focus {
+    text-decoration: underline;
+  }
+
+  /* current page */
+  .breadcrumb .current,
+  .breadcrumb li[aria-current="page"] {
+    color: var(--color-gray-800);
+    font-weight: 600;
+    pointer-events: none;
+  }
+
+  /* compact / small variant */
+  .breadcrumb-sm { font-size: 0.8rem; }
+  .breadcrumb-lg { font-size: 1rem; }
+
+  /* support full-width style */
+  .breadcrumb.block {
+    width: 100%;
+  }
+}

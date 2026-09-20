@@ -47,7 +47,7 @@
 
 .btn-primary:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 2px var(--color-primary-200);
+  box-shadow: 0 0 0 2px rgba(var(--color-primary-200-rgb), 1);
 }
 
 .btn-secondary {
@@ -62,7 +62,7 @@
 
 .btn-secondary:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 2px var(--color-gray-300);
+  box-shadow: 0 0 0 2px rgba(var(--color-gray-300-rgb), 1);
 }
 
 .btn-success {
@@ -107,7 +107,7 @@
 
 .btn-outline:focus-visible {
   outline: none;
-  box-shadow: 0 0 0 2px var(--color-primary-200);
+  box-shadow: 0 0 0 2px rgba(var(--color-primary-200-rgb), 1);
 }
 
 .btn-sm {

@@ -1,0 +1,178 @@
+@layer components {
+/* Alerts, toasts and progress — extracted from style.bass */
+  .alert {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    border-radius: var(--alert-radius, var(--radius-lg));
+    border: 1px solid;
+    font-size: .92rem;
+    line-height: 1.5;
+  }
+
+  .alert-content {
+    flex: 1;
+  }
+
+  .alert-icon {
+    display: inline-flex;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+
+  .alert-icon svg {
+    width: 1.1rem;
+    height: 1.1rem;
+    display: block;
+  }
+
+  .alert-dismiss {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 1.25rem;
+    height: 1.25rem;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    opacity: 0.4;
+    color: inherit;
+    transition: opacity 0.15s ease;
+  }
+
+  .alert-dismiss:hover {
+    opacity: 0.7;
+  }
+
+  /* Color variants — one `case` branch per variant (bowdy maps only accept numeric values) */
+  for $v in range(1, 4):
+    case $v
+    of 1:
+      .alert-info {
+        background-color: var(--color-primary-50);
+        border-color: var(--color-primary-200);
+        color: var(--color-primary-800);
+      }
+    of 2:
+      .alert-success {
+        background-color: #f0fdf4;
+        border-color: #bbf7d0;
+        color: #166534;
+      }
+    of 3:
+      .alert-warning {
+        background-color: #fffbeb;
+        border-color: #fde68a;
+        color: #92400e;
+      }
+    of 4:
+      .alert-danger {
+        background-color: #fef2f2;
+        border-color: #fecaca;
+        color: #991b1b;
+      }
+
+  .toast {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+
+  /* Progress bar */
+  .progress {
+    width: 100%;
+    height: 0.7rem;
+    background-color: var(--color-gray-200);
+    border-radius: var(--radius-pill);
+    overflow: hidden;
+    position: relative;
+  }
+
+  .progress-bar {
+    height: 100%;
+    background-color: var(--color-gray-800);
+    border-radius: var(--radius-pill);
+    transition: width var(--transition-normal) ease;
+  }
+
+  .progress-sm {
+    height: 0.25rem;
+  }
+
+  .progress-lg {
+    height: 1rem;
+  }
+
+  .progress-striped .progress-bar {
+    background-image: linear-gradient(
+      45deg,
+      rgba(255, 255, 255, 0.15) 25%,
+      transparent 25%,
+      transparent 50%,
+      rgba(255, 255, 255, 0.15) 50%,
+      rgba(255, 255, 255, 0.15) 75%,
+      transparent 75%,
+      transparent
+    );
+    background-size: 1rem 1rem;
+  }
+
+  .progress-animated .progress-bar {
+    animation: progress-stripes 1s linear infinite;
+  }
+
+  .progress-loading .progress-bar {
+    width: 30%;
+    position: relative;
+    animation: progress-loading 1.5s ease-in-out infinite;
+  }
+
+  @keyframes progress-loading {
+    0%   { left: -30%; }
+    100% { left: 100%; }
+  }
+
+  @keyframes progress-stripes {
+    0% { background-position: 1rem 0; }
+    100% { background-position: 0 0; }
+  }
+
+  .progress-label {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: #fff;
+    mix-blend-mode: difference;
+    pointer-events: none;
+  }
+
+  .progress-mini {
+    display: inline-flex;
+    align-self: center;
+    width: 3rem;
+    height: 4px;
+    background-color: var(--color-gray-300);
+    border-radius: var(--radius-pill);
+    overflow: hidden;
+    vertical-align: middle;
+  }
+
+  .progress-mini .progress-bar {
+    width: 30%;
+    height: 100%;
+    background-color: currentColor;
+    border-radius: inherit;
+    position: relative;
+    animation: progress-mini 1.2s ease-in-out infinite;
+  }
+
+  @keyframes progress-mini {
+    0%   { left: -30%; }
+    100% { left: 100%; }
+  }
+}

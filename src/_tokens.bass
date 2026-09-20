@@ -1,0 +1,92 @@
+/* Design tokens — :root custom properties */
+:root {
+  /* Primary */
+  --color-primary-50:  #f0f9ff;
+  --color-primary-100: #e0f2fe;
+  --color-primary-200: #bae6fd;
+  --color-primary-300: #7dd3fc;
+  --color-primary-400: #38bdf8;
+  --color-primary-500: #0ea5e9;   /* main brand */
+  --color-primary-600: #0284c7;
+  --color-primary-700: #0369a1;
+  --color-primary-800: #075985;
+  --color-primary-900: #0c4a6e;
+
+  /* Neutral / Gray */
+  --color-gray-50:   #f9fafb;
+  --color-gray-100:  #f3f4f6;
+  --color-gray-200:  #e5e7eb;
+  --color-gray-300:  #d1d5db;
+  --color-gray-400:  #9ca3af;
+  --color-gray-500:  #6b7280;
+  --color-gray-600:  #4b5563;
+  --color-gray-700:  #374151;
+  --color-gray-800:  #1f2937;
+  --color-gray-900:  #111827;
+
+  /* Success / Danger (optional) */
+  --color-success-500: #22c55e;
+  --color-danger-500:  #ef4444;
+
+  /* Status pulse sizing (tweak to match UI) */
+  --status-dot-size: 5px;
+  --status-pulse-max: 26px;
+  --status-pulse-duration: 1.2s;
+
+  /* Theme colors */
+  --color-gold: #faca0d;
+  --color-teal: #14b8a6;
+  --color-lavender: #e6e6fa;
+  --color-lavenderblush: #fff0f5;
+  --color-coral: #ff7f50;
+  --color-plum: #dda0dd;
+  --color-tomato: #ff6347;
+  --color-skyblue: #87ceeb;
+  --color-salmon: #fa8072;
+  --color-seagreen: #2e8b57;
+  --color-steelblue: #4682b4;
+  --color-yellow: #ffff00;
+  --color-orange: #ffa500;
+  --color-pink: #ffc0cb;
+  --color-hotpink: #ff69b4;
+  --color-purple: #800080;
+  --color-indigo: #4b0082;
+  --color-brown: #a52a2a;
+  --color-cyan: #00ffff;
+  --color-lime: #00ff00;
+  --color-magenta: #ff00ff;
+  --color-silver: #c0c0c0;
+  --color-black: #000000;
+  --color-white: #ffffff;
+
+  /* Design tokens */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.15);
+  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.2);
+
+  --radius-sm: 0.35rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.6rem;
+  --radius-xl: 0.75rem;
+  --radius-pill: 9999px;
+
+  --focus-ring-width: 2px;
+  --focus-ring-color: var(--color-primary-200);
+
+  --transition-fast: 0.15s;
+  --transition-normal: 0.3s;
+  --transition-slow: 0.4s;
+
+  --spacing: calc(0.25rem * var(--scale));
+  --gutter-y: 1.5rem;
+  --gutter-x: 1.5rem;
+
+  --default-font: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --default-mono-font: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --color-primary-100-rgb: 224, 242, 254;
+  --color-primary-200-rgb: 186, 230, 253;
+  --color-gray-100-rgb: 243, 244, 246;
+  --color-gray-300-rgb: 209, 213, 219;
+  --color-gray-900-rgb: 17, 24, 39;
+}

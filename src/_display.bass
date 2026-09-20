@@ -1,0 +1,18 @@
+/* Display Utilities — generated via bowdy `if` on numeric range */
+for $n in range(0, 4):
+  case $n
+  of 0:
+    .d-block
+      display: block
+  of 1:
+    .d-inline-block
+      display: inline-block
+  of 2:
+    .d-flex
+      display: flex
+  of 3:
+    .d-inline-flex
+      display: inline-flex
+  of 4:
+    .d-none
+      display: none

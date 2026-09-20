@@ -1,0 +1,27 @@
+/* Background and gradient helpers */
+.bg-none {
+  background-color: transparent;
+}
+
+
+.gradient-overlay {
+  position: relative;
+}
+
+.gradient-overlay::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    var(--gradient-direction, to bottom),
+    var(--gradient-color-start, transparent) var(--gradient-stop, 40%),
+    var(--gradient-color-end, rgba(0, 0, 0, 0.7))
+  );
+  pointer-events: none;
+  z-index: 1;
+}
+
+.gradient-top    { --gradient-direction: to top; }
+.gradient-right  { --gradient-direction: to right; }
+.gradient-left   { --gradient-direction: to left; }
+.gradient-bottom { --gradient-direction: to bottom; }

@@ -1,4 +1,4 @@
-/* Spacing utilities — generated via Bro array iteration with objects */
+/* Spacing utilities — generated via bowdy array iteration with objects */
 var $spacings = [
   {k: 0, v: 0},
   {k: 1, v: 0.25rem},

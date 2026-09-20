@@ -1,0 +1,56 @@
+/* Border width utilities — generated via bowdy `for` + `if` */
+for $n in range(0, 4):
+  .border-${n}
+    if $n == 0:
+      border-width: 0 !important
+    else:
+      border-width: ${n}px !important
+
+.border { border-style: solid; }
+
+/* Border sides */
+.border-top    { border-top-width: 1px; border-top-style: solid; }
+.border-right  { border-right-width: 1px; border-right-style: solid; }
+.border-bottom { border-bottom-width: 1px; border-bottom-style: solid; }
+.border-left   { border-left-width: 1px; border-left-style: solid; }
+
+.border-top-0    { border-top-width: 0 !important; }
+.border-right-0  { border-right-width: 0 !important; }
+.border-bottom-0 { border-bottom-width: 0 !important; }
+.border-left-0   { border-left-width: 0 !important; }
+
+/* Border-radius utilities */
+.rounded-0   { border-radius: 0; }
+.rounded-1   { border-radius: calc(var(--spacing) * 1); }   /* 0.125rem */
+.rounded-2   { border-radius: calc(var(--spacing) * 1.5); }     /* 0.25rem */
+.rounded-3   { border-radius: calc(var(--spacing) * 2.5); }   /* 0.375rem */
+.rounded-4   { border-radius: calc(var(--spacing) * 3.5); }     /* 0.5rem */
+.rounded-5   { border-radius: calc(var(--spacing) * 4.5); }     /* 0.75rem */
+.rounded-full{ border-radius: 9999px; }                     /* pill / circle */
+
+/* Axis-specific helpers */
+.rounded-t   { border-top-left-radius: inherit; border-top-right-radius: inherit; }
+.rounded-b   { border-bottom-left-radius: inherit; border-bottom-right-radius: inherit; }
+.rounded-l   { border-top-left-radius: inherit; border-bottom-left-radius: inherit; }
+.rounded-r   { border-top-right-radius: inherit; border-bottom-right-radius: inherit; }
+
+.rounded-t-0 { border-top-left-radius: 0; border-top-right-radius: 0; }
+.rounded-b-0 { border-bottom-left-radius: 0; border-bottom-right-radius: 0; }
+.rounded-l-0 { border-top-left-radius: 0; border-bottom-left-radius: 0; }
+.rounded-r-0 { border-top-right-radius: 0; border-bottom-right-radius: 0; }
+
+.shadow-1 {
+  box-shadow: var(--shadow-sm);
+}
+
+.shadow-2 {
+  box-shadow: var(--shadow-md);
+}
+
+.shadow-3 {
+  box-shadow: var(--shadow-lg);
+}
+
+.shadow-4 {
+  box-shadow: var(--shadow-xl);
+}

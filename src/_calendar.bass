@@ -1,0 +1,215 @@
+.zaiku-calendar {
+  --cal-bg: var(--color-white);
+  --cal-border: var(--color-gray-200);
+  --cal-shadow: var(--shadow-md);
+  --cal-title-color: var(--color-gray-800);
+  --cal-nav-color: var(--color-gray-600);
+  --cal-nav-hover-bg: var(--color-gray-100);
+  --cal-weekday-color: var(--color-gray-500);
+  --cal-day-color: var(--color-gray-800);
+  --cal-day-hover-bg: var(--color-gray-100);
+  --cal-other-month-color: var(--color-gray-400);
+  --cal-today-color: var(--color-blue-600);
+  --cal-selected-bg: var(--color-gray-800);
+  --cal-selected-color: var(--color-white);
+  --cal-selected-hover-bg: var(--color-gray-900);
+  --cal-disabled-color: var(--color-gray-300);
+  --cal-range-in-bg: var(--color-gray-100);
+  --cal-header-border: var(--color-gray-200);
+  --cal-blocked-hover-bg: var(--color-warning-100, #fef3c7);
+  --cal-weekend-color: var(--cal-day-color);
+  display: inline-block;
+  font-size: 0.9rem;
+  background: var(--cal-bg);
+  border: 1px solid var(--cal-border);
+  border-radius: var(--radius-md);
+  box-shadow: var(--cal-shadow);
+  padding: 0.75rem;
+  user-select: none;
+  min-width: 25em;
+  position: relative;
+}
+
+.zaiku-calendar-grouped {
+  min-width: 50em;
+  max-width: 50em;
+}
+
+.zaiku-calendar-popover {
+  display: none;
+  position: absolute;
+  z-index: 200;
+  margin-top: 0.25rem;
+}
+
+.zaiku-calendar-popover.show {
+  display: inline-block;
+}
+
+.zaiku-calendar-group-header,
+.zaiku-calendar-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.zaiku-calendar-group-header {
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--cal-header-border);
+  margin-bottom: 0.75rem;
+}
+
+.zaiku-calendar-title {
+  flex: 1;
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: var(--cal-title-color);
+}
+
+.zaiku-calendar-nav {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.75rem;
+  height: 1.75rem;
+  border: none;
+  border-radius: var(--radius-md);
+  background: none;
+  color: var(--cal-nav-color);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background var(--transition-fast) ease;
+}
+
+.zaiku-calendar-nav:hover {
+  background: var(--cal-nav-hover-bg);
+}
+
+.zaiku-calendar-panels {
+  display: flex;
+}
+
+.zaiku-calendar-panel {
+  flex: 1;
+  min-width: 0;
+}
+
+.zaiku-calendar-grid {
+  width: 100%;
+}
+
+.zaiku-calendar-weekdays {
+  display: flex;
+}
+
+.zaiku-calendar-weekday {
+  flex: 1;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--cal-weekday-color);
+  text-align: center;
+  padding: 0.2rem 0;
+  text-transform: uppercase;
+}
+
+.zaiku-calendar-week {
+  display: flex;
+}
+
+.zaiku-calendar-day-cell {
+  flex: 1;
+}
+
+.zaiku-calendar-day {
+  display: block;
+  width: 100%;
+  padding: 0.3rem 0;
+  border: none;
+  border-radius: var(--radius-md);
+  background: none;
+  color: var(--cal-day-color);
+  font-size: 0.85rem;
+  font-family: inherit;
+  cursor: pointer;
+  text-align: center;
+  transition: background var(--transition-fast) ease, color var(--transition-fast) ease;
+}
+
+.zaiku-calendar-day:hover {
+  background: var(--cal-day-hover-bg);
+}
+
+.zaiku-calendar-day.other-month {
+  color: var(--cal-other-month-color);
+}
+
+.zaiku-calendar-day.today {
+  font-weight: 700;
+  color: var(--cal-today-color);
+}
+
+.zaiku-calendar-day.selected {
+  background: var(--cal-selected-bg);
+  color: var(--cal-selected-color);
+  font-weight: 600;
+}
+
+.zaiku-calendar-day.selected:hover {
+  background: var(--cal-selected-hover-bg);
+}
+
+.zaiku-calendar-day.disabled {
+  color: var(--cal-disabled-color);
+  cursor: default;
+  pointer-events: none;
+}
+
+.zaiku-calendar-day.range-start {
+  background: var(--cal-selected-bg);
+  color: var(--cal-selected-color);
+  border-radius: var(--radius-md) 0 0 var(--radius-md);
+}
+
+.zaiku-calendar-day.range-end {
+  background: var(--cal-selected-bg);
+  color: var(--cal-selected-color);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+}
+
+.zaiku-calendar-day.in-range {
+  background: var(--cal-range-in-bg);
+  border-radius: 0;
+}
+
+.zaiku-calendar-day.blocked {
+  text-decoration: line-through;
+  background-image: repeating-linear-gradient(45deg, transparent, transparent 3px, rgba(0,0,0,0.02) 3px, rgba(0,0,0,0.02) 6px);
+  cursor: pointer;
+  opacity: 0.8;
+  pointer-events: auto;
+}
+
+.zaiku-calendar-day.blocked:hover {
+  background-color: var(--cal-blocked-hover-bg);
+  opacity: 1;
+}
+
+.dropdown.zaiku-calendar-detail-popover {
+  position: absolute;
+  z-index: 1000;
+  width: max-content;
+  display: none;
+}
+
+.dropdown.zaiku-calendar-detail-popover.show {
+  display: block;
+}
+
+.zaiku-calendar-detail-popover .dropdown-menu {
+  position: static;
+  transform: none;
+  margin: 0;
+  display: block;
+}
