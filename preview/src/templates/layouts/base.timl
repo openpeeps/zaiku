@@ -7,6 +7,16 @@ html class="scale-1"
     link rel="stylesheet" href="/typography.css"
     link rel="stylesheet" href="/colors.css"
     script src="/zaiku.js"
+    style: """
+      body {
+        background:#fff;
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    """
   body
     div.d-flex.min-vh-100
       aside.sidebar style="background-color:var(--color-gray-50)"
@@ -147,18 +157,4 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 })
     @end
-    @javascript
-function connectLiveReload() {
-  const ws = new WebSocket("ws://" + location.hostname + ":3500");
-  ws.addEventListener('message', (e) => {
-    if(e.data == '1') location.reload()
-  });
-  ws.addEventListener('close', () => {
-    setTimeout(() => {
-      console.log('Live-reload WebSocket closed. Reconnecting...')
-      connectLiveReload()
-    }, 300)
-  })
-}
-connectLiveReload()
-    @end
+

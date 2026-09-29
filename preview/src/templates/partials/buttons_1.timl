@@ -1,0 +1,5 @@
+div.flex.w-full.flex-wrap.g-3
+  a.btn.btn-primary: "Primary button"
+  a.btn.btn-secondary: "Check out"
+  a.btn.btn-danger: "Delete"
+  button.btn.btn-primary: "Button element"
